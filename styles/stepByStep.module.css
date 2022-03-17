@@ -1,0 +1,33 @@
+.plan__container {
+  font-family: 'Special Elite', cursive;
+  margin-left: 1rem;
+}
+
+
+.h2 {
+  margin: 1.5rem;
+}
+
+.wireframe__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.wireframe__image {
+  border: 2px solid darkgray;
+  margin: .2rem;
+}
+
+.moodboard__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.moodboard__image {
+  
+  margin: .1rem;
+}
