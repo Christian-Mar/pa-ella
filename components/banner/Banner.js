@@ -13,7 +13,7 @@ const Banner = ({ title, subTitle, imgUrl }) => {
 			<h3 className={styles.subTitle}>{subTitle}</h3>
 			<div className={styles.searchContainer}>
 				<div className={styles.searchBar}>
-					<input type='text' className={styles.searchInput} />
+					<input type='text' className={styles.searchInput} placeholder="Waar heb jij zin in? "/>
 					
 					<Image
             className={styles.searchIcon}
