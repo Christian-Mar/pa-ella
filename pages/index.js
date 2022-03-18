@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Banner from '../components/banner/banner';
+import Banner from '../components/banner/Banner';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
