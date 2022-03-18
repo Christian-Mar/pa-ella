@@ -4,27 +4,59 @@
   font-size: 1.8rem; 
   line-height: 2rem; 
   font-weight: 700;
-  color: #c7ffed;
-  padding-left: 2rem;
+  color: #090135;
+  padding: 2rem 0 0 2rem;
   font-family: 'Monda', sans-serif;
 }
 
 .subTitle {
+  margin-top: -1rem;
   font-size: 1.2rem;
-  line-height: 1.3rem;
-  font-weight: 400;
-  color: #c7ffed;
-   padding-left: 2rem;
-   font-family: 'Monda', sans-serif;
+  line-height: 1.rem;
+  font-weight: 700;
+  color: #090135;
+  padding-left: 2rem;
+  font-family: 'Monda', sans-serif;
 }
 
 .bannerImg {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 25vh;
-  top: 0px;
-  bottom: 0px;
+  height: 30vh;
+  margin-top: -2rem;
   background-size: cover;
-  background-position: 100% 25%;
-  filter: grayscale(20%);
+  background-position: 100% 35%;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar {
+  margin: 2rem;
+  width: 50%;
+  height: 6vh;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(45,55,68,0.30);
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+.searchInput {
+  border: none;
+  border-radius: 25px;
+  width: 80%;
+  height: 3.5vh;
+  background-color: #fcfcfc;
+  padding-left: 1rem;
+}
+
+.searchIcon:hover {
+  cursor: pointer;
 }
