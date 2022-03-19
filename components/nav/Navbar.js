@@ -1,12 +1,57 @@
+
+import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
+import Link from 'next/link';
 
 const Navbar = () => {
+
+  const router = useRouter();
+
+  const handleOnClickHome = (e) => {
+    e.preventDefault();
+    router.push('/')
+  }
+
+  const handleOnClickStepByStep = e => {
+		e.preventDefault();
+		router.push('/stepByStep');
+	};
+
+  const handleOnClickSignUp = e => {
+		e.preventDefault();
+		router.push('/signup');
+	};
+
+  const handleOnClickSignIn = e => {
+		e.preventDefault();
+		router.push('/signin');
+	};
+
   return (
 		<div className={styles.navbarContainer}>
-      <div className={styles.logo}><h1 className={styles.logoCharacters}>pa'ella</h1></div>
+			<div className={styles.logo} onClick={handleOnClickHome}>
+				<Link href='/'>
+					<a>
+						<h1 className={styles.logoCharacters}>pa' el-la</h1>
+					</a>
+				</Link>
+			</div>
 			<ul className={styles.navbarList}>
-				<li className={styles.navbarListItem}>Sign up</li>
-				<li className={styles.navbarListItem}>Sign in</li>
+				<li className={styles.navbarListItem} onClick={handleOnClickStepByStep}>
+					<Link href='/step/ByStep'>
+						<a>StepbyStep</a>
+					</Link>
+				</li>
+				<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
+					<Link href='/signup'>
+						<a>Sign up</a>
+					</Link>
+				</li>
+				<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
+					<Link href='/signin'>
+						<a>Sign in</a>
+					</Link>
+				</li>
 			</ul>
 		</div>
 	);

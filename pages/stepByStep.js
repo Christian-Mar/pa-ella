@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const stepByStep = () => {
   return (
-    <div>
+    <div className={styles.plan__container}>
       <h1>Het plan</h1>
 
 			<div>
