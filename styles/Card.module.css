@@ -17,6 +17,11 @@
   padding-top: 15px;
 }
 
+.container:hover {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(35px);
+}
+
 .cardImg {
   top: 0px;
   right: 0px;

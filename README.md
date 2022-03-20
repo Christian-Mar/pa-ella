@@ -10,3 +10,4 @@ Deploy problem on Vercel (Failed to compile: `’` can be escaped with `&apos;`,
 
 1. Wireframe and Moodboard (research & creation) - 8h
 2. Creation banner + navbar - 4h
+3. creation cards - 2h

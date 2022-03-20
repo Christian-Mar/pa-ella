@@ -46,18 +46,18 @@ const Navbar = () => {
 
 			<ul className={styles.navbarList}>
 				<li className={styles.navbarListItem} onClick={handleOnClickStepByStep}>
-					<Link href='/step/ByStep'>
+					<Link href='/stepByStep'>
 						<a>StepbyStep</a>
 					</Link>
 				</li>
 				<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
 					<Link href='/signup'>
-						<a>Sign up</a>
+						<a>Account maken</a>
 					</Link>
 				</li>
 				<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
 					<Link href='/signin'>
-						<a>Sign in</a>
+						<a>Aanmelden</a>
 					</Link>
 				</li>
 			</ul>
