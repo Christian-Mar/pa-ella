@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
 import Link from 'next/link';
 
+
+
 const Navbar = () => {
 
   const router = useRouter();
@@ -27,15 +29,21 @@ const Navbar = () => {
 		router.push('/signin');
 	};
 
+  //useState met boolean gebruiken om onderdelen al of niet te laten verschijnen
+  //na bijvoorbeeld 'login'
+
   return (
 		<div className={styles.navbarContainer}>
 			<div className={styles.logo} onClick={handleOnClickHome}>
 				<Link href='/'>
 					<a>
-						<h1 className={styles.logoCharacters}>pa' el-la</h1>
+						<h1 className={styles.logoCharacters}>pa' ella</h1>
 					</a>
 				</Link>
 			</div>
+
+			
+
 			<ul className={styles.navbarList}>
 				<li className={styles.navbarListItem} onClick={handleOnClickStepByStep}>
 					<Link href='/step/ByStep'>

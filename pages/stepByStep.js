@@ -1,9 +1,13 @@
 import styles from '../styles/stepByStep.module.css';
 import Image from 'next/image';
+import Navbar from '../components/nav/Navbar';
 
 const stepByStep = () => {
   return (
+    <div>
+    <Navbar />
     <div className={styles.plan__container}>
+
       <h1>Het plan</h1>
 
 			<div>
@@ -98,6 +102,7 @@ const stepByStep = () => {
 					</div>
 				</div>
 			</div>
+    </div>
     </div>
   )
 }

@@ -1,5 +1,12 @@
 .container {
   min-height: 1000vh;
-  background-color: #ffdce7;
+  /*background-color: #ffdce7;*/
+  background-image: url('/images/mixedcolors.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 29% 0%;
 }
 
+.image__container {
+  display: flex;
+}
