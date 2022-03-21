@@ -2,10 +2,8 @@
 
 .navbarContainer {
   height: 9vh;
-  background: #040018;
-  background: black;
   background: linear-gradient(180deg,rgb(4, 0, 24, 1), rgb(7, 0, 48, 0.92));
-  
+  background: #040018;
   font-family: 'Monda', sans-serif;
   color: rgb(204, 204, 204);
   display: flex;

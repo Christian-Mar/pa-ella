@@ -14,11 +14,6 @@ const Navbar = () => {
     router.push('/')
   }
 
-  const handleOnClickStepByStep = e => {
-		e.preventDefault();
-		router.push('/stepByStep');
-	};
-
   const handleOnClickSignUp = e => {
 		e.preventDefault();
 		router.push('/signup');
@@ -45,11 +40,7 @@ const Navbar = () => {
 			
 
 			<ul className={styles.navbarList}>
-				<li className={styles.navbarListItem} onClick={handleOnClickStepByStep}>
-					<Link href='/stepByStep'>
-						<a>StepbyStep</a>
-					</Link>
-				</li>
+			
 				<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
 					<Link href='/signup'>
 						<a>Account maken</a>
@@ -60,6 +51,7 @@ const Navbar = () => {
 						<a>Aanmelden</a>
 					</Link>
 				</li>
+				
 			</ul>
 		</div>
 	);
