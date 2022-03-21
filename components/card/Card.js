@@ -1,7 +1,7 @@
 import styles from '../../styles/Card.module.css';
 import Image from 'next/image';
 
-const Card = ({imgUrl = '/images/plate.jpg', size = 'medium', title}) => {
+const Card = ({imgUrl = '/images/plate.png', size = 'medium', title}) => {
 
   //imgUrl will be set in the create form, so the default img will be defined there
 
