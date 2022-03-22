@@ -1,6 +1,5 @@
 .container {
   min-height: 1000vh;
-  /*background-color: #ffdce7;*/
   background-image: url('/images/mixedcolors.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,4 +8,9 @@
 
 .image__container {
   display: flex;
+}
+
+.list {
+  top: 0;
+  margin: 0;
 }

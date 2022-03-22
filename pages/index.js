@@ -4,27 +4,14 @@ import Banner from '../components/banner/Banner';
 import Navbar from '../components/nav/Navbar';
 import SectionCards from '../components/card/SectionCards';
 import styles from '../styles/Home.module.css';
-import { db } from '../firebase/config';
-import { collection, doc, onSnapshot, query } from 'firebase/firestore';
+import { useCollection } from '../hooks/useCollection';
 
 export default function Home() {
-
-	// setting up firestore db-connection
-	const [recipes, setRecipes] = useState([])
-
-	useEffect(() => {
-		const recipesRef = query(collection(db, 'recipes'));
-		onSnapshot(recipesRef, snapshot => {
-			setRecipes(
-				snapshot.docs.map(doc => ({
-					id: doc.id,
-					data: doc.data(),
-				}))
-			);
-		});
-	}, []);
+	const { documents: recipes } = useCollection('recipes');
 
 	console.log(recipes);
+
+	
   return (
 		<div className={styles.container}>
 			<Head>
@@ -41,14 +28,17 @@ export default function Home() {
 					imgUrl='/images/waves.png'
 				/>
 				<div className={styles.image__container}>
-          <SectionCards title='Dagelijkse kost'/> 
-				</div>
-				<div>
-					{recipes.map(recipe => (<div id={recipe.id} key={recipe.id} title={recipe.data.title}>
-							<h4>{recipe.data.title}</h4>
-						</div>))}
-				</div>
+					<SectionCards title='Dagelijkse kost' />
+				
 			</div>
+			<div className='(styles.list)'>
+			<ul>
+				{recipes?.map(recipe => (
+					<li key={recipe.id}>
+						{recipe.title}
+					</li>
+				))}
+			</ul></div></div>
 		</div>
 	);
 }

@@ -11,7 +11,7 @@ Deploy problem on Vercel (Failed to compile: `’` can be escaped with `&apos;`,
 1. Wireframe and Moodboard (research & creation) - 8h
 2. Creation banner + navbar - 4h
 3. creation cards - 2h
-4. Setup Firebase
+4. Setup Firebase/firestore - 3h
 
 
 
@@ -22,4 +22,14 @@ Firebase
 - create folder 'firebase' & config.js-file
 - put keys in .env.local -> Na aanpassing altijd dev-server heropstarten!!!
 
+
+
+
+
+
+
+
+
+
 - Largest Contentful Paint (LCP) --- warning ---
+Zal wellicht opgelost worden door ssr
