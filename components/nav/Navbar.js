@@ -3,10 +3,13 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLogout } from '../../hooks/useLogout'
 
 
 
 const Navbar = () => {
+
+	const { logout } = useLogout();
 
   const router = useRouter();
 
@@ -70,6 +73,9 @@ const Navbar = () => {
 					<Link href='/signin'>
 						<a>Aanmelden</a>
 					</Link>
+				</li>
+				<li className={styles.navbarListItem} onClick={logout}>
+						Afmelden
 				</li>
 			</ul>
 		</div>
