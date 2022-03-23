@@ -12,6 +12,7 @@ Deploy problem on Vercel (Failed to compile: `’` can be escaped with `&apos;`,
 2. Creation banner + navbar - 4h
 3. creation cards - 2h
 4. Setup Firebase/firestore - 3h
+5. custom hook useCollection - 1h
 
 
 
