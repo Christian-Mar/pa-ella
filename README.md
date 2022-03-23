@@ -1,4 +1,4 @@
-##Debugs
+##Debugging
 
 1. Deploy problem on Vercel (Failed to compile: `’` can be escaped with `&apos;`, `&lsquo;`, `'`, `&rsquo;) solved by: 
 
@@ -16,6 +16,8 @@
 
 - Always restart dev server after changing the /env file
 - For deploying environment variables need to be inserted in Vercel!
+
+4. _document.js link needs to be crossOrigin instead of crossorigin from google fonts
 
 ##Rendering
 

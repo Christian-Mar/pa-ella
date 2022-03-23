@@ -9,7 +9,7 @@ export const useSignup = () => {
     setError(null);
     createUserWithEmailAndPassword(auth, email, password)
     .then((res) => {
-      console.log('user signed op, res.user')
+      console.log('user signed up:', res.user)
     })
     .catch((err) => {
       setError(err.message)
@@ -18,7 +18,7 @@ export const useSignup = () => {
   }
 
   return { error, signup } 
-  // the two thing we need from other components to use this hook 
+  // the two things we need from other components to use this hook 
 }
 
 

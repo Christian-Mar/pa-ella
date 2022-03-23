@@ -17,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo { 
@@ -62,6 +63,7 @@
   height: 3.5vh;
   background-color: #fcfcfc;
   padding-left: 1rem;
+  z-index: 5;
 }
 
 .searchIcon:hover {
