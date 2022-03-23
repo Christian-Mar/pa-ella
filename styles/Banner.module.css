@@ -1,23 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap');
-
-.title {
-  font-size: 1.8rem; 
-  line-height: 2rem; 
-  font-weight: 700;
-  color: #090135;
-  padding: 2rem 0 0 3rem;
-  font-family: 'Monda', sans-serif;
-}
-
-.subTitle {
-  margin-top: -1.5rem;
-  font-size: 1.2rem;
-  line-height: 1.rem;
-  font-weight: 700;
-  color: #090135;
-  padding-left: 3rem;
-  font-family: 'Monda', sans-serif;
-}
 
 .bannerImg {
   position: relative;
@@ -28,42 +8,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  
   padding: 4rem;
 }
 
-.searchContainer {
-  margin-top:2.5rem;
-  display: flex;
-  justify-content: center; 
-  z-index: 100;
-}
-
-.searchBar {
-  margin: 2rem;
-  width: 50%;
-  height: 6vh;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(30px);
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  box-shadow: 10px 10px 10px rgba(45,55,68,0.3);
-  display: flex;
-  justify-content:space-evenly;
-  align-items: center;
- z-index: 100;
-}
-
-.searchInput {
-  border: none;
-  border-radius: 25px;
-  width: 80%;
-  height: 3.5vh;
-  background-color: #fcfcfc;
-  padding-left: 1rem;
-}
-
-.searchIcon:hover {
-  cursor: pointer;
-}

@@ -10,6 +10,10 @@
   display: flex;
 }
 
+.title {
+  margin-left: 2rem;
+}
+
 .list {
   top: 0;
   margin: 0;

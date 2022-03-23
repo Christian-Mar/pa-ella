@@ -6,3 +6,7 @@
 .Card__container {
   display: flex;
 }
+
+.title {
+  font-size: 1.2rem;
+}

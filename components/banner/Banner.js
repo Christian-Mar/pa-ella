@@ -1,7 +1,6 @@
 import styles from '../../styles/Banner.module.css';
-import Image from 'next/image';
 
-const Banner = ({ title, subTitle, imgUrl }) => {
+const Banner = ({ imgUrl }) => {
 	return (
 		<div
 			className={styles.bannerImg}
@@ -10,7 +9,7 @@ const Banner = ({ title, subTitle, imgUrl }) => {
 			}}
 		>
 			{/*<h3 className={styles.title}>{title}</h3>
-			<h3 className={styles.subTitle}>{subTitle}</h3>*/}
+			<h3 className={styles.subTitle}>{subTitle}</h3>
 			<div className={styles.searchContainer}>
 				<div className={styles.searchBar}>
 					<input
@@ -28,7 +27,7 @@ const Banner = ({ title, subTitle, imgUrl }) => {
 					/>
 				</div>
 			</div>
-		
+		*/}
 		</div>
 	);
 };

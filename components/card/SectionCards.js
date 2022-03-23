@@ -4,7 +4,7 @@ import Card from './Card';
 const SectionCards = ({title}) => {
   return (
 		<section className={styles.container}>
-			<h2>{title}</h2>
+			<h2 className={styles.title}>{title}</h2>
 			<div className={styles.Card__container}>
 				<Card imgUrl='/images/cardVeggie.jpg' size='medium' title='Salade' />
 				<Card

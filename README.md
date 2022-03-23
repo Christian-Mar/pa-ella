@@ -1,27 +1,31 @@
-Deploy problem on Vercel (Failed to compile: `’` can be escaped with `&apos;`, `&lsquo;`, `'`, `&rsquo;) solved by: 
+##Debugs
+
+1. Deploy problem on Vercel (Failed to compile: `’` can be escaped with `&apos;`, `&lsquo;`, `'`, `&rsquo;) solved by: 
 
 {
   "extends": "next/core-web-vitals",
   "rules": { "react/no-unescaped-entities": 0 }
 } in eslintrc.json
 
+2. Deploy-problem: Error: Command "npm run build" exited with 1
 
-##Timespending
+- CU = false (environment variables) first action
+- check if there're errors in using components/ pages. F.e. page without 'export default'
 
-1. Wireframe and Moodboard (research & creation) - 8h
-2. Creation banner + navbar - 4h
-3. creation cards - 2h
-4. Setup Firebase/firestore - 3h
-5. custom hook useCollection - 1h
+3. Firebase not connecting
 
+- Always restart dev server after changing the /env file
+- For deploying environment variables need to be inserted in Vercel!
 
+##Rendering
 
-Firebase
+Choices between
 
-- configure project in Firebase
-- 'npm install firebase' in the terminal (= latest version)
-- create folder 'firebase' & config.js-file
-- put keys in .env.local -> Na aanpassing altijd dev-server heropstarten!!!
+- SSR
+- SSG
+- ISR -> loading all recipes
+- CSR -> updating db? authentication?
+
 
 
 

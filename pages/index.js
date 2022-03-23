@@ -15,7 +15,7 @@ export default function Home() {
   return (
 		<div className={styles.container}>
 			<Head>
-				<title>pa'ella</title>
+				<title>pa'el-la</title>
 				<meta name='description' content='The recipe website' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
@@ -23,22 +23,20 @@ export default function Home() {
 			<div className={styles.container}>
 				<Navbar username='donald.duck@disney.com' />
 				<Banner
-					title='Recepten'
-					subTitle='voor ieder moment van de dag'
 					imgUrl='/images/waves.png'
 				/>
+				<h1 className={styles.title}>Recepten</h1>
 				<div className={styles.image__container}>
 					<SectionCards title='Dagelijkse kost' />
-				
+				</div>
+				<div className='(styles.list)'>
+					<ul>
+						{recipes?.map(recipe => (
+							<li key={recipe.id}>{recipe.title}</li>
+						))}
+					</ul>
+				</div>
 			</div>
-			<div className='(styles.list)'>
-			<ul>
-				{recipes?.map(recipe => (
-					<li key={recipe.id}>
-						{recipe.title}
-					</li>
-				))}
-			</ul></div></div>
 		</div>
 	);
 }
