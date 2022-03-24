@@ -38,7 +38,7 @@ const Navbar = () => {
 					<Link href='/'>
 						<a>
 							<h1 className={styles.logoCharacters}>
-								<span className={styles.logoCharacters__begin}>pa'</span> el-la
+								<span className={styles.logoCharacters__begin}>pa'</span> ella
 							</h1>
 						</a>
 					</Link>
@@ -70,7 +70,7 @@ const Navbar = () => {
 					</Link>
 				</li>
 				<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
-					<Link href='/signin'>
+					<Link href='/login'>
 						<a>Aanmelden</a>
 					</Link>
 				</li>
