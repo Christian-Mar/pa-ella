@@ -17,7 +17,7 @@ export default function Home() {
 			<Head>
 				<title>pa'el-la</title>
 				<meta name='description' content='The recipe website' />
-				<link rel='icon' href='/favicon.ico' />
+				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 
 			<div className={styles.container}>
