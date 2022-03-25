@@ -25,7 +25,7 @@ const Navbar = () => {
 
   const handleOnClickSignIn = e => {
 		e.preventDefault();
-		router.push('/signin');
+		router.push('/login');
 	};
 
   //useState met boolean gebruiken om onderdelen al of niet te laten verschijnen
