@@ -56,6 +56,7 @@ export default function Login() {
 								className={styles.form__labelInput}
 							/>
 						</label>
+						<p>Here comes: forgotten password? </p>
 						<button className={styles.form__button}>Bevestig</button>
 						{error && <p>{error}</p>}
 					</form>
