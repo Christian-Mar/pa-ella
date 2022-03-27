@@ -6,6 +6,7 @@ import SectionCards from '../components/card/SectionCards';
 import styles from '../styles/Home.module.css';
 import { useCollection } from '../hooks/useCollection';
 
+
 export default function Home() {
 	const { documents: recipes } = useCollection('recipes');
 
@@ -15,7 +16,7 @@ export default function Home() {
   return (
 		<div className={styles.container}>
 			<Head>
-				<title>pa'el-la</title>
+				<title>pa'ella</title>
 				<meta name='description' content='The recipe website' />
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
