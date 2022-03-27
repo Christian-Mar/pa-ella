@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/CreateRecipe.module.css';
 
