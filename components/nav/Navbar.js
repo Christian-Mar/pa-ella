@@ -1,22 +1,21 @@
-
 import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useLogout } from '../../hooks/useLogout'
-
-
+import { useLogout } from '../../hooks/useLogout';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const Navbar = () => {
-
 	const { logout } = useLogout();
 
-  const router = useRouter();
+	const router = useRouter();
 
-  const handleOnClickHome = (e) => {
-    e.preventDefault();
-    router.push('/')
-  }
+	const { user } = useAuthContext();
+
+	const handleOnClickHome = e => {
+		e.preventDefault();
+		router.push('/');
+	};
 
 	const handleOnClickCreateRecipe = e => {
 		e.preventDefault();
@@ -28,12 +27,12 @@ const Navbar = () => {
 		router.push('/week-planner');
 	};
 
-  const handleOnClickSignUp = e => {
+	const handleOnClickSignUp = e => {
 		e.preventDefault();
 		router.push('/signup');
 	};
 
-  const handleOnClickSignIn = e => {
+	const handleOnClickSignIn = e => {
 		e.preventDefault();
 		router.push('/login');
 	};
@@ -43,10 +42,10 @@ const Navbar = () => {
 		router.push('/login');
 	};
 
-  //useState met boolean gebruiken om onderdelen al of niet te laten verschijnen
-  //na bijvoorbeeld 'login'
+	//useState met boolean gebruiken om onderdelen al of niet te laten verschijnen
+	//na bijvoorbeeld 'login'
 
-  return (
+	return (
 		<div className={styles.navbarContainer}>
 			<div className={styles.logoSearchContainer}>
 				<div className={styles.logo} onClick={handleOnClickHome}>
@@ -76,43 +75,54 @@ const Navbar = () => {
 						/>
 					</div>
 				</div>
+
+				<div>{user && <p>Logged in as: {user.email}</p>}</div>
 			</div>
 
 			<ul className={styles.navbarList}>
-				<li
-					className={styles.navbarListItem}
-					onClick={handleOnClickCreateRecipe}
-				>
-					<Link href='/create-recipe'>
-						<a>Recept creëren</a>
-					</Link>
-				</li>
-				<li className={styles.navbarListItem} onClick={handleOnClickWeekPlanner}>
-					<Link href='/week-planner'>
-						<a>Weekplanner</a>
-					</Link>
-				</li>
-				<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
+				{user && (
+					<li
+						className={styles.navbarListItem}
+						onClick={handleOnClickCreateRecipe}
+					>
+						<Link href='/create-recipe'>
+							<a>Recept creëren</a>
+						</Link>
+					</li>
+				)}
+				{user && (
+					<li
+						className={styles.navbarListItem}
+						onClick={handleOnClickWeekPlanner}
+					>
+						<Link href='/week-planner'>
+							<a>Weekplanner</a>
+						</Link>
+					</li>
+				)}
+				{!user && <li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
 					<Link href='/signup'>
 						<a>Account maken</a>
 					</Link>
-				</li>
-				<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
-					<Link href='/login'>
-						<a>Aanmelden</a>
-					</Link>
-				</li>
-				<li className={styles.navbarListItem} onClick={handleOnClickProfile}>
+				</li>}
+				{!user && (
+					<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
+						<Link href='/login'>
+							<a>Aanmelden</a>
+						</Link>
+					</li>
+				)}
+				{user &&<li className={styles.navbarListItem} onClick={handleOnClickProfile}>
 					<Link href='/profile'>
 						<a>Mijn profiel</a>
 					</Link>
-				</li>
-				<li className={styles.navbarListItem} onClick={logout}>
-					Afmelden
-				</li>
+				</li>}
+				{user && <li className={styles.navbarListItem} onClick={logout}>
+					<a>Afmelden</a>
+				</li>}
 			</ul>
 		</div>
 	);
-}
+};
 
 export default Navbar;

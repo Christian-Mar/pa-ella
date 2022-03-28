@@ -14,7 +14,8 @@
 }
 
 .logoSearchContainer {
-  width: 65vw;
+  width: 95vw;
+  padding: O 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,6 +77,7 @@
 }
 
 .navbarList {
+  width: 95vw;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -84,5 +86,5 @@
 .navbarListItem {
   list-style: none;
   font-size: .8rem;
-  margin: 0 1rem 0 0;
+  margin: 0 0 0 1rem;
 }
