@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/CreateRecipe.module.css';
 
-const index = () => {
+const CreateRecipe = () => {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -16,4 +16,4 @@ const index = () => {
 	);
 };
 
-export default index;
+export default CreateRecipe;

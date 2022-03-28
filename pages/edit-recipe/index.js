@@ -1,9 +1,19 @@
-const index = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import Head from 'next/head';
+import Navbar from '../../components/nav/Navbar';
+import styles from '../../styles/EditRecipe.module.css';
 
-export default index
+const EditRecipe = () => {
+	return (
+		<div className={styles.container}>
+			<Head>
+				<title>pa'ella create</title>
+				<meta name='description' content='Recepten' />
+				<link rel='icon' href='/images/favicon.ico' />
+			</Head>
+			<Navbar />
+			<h1>Edit Recipe</h1>
+		</div>
+	);
+};
+
+export default EditRecipe;

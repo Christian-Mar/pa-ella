@@ -18,12 +18,27 @@ const Navbar = () => {
     router.push('/')
   }
 
+	const handleOnClickCreateRecipe = e => {
+		e.preventDefault();
+		router.push('/create-recipe');
+	};
+
+	const handleOnClickWeekPlanner = e => {
+		e.preventDefault();
+		router.push('/week-planner');
+	};
+
   const handleOnClickSignUp = e => {
 		e.preventDefault();
 		router.push('/signup');
 	};
 
   const handleOnClickSignIn = e => {
+		e.preventDefault();
+		router.push('/login');
+	};
+
+	const handleOnClickProfile = e => {
 		e.preventDefault();
 		router.push('/login');
 	};
@@ -64,6 +79,19 @@ const Navbar = () => {
 			</div>
 
 			<ul className={styles.navbarList}>
+				<li
+					className={styles.navbarListItem}
+					onClick={handleOnClickCreateRecipe}
+				>
+					<Link href='/create-recipe'>
+						<a>Recept creëren</a>
+					</Link>
+				</li>
+				<li className={styles.navbarListItem} onClick={handleOnClickWeekPlanner}>
+					<Link href='/week-planner'>
+						<a>Weekplanner</a>
+					</Link>
+				</li>
 				<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
 					<Link href='/signup'>
 						<a>Account maken</a>
@@ -74,8 +102,13 @@ const Navbar = () => {
 						<a>Aanmelden</a>
 					</Link>
 				</li>
+				<li className={styles.navbarListItem} onClick={handleOnClickProfile}>
+					<Link href='/profile'>
+						<a>Mijn profiel</a>
+					</Link>
+				</li>
 				<li className={styles.navbarListItem} onClick={logout}>
-						Afmelden
+					Afmelden
 				</li>
 			</ul>
 		</div>

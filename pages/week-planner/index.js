@@ -12,6 +12,7 @@ const WeekPlanner = () => {
 			</Head>
 			<div className={styles.container}>
 				<Navbar />
+        <h1>Weekplanner</h1>
 			</div>
 		</div>
 	);
