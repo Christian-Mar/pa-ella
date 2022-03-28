@@ -8,5 +8,23 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-top: 5rem;
+}
 
+.button {
+  width: 230px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(56, 56, 56);
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.title {
+  font-size: 6rem;
 }

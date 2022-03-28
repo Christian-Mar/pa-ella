@@ -28,13 +28,12 @@ export default function Login() {
 			<Navbar />
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
-
 					<div className={styles.form__goBack} onClick={handleOnClickHome}>
-						<Link href='/' >
+						<Link href='/'>
 							<a>X</a>
 						</Link>
 					</div>
-				
+
 					<h2 className={styles.form__title}>Aanmelden</h2>
 					<form onSubmit={handleSubmit} className={styles.form}>
 						<label className={styles.form__label}>
@@ -48,7 +47,7 @@ export default function Login() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>Wachtwoord</span>
+							<span className={styles.form__labelTitle}>Wachtwoord <span className={styles.form__forgotpassword}> Wachtwoord vergeten?</span></span>
 							<input
 								required
 								type='password'
@@ -56,8 +55,9 @@ export default function Login() {
 								value={password}
 								className={styles.form__labelInput}
 							/>
+							
 						</label>
-						<p>Here comes: forgotten password? </p>
+
 						<button className={styles.form__button}>Bevestig</button>
 						{error && <p>{error}</p>}
 					</form>

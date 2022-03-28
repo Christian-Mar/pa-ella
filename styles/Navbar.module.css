@@ -1,6 +1,6 @@
 
 .navbarContainer {
-  height: 7rem;
+  height: 6rem;
   background: #ffffff;
   box-shadow: 0px 20px 15px -3px rgba(0,0,0,0.1);
   font-family: 'Monda', sans-serif;
@@ -47,7 +47,7 @@
 }
 
 .searchBar {
-  margin: 0.5rem;
+  margin-top: 0.2rem;
   width: 26rem;
   height: 2.8rem;
   border-radius: 4px;
