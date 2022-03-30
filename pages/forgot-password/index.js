@@ -6,7 +6,7 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import styles from '../../styles/SignUpIn.module.css';
 import Navbar from '../../components/nav/Navbar';
 
-const forgotPassword = () => {
+const ForgotPassword = () => {
 
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
@@ -56,14 +56,14 @@ const forgotPassword = () => {
 								className={styles.form__labelInput}
 							/>
 						</label>
+						</form>
 
 						<button className={styles.form__button}>Bevestig</button>
-						{/*error && <p>{error}</p>*/}
-					</form>
+						{error && <p>{error}</p>}
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default forgotPassword;
+export default ForgotPassword;
