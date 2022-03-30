@@ -1,6 +1,6 @@
 import { createContext, useReducer, useEffect } from 'react';
 import { auth } from '../firebase/config';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 
 //creating the context
 
@@ -37,6 +37,8 @@ export const AuthContextProvider = ({children}) => {
       //unsub();
 		});
 	}, []);
+
+	
 
   console.log('AuthContext state', state);
 

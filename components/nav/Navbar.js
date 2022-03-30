@@ -39,7 +39,7 @@ const Navbar = () => {
 
 	const handleOnClickProfile = e => {
 		e.preventDefault();
-		router.push('/login');
+		router.push('/profile');
 	};
 
 	//useState met boolean gebruiken om onderdelen al of niet te laten verschijnen
