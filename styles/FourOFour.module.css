@@ -1,9 +1,5 @@
 .container {
   min-height: 1000vh;
-  background-image: url('/images/mixedcolors.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 29% 0%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,4 +23,5 @@
 
 .title {
   font-size: 6rem;
+  font-family: 'Roboto', sans-serif;
 }

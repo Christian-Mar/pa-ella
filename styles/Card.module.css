@@ -2,12 +2,8 @@
   margin: 0.4rem;
   cursor: pointer;
   display: flex;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(30px);
-  border: 2px solid transparent;
+  border: 1px solid black;
   background-clip: padding-box;
-  box-shadow: 10px 10px 10px rgba(45,55,68,0.1);
   height: 350px;
   width: 190px;
   display: flex;
@@ -18,8 +14,7 @@
 }
 
 .container:hover {
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(35px);
+  background-color: #C7FFED;
 }
 
 .cardImg {
@@ -27,7 +22,7 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-  border-radius: 6px;
+  border-radius: 0px;
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -60,6 +55,7 @@
 }
 
 .text {
+  font-family: 'Roboto', sans-serif;
   font-size: 0.8rem;
   padding: .5rem;
 }

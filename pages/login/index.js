@@ -8,7 +8,7 @@ import Navbar from '../../components/nav/Navbar';
 export default function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-  const { error, login} = useLogin();
+	const { error, login } = useLogin();
 
 	const router = useRouter();
 
@@ -47,7 +47,9 @@ export default function Login() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>Wachtwoord <span className={styles.form__forgotpassword}> Wachtwoord vergeten?</span></span>
+							<span className={styles.form__labelTitle}>Wachtwoord <span className={styles.form__forgotpassword} onClick={handleOnClickHome}> <Link href='/'>
+								<a>Wachtwoord vergeten?</a>
+							</Link></span></span>
 							<input
 								required
 								type='password'
@@ -55,7 +57,7 @@ export default function Login() {
 								value={password}
 								className={styles.form__labelInput}
 							/>
-							
+
 						</label>
 
 						<button className={styles.form__button}>Bevestig</button>
