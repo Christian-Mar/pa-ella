@@ -24,7 +24,7 @@ export default function Home() {
 			<div className={styles.container}>
 				<Navbar username='donald.duck@disney.com' />
 				<Banner
-					imgUrl='/images/waves.png'
+					imgUrl='/images/banner.jpg'
 				/>
 				<h1 className={styles.title}>Recepten</h1>
 				<div className={styles.image__container}>

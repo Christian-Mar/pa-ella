@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useLogin } from '../../hooks/useLogin'
+import { useLogin } from '../../hooks/useLogin';
 import styles from '../../styles/SignUpIn.module.css';
 import Navbar from '../../components/nav/Navbar';
 
@@ -47,9 +47,14 @@ export default function Login() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>Wachtwoord <span className={styles.form__forgotpassword} onClick={handleOnClickHome}> <Link href='/'>
-								<a>Wachtwoord vergeten?</a>
-							</Link></span></span>
+							<span className={styles.form__labelTitle}>
+								Wachtwoord
+								<Link href='/forgot-password'>
+									<a className={styles.form__forgotpassword}>
+										Wachtwoord vergeten?
+									</a>
+								</Link>
+							</span>
 							<input
 								required
 								type='password'
@@ -57,7 +62,6 @@ export default function Login() {
 								value={password}
 								className={styles.form__labelInput}
 							/>
-
 						</label>
 
 						<button className={styles.form__button}>Bevestig</button>
