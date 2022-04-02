@@ -5,7 +5,7 @@ import styles from '../../styles/Modal.module.css';
 
 const Modal = ({ show, onClose, children, title }) => {
 	const [isBrowser, setIsBrowser] = useState(false);
-
+  console.log(isBrowser)
 	useEffect(() => {setIsBrowser(true)},[]);
 
   const handleClose = (e) => {
