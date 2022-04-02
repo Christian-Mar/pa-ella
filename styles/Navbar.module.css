@@ -1,8 +1,7 @@
 
 .navbarContainer {
-  height: 6rem;
+  height: 10vh;
   background: #ffffff;
-  border-bottom: 1px solid black;
   font-family: 'Monda', sans-serif;
   display: flex;
   flex-direction: column;
@@ -10,6 +9,7 @@
   align-content: center;
   top: 0;
   position: sticky;
+  box-shadow: rgba(27, 31, 35, 0.04) 4px 4px 4px, rgba(255, 255, 255, 0.25) 4px 4px 4px inset;
   z-index: 100;
 }
 
@@ -72,6 +72,11 @@
 .searchIcon:hover {
   color: white;
   cursor: pointer;
+}
+
+.login__profile {
+  font-size: .8rem;
+  color: navy;
 }
 
 .navbarList {

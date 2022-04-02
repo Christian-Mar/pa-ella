@@ -24,11 +24,11 @@ export default function Home() {
 			<div className={styles.container}>
 				<Navbar username='donald.duck@disney.com' />
 				<Banner
-					imgUrl='/images/banner.jpg'
+					imgUrl='/images/bannercolor.jpg'
 				/>
-				<h1 className={styles.title}>Recepten</h1>
+				<h1 className={styles.title}>Recipes</h1>
 				<div className={styles.image__container}>
-					<SectionCards title='Dagelijkse kost' />
+					<SectionCards title='Simple dishes' />
 				</div>
 				<div className='(styles.list)'>
 					<ul>

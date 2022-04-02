@@ -52,12 +52,12 @@ const Navbar = () => {
 					<Link href='/'>
 						<a>
 							<h1 className={styles.logoCharacters}>
-								<span className={styles.logoCharacters__begin}>pa'</span> ella
+								<span className={styles.logoCharacters__begin}>pa'</span> el-la
 							</h1>
 						</a>
 					</Link>
 				</div>
-
+				{/* 
 				<div className={styles.searchContainer}>
 					<div className={styles.searchBar}>
 						<input
@@ -75,8 +75,10 @@ const Navbar = () => {
 						/>
 					</div>
 				</div>
-
-				<div>{user && <p>Logged in as: {user.email}</p>}</div>
+*/}
+				<div className={styles.login__profile}>
+					{user && <p>Logged in as: {user.email}</p>}
+				</div>
 			</div>
 
 			<ul className={styles.navbarList}>
@@ -86,7 +88,7 @@ const Navbar = () => {
 						onClick={handleOnClickCreateRecipe}
 					>
 						<Link href='/create-recipe'>
-							<a>Recept creëren</a>
+							<a>Create recipe</a>
 						</Link>
 					</li>
 				)}
@@ -96,30 +98,36 @@ const Navbar = () => {
 						onClick={handleOnClickWeekPlanner}
 					>
 						<Link href='/week-planner'>
-							<a>Weekplanner</a>
+							<a>Week planner</a>
 						</Link>
 					</li>
 				)}
-				{!user && <li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
-					<Link href='/signup'>
-						<a>Account maken</a>
-					</Link>
-				</li>}
+				{!user && (
+					<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
+						<Link href='/signup'>
+							<a>Sign up</a>
+						</Link>
+					</li>
+				)}
 				{!user && (
 					<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
 						<Link href='/login'>
-							<a>Aanmelden</a>
+							<a>Sign in</a>
 						</Link>
 					</li>
 				)}
-				{user &&<li className={styles.navbarListItem} onClick={handleOnClickProfile}>
-					<Link href='/profile'>
-						<a>Mijn profiel</a>
-					</Link>
-				</li>}
-				{user && <li className={styles.navbarListItem} onClick={logout}>
-					<a>Afmelden</a>
-				</li>}
+				{user && (
+					<li className={styles.navbarListItem} onClick={handleOnClickProfile}>
+						<Link href='/profile'>
+							<a>My profile</a>
+						</Link>
+					</li>
+				)}
+				{user && (
+					<li className={styles.navbarListItem} onClick={logout}>
+						<a>Log out</a>
+					</li>
+				)}
 			</ul>
 		</div>
 	);

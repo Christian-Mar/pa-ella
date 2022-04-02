@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useLogin } from '../../hooks/useLogin';
+import Modal from '../modal/Modal';
 import styles from '../../styles/SignUpIn.module.css';
 
 export default function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [showModal, setShowModal] = useState(false);
 	const { error, login } = useLogin();
 
 	const router = useRouter();
@@ -24,7 +26,6 @@ export default function Login() {
 
 	return (
 		<div className={styles.container}>
-			
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
 					<div className={styles.form__goBack} onClick={handleOnClickHome}>
@@ -46,14 +47,7 @@ export default function Login() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>
-								Wachtwoord
-								<Link href='/forgot-password'>
-									<a className={styles.form__forgotpassword}>
-										Wachtwoord vergeten?
-									</a>
-								</Link>
-							</span>
+							<span className={styles.form__labelTitle}>Wachtwoord</span>
 							<input
 								required
 								type='password'
@@ -63,10 +57,20 @@ export default function Login() {
 							/>
 						</label>
 
-						<button className={styles.form__button}>Bevestig</button>
+            <button onClick={() => setShowModal(true)}>Forgot password?</button>
+						<Link href='/forgot-password'>
+							<a className={styles.form__forgotpassword}>
+								Wachtwoord vergeten?
+							</a>
+						</Link>
+
+						<button className={styles.form__button}>Submit</button>
 						{error && <p>{error}</p>}
 					</form>
 				</div>
+        <Modal show={showModal} onClose={() => {setShowModal(false)}}>
+          E-MAIL UPLOAD
+        </Modal>
 			</div>
 		</div>
 	);
