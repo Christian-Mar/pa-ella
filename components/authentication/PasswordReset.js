@@ -35,7 +35,7 @@ const ForgotPassword = () => {
 		<div className={styles.container}>
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
-					<h2 className={styles.form__title}>Nieuw wachtwoord</h2>
+					
 					<form onSubmit={handleSubmit} className={styles.form}>
 						<label className={styles.form__label}>
 							<span className={styles.form__labelTitle}>E-mailadres</span>
@@ -49,7 +49,7 @@ const ForgotPassword = () => {
 						</label>
 					</form>
 
-					<button className={styles.form__button}>Bevestig</button>
+					<button className={styles.form__button}>Submit</button>
 					{error && <p>{error}</p>}
 				</div>
 			</div>

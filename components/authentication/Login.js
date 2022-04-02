@@ -29,16 +29,10 @@ export default function Login() {
 		<div className={styles.container}>
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
-					<div className={styles.form__goBack} onClick={handleOnClickHome}>
-						<Link href='/'>
-							<a>X</a>
-						</Link>
-					</div>
-
-					<h2 className={styles.form__title}>Aanmelden</h2>
+					<h2 className={styles.form__title}>Sign in</h2>
 					<form onSubmit={handleSubmit} className={styles.form}>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>E-mailadres</span>
+							<span className={styles.form__labelTitle}>Email</span>
 							<input
 								required
 								type='email'
@@ -48,7 +42,7 @@ export default function Login() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>Wachtwoord</span>
+							<span className={styles.form__labelTitle}>Password</span>
 							<input
 								required
 								type='password'
@@ -58,19 +52,15 @@ export default function Login() {
 							/>
 						</label>
 
-            <button onClick={() => setShowModal(true)}>Forgot password?</button>
-						<Link href='/forgot-password'>
-							<a className={styles.form__forgotpassword}>
-								Wachtwoord vergeten?
-							</a>
-						</Link>
+            <button className={styles.forgot__btn} onClick={() => setShowModal(true)}>Forgot password?</button>
+						
 
 						<button className={styles.form__button}>Submit</button>
 						{error && <p>{error}</p>}
 					</form>
 				</div>
 
-        <Modal show={showModal} onClose={() => {setShowModal(false)}}>
+        <Modal title='Reset Password' show={showModal} onClose={() => {setShowModal(false)}}>
           <PasswordReset />
         </Modal>
 			</div>

@@ -21,7 +21,7 @@ const Modal = ({ show, onClose, children, title }) => {
 						<FaTimes />
 					</a>
 				</div>
-				{title && <div>{title}</div>}
+				{title && <div className={styles.title}><h2>{title}</h2></div>}
         <div className={styles.body}>{children}</div>
 			</div>
 		</div>
