@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useLogin } from '../../hooks/useLogin';
-import Modal from '../modal/Modal';
+import Modal from './../modal/Modal';
 import styles from '../../styles/SignUpIn.module.css';
 
 export default function Login() {
