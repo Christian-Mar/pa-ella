@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useLogin } from '../../hooks/useLogin';
 import Modal from './Modal';
+import PasswordReset from './PasswordReset';
 import styles from '../../styles/SignUpIn.module.css';
 
 export default function Login() {
@@ -68,8 +69,9 @@ export default function Login() {
 						{error && <p>{error}</p>}
 					</form>
 				</div>
+
         <Modal show={showModal} onClose={() => {setShowModal(false)}}>
-          E-MAIL UPLOAD
+          <PasswordReset />
         </Modal>
 			</div>
 		</div>
