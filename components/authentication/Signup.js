@@ -28,10 +28,10 @@ export default function Signup() {
 		
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
-					<h2 className={styles.form__title}>Account maken</h2>
+					<h2 className={styles.form__title}>Sign up</h2>
 					<form onSubmit={handleSubmit} className={styles.form}>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>E-mailadres</span>
+							<span className={styles.form__labelTitle}>Email</span>
 							<input
 								required
 								type='email'
@@ -41,7 +41,7 @@ export default function Signup() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>Wachtwoord</span>
+							<span className={styles.form__labelTitle}>Password</span>
 							<input
 								required
 								type='password'
@@ -50,7 +50,7 @@ export default function Signup() {
 								className={styles.form__labelInput}
 							/>
 						</label>
-						<button className={styles.form__button}>Bevestig</button>
+						<button className={styles.form__button}>Submit</button>
 						{error && <p>{error}</p>}
 					</form>
 				</div>

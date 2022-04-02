@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { useLogin } from '../../hooks/useLogin';
 import Modal from './Modal';
 import PasswordReset from './PasswordReset';
