@@ -6,7 +6,7 @@ import  Profile1  from '../authentication/Profile1';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-const Navbar = () => {
+const Navbar = ({photoURL}) => {
 	const { logout } = useLogout();
 
 	const router = useRouter();
@@ -78,7 +78,18 @@ const Navbar = () => {
 				</div>
 */}
 				<div className={styles.login__profile}>
-					{user && <><p>Logged in as: {user.email}</p></>}
+					{user && (
+						<>
+							<p>Logged in as: {user.email}</p>
+							<Image
+								src={user.photoURL}
+								alt='Avatar'
+								width={30}
+								height={30}
+								className={styles.avatar}
+							/>
+						</>
+					)}
 				</div>
 			</div>
 
