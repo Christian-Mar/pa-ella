@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import  Profile1  from '../authentication/Profile1';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
@@ -77,7 +78,7 @@ const Navbar = () => {
 				</div>
 */}
 				<div className={styles.login__profile}>
-					{user && <p>Logged in as: {user.email}</p>}
+					{user && <><p>Logged in as: {user.email}</p></>}
 				</div>
 			</div>
 

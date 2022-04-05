@@ -8,6 +8,11 @@ export default function LoginPage() {
 
 	return (
 		<div>
+			<Head>
+				<title>pa'ella </title>
+				<meta name='description' content='Recepten' />
+				<link rel='icon' href='/images/favicon.ico' />
+			</Head>
 			<Navbar />
 			<Banner imgUrl='/images/bannercolor.jpg' />
 			<Login />

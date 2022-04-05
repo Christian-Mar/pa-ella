@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 
 const firebaseConfig = {
@@ -24,4 +25,19 @@ const db = getFirestore(app);
 
 const auth = getAuth();
 
-export { db, auth };
+//  init storage
+
+//const storage = getStorage();
+const storage = getStorage();
+
+
+export async function upload(file, user, setLoading) {
+	const fileRef = ref(storage, user.uid + '.png');
+	setLoading(true);
+	const snapshot = await uploadBytes(fileRef, file);
+	setLoading(false);
+	alert('Uploaded file!');
+}
+
+
+export { db, auth, storage };
