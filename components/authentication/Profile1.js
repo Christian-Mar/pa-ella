@@ -28,7 +28,7 @@ const Profile1 = () => {
   useEffect(() => {
     if (user?.photoURL) {
     setPhotoURL(user.photoURL);
-    }
+    } 
   }, [user])
   
 

@@ -35,7 +35,6 @@ const ForgotPassword = () => {
 		<div className={styles.container}>
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
-					
 					<form onSubmit={handleSubmit} className={styles.form}>
 						<label className={styles.form__label}>
 							<span className={styles.form__labelTitle}>E-mailadres</span>
@@ -51,6 +50,7 @@ const ForgotPassword = () => {
 
 					<button className={styles.form__button}>Submit</button>
 					{error && <p>{error}</p>}
+					{message && <p>{message}</p>}
 				</div>
 			</div>
 		</div>

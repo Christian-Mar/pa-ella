@@ -12,11 +12,6 @@ export default function Signup() {
 
 	const router = useRouter();
 
-	const handleOnClickHome = e => {
-		e.preventDefault();
-		router.push('/');
-	};
-
 	const handleSubmit = e => {
 		e.preventDefault();
 		signup(email, password);

@@ -77,6 +77,10 @@
 .login__profile {
   font-size: .8rem;
   color: navy;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  
 }
 
 .navbarList {
@@ -92,4 +96,14 @@
   font-size: .8rem;
   margin: 0 0 0 1rem;
   cursor: pointer;
+}
+
+.avatar__container {
+  margin-left: 3rem;
+}
+
+.avatar {
+  /*vertical-align: middle;*/
+  border-radius: 50%;
+  border: 5px solid black;
 }

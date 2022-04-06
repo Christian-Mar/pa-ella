@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import  Profile1  from '../authentication/Profile1';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
@@ -81,13 +80,14 @@ const Navbar = ({photoURL}) => {
 					{user && (
 						<>
 							<p>Logged in as: {user.email}</p>
-							<Image
+							<div className={styles.avatar__container}>
+							{user.photoURL && <Image
 								src={user.photoURL}
 								alt='Avatar'
-								width={30}
-								height={30}
+								width={40}
+								height={40}
 								className={styles.avatar}
-							/>
+							/>}</div>
 						</>
 					)}
 				</div>

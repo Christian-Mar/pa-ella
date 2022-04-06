@@ -3,7 +3,11 @@ import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/Profile.module.css';
 import Profile1 from '../../components/authentication/Profile1';
 
+
 const Profile = () => {
+
+
+
 	return (
 		<div className={styles.container}>
 			<Head>

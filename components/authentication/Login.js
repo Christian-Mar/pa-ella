@@ -13,11 +13,6 @@ export default function Login() {
 
 	const router = useRouter();
 
-	const handleOnClickHome = e => {
-		e.preventDefault();
-		router.push('/');
-	};
-
 	const handleSubmit = e => {
 		e.preventDefault();
 		login(email, password);

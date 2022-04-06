@@ -7,7 +7,7 @@ export default function LoginPage() {
 	return (
 		<div>
 			<Head>
-				<title>pa'ella </title>
+				<title>pa'el-la </title>
 				<meta name='description' content='Recepten' />
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
