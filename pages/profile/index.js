@@ -1,12 +1,14 @@
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/Profile.module.css';
-import Profile1 from '../../components/authentication/Profile1';
-
+import ProfileImage from '../../components/authentication/ProfileImage';
+import NameInput from '../../components/authentication/NameInput';
 
 const Profile = () => {
 
+	const handleSubmit = () => {
 
+	} 
 
 	return (
 		<div className={styles.container}>
@@ -17,7 +19,8 @@ const Profile = () => {
 			</Head>
 			<Navbar />
 			<h1>Profile</h1>
-			<Profile1 />
+			<ProfileImage />
+			<NameInput />
 		</div>
 	);
 };

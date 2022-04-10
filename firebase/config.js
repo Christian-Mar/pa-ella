@@ -31,18 +31,4 @@ const auth = getAuth();
 const storage = getStorage();
 
 
-export async function upload(file, user, setLoading) {
-	const fileRef = ref(storage, user.uid + '.png');
-	setLoading(true);
-	const snapshot = await uploadBytes(fileRef, file);
-
-	const photoURL = await getDownloadURL(fileRef);
-
-	//update for the user who's logged in
-	updateProfile(user, {photoURL: photoURL})
-	setLoading(false);
-	alert('Uploaded file!');
-}
-
-
 export { db, auth, storage };

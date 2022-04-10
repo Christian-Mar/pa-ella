@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { upload } from '../../firebase/config'; 
+//import { upload } from '../../firebase/config'; 
+import { useUploadProfileImage} from '../../hooks/useUploadProfileImage';
 import styles from '../../styles/Profile1.module.css';
 import blankProfile from '../../public/images/blankProfile.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-const Profile1 = () => {
+const ProfileImage = () => {
 
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,8 @@ const Profile1 = () => {
   console.log(photoURL);
 
   const handleUpload = () => {
-    upload(photo, user, setLoading);
+    //upload(photo, user, setLoading);
+    useUploadProfileImage(photo, user, setLoading);
   };
 
   // user?.photoURL -> if both are not null
@@ -41,4 +43,4 @@ const Profile1 = () => {
 	);
 };
 
-export default Profile1;
+export default ProfileImage;
