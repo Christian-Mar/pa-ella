@@ -15,7 +15,7 @@ const ProfileImage = () => {
   /*
   ********************************************
   profile img nor rendering after loading
-  try serversideprops
+  try serversideprops or unique key in props
   ********************************************
   */
 
@@ -42,7 +42,7 @@ const ProfileImage = () => {
 
 	return (
 		<div>
-			<input type='file' onChange={handleChange} />
+			<input type='file' onChange={handleChange} locale='en'/>
 			<button type='submit' disabled={loading || !photo} onClick={handleUpload}>
 				Upload
 			</button>

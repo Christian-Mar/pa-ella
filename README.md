@@ -19,6 +19,13 @@
 
 4. _document.js link needs to be crossOrigin instead of crossorigin from google fonts
 
+##Problems
+
+1. Profile image is loading but show up only after rerendering -> serversiderendering or add unique key as a prop
+
+
+
+
 ##Rendering
 
 Choices between

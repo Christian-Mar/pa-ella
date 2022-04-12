@@ -4,6 +4,10 @@ import styles from '../../styles/Profile.module.css';
 import ProfileImage from '../../components/authentication/ProfileImage';
 import NameInput from '../../components/authentication/NameInput';
 
+export async function getServerSideProps() {
+	
+}
+
 const Profile = () => {
 
 
