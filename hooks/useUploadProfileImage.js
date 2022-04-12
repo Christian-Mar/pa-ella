@@ -1,8 +1,10 @@
 import { updateProfile } from 'firebase/auth';
 import { storage } from '../firebase/config';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+//import { useAuthContext } from '../../hooks/useAuthContext';
 
 export async function useUploadProfileImage(file, user, setLoading) {
+  
 	const fileRef = ref(storage, user.uid + '.png');
 	setLoading(true);
 	const snapshot = await uploadBytes(fileRef, file);

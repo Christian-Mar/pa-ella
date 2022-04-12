@@ -6,14 +6,11 @@ import NameInput from '../../components/authentication/NameInput';
 
 const Profile = () => {
 
-	const handleSubmit = () => {
-
-	} 
 
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>pa'ella</title>
+				<title>pa'el-la</title>
 				<meta name='description' content='Profiel' />
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
