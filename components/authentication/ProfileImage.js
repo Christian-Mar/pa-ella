@@ -1,32 +1,35 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { upload } from '../../firebase/config'; 
-//import { useUploadProfileImage} from '../../hooks/useUploadProfileImage';
+import { upload } from '../../firebase/config';
+import { useRouter } from 'next/router';
 import styles from '../../styles/ProfileImage.module.css';
 import blankProfile from '../../public/images/blankProfile.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useDeleteProfile } from '../../hooks/useDeleteProfile';
 
-
-const ProfileImage = () => {
+const ProfileImage = ({deleteUser}) => {
 	const [photo, setPhoto] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [photoURL, setPhotoURL] = useState(blankProfile);
 
-  /*
+	/*
   ********************************************
   profile img not rendering after loading
   try serversideprops or unique key in props
   ********************************************
   */
 
+	const { deleteU } = useDeleteProfile();
+
 	const { user } = useAuthContext();
+
+	const router = useRouter();
 
 	const handleChange = e => {
 		if (e.target.files[0]) {
 			setPhoto(e.target.files[0]);
 		}
 	};
-	
 
 	const handleUpload = () => {
 		upload(photo, user, setLoading);
@@ -39,6 +42,12 @@ const ProfileImage = () => {
 			setPhotoURL(user.photoURL);
 		}
 	}, [user]);
+
+	const handleOnClickDelete = e => {
+		e.preventDefault();
+		deleteUser();
+		router.push('/');
+	};
 
 	return (
 		<div>
@@ -53,14 +62,21 @@ const ProfileImage = () => {
 			</div>
 			<div className={styles.ProfileImageContainer}>
 				<input type='file' onChange={handleChange} className={styles.input} />
-				<button
-					type='submit'
-					disabled={loading || !photo}
-					onClick={handleUpload}
-					className={styles.button}
-				>
-					Upload
-				</button>
+				<div className={styles.buttonContainer}>
+					<button
+						type='submit'
+						disabled={loading || !photo}
+						onClick={handleUpload}
+						className={styles.button}
+					>
+						Upload
+					</button>
+					<div onClick={handleOnClickDelete}>
+						<button type='submit' onClick={deleteU} className={styles.button}>
+							Delete Profile
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

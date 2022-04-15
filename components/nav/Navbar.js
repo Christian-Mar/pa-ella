@@ -164,7 +164,7 @@ const Navbar = ({photoURL}) => {
 					setShowModal(false);
 				}}
 			>
-				<ProfileImage />
+				<ProfileImage deleteUser={() => setShowModal(false)}/>
 			</Modal>
 		</div>
 	);

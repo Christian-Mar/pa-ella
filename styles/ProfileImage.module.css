@@ -22,12 +22,17 @@
     margin: 2rem;
 }
 
+.buttonContainer {
+  display: flex;
+}
+
 .button {
-  width: 90px;
+  width: 120px;
   height: 30px;
   border: none;
   border-radius: 0px;
   background-color: black;
   color: white;
-  margin: auto;
+  margin: 1rem;
+  cursor: pointer;
 }
