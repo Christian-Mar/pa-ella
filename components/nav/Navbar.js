@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import Modal from '../authentication/Modal';
+import ProfileImage from '../authentication/ProfileImage';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
+
 const Navbar = ({photoURL}) => {
+
+	const [showModal, setShowModal] = useState(false);
+
 	const { logout } = useLogout();
 
 	const router = useRouter();
@@ -37,10 +44,12 @@ const Navbar = ({photoURL}) => {
 		router.push('/login');
 	};
 
-	const handleOnClickProfile = e => {
+	const handleOnClickLogout = e => {
 		e.preventDefault();
-		router.push('/profile');
+		router.push('/');
 	};
+
+
 
 	//useState met boolean gebruiken om onderdelen al of niet te laten verschijnen
 	//na bijvoorbeeld 'login'
@@ -79,15 +88,28 @@ const Navbar = ({photoURL}) => {
 				<div className={styles.login__profile}>
 					{user && (
 						<>
-							<p>Logged in as: {user.email}</p>
-							<div className={styles.avatar__container}>
-							{user.photoURL && <Image
-								src={user.photoURL}
-								alt='Avatar'
-								width={40}
-								height={40}
-								className={styles.avatar}
-							/>}</div>
+							<p>{user.email}</p>
+							<div
+								className={styles.avatar__container}
+								onClick={() => setShowModal(true)}
+							>
+								{user.photoURL ? 
+									<Image
+										src={user.photoURL}
+										alt='Avatar'
+										width={40}
+										height={40}
+										className={styles.avatar}
+									/>
+									: <Image
+										src='/images/blankProfile.png'
+										alt='Avatar'
+										width={40}
+										height={40}
+										className={styles.avatar}
+									/>
+								}
+							</div>
 						</>
 					)}
 				</div>
@@ -128,19 +150,22 @@ const Navbar = ({photoURL}) => {
 						</Link>
 					</li>
 				)}
-				{user && (
-					<li className={styles.navbarListItem} onClick={handleOnClickProfile}>
-						<Link href='/profile'>
-							<a>My profile</a>
-						</Link>
-					</li>
-				)}
+				
 				{user && (
 					<li className={styles.navbarListItem} onClick={logout}>
-						<a>Log out</a>
+						<a onClick={handleOnClickLogout}>Log out</a>
 					</li>
 				)}
 			</ul>
+			<Modal
+				title='Change profile image'
+				show={showModal}
+				onClose={() => {
+					setShowModal(false);
+				}}
+			>
+				<ProfileImage />
+			</Modal>
 		</div>
 	);
 };

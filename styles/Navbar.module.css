@@ -107,3 +107,8 @@
   border-radius: 50%;
   border: 5px solid black;
 }
+
+.avatar:hover {
+  /*vertical-align: middle;*/
+  cursor: pointer;
+}

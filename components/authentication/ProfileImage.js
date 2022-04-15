@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { upload } from '../../firebase/config'; 
 //import { useUploadProfileImage} from '../../hooks/useUploadProfileImage';
-import styles from '../../styles/Profile1.module.css';
+import styles from '../../styles/ProfileImage.module.css';
 import blankProfile from '../../public/images/blankProfile.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
@@ -14,7 +14,7 @@ const ProfileImage = () => {
 
   /*
   ********************************************
-  profile img nor rendering after loading
+  profile img not rendering after loading
   try serversideprops or unique key in props
   ********************************************
   */
@@ -42,18 +42,26 @@ const ProfileImage = () => {
 
 	return (
 		<div>
-			<input type='file' onChange={handleChange} locale='en'/>
-			<button type='submit' disabled={loading || !photo} onClick={handleUpload}>
-				Upload
-			</button>
-			<Image
-				src={photoURL}
-				alt='Avatar'
-				width={80}
-				height={80}
-				className={styles.avatar}
-				
-			/>
+			<div className={styles.ProfileImageContainer}>
+				<Image
+					src={photoURL}
+					alt='Avatar'
+					width={80}
+					height={80}
+					className={styles.avatar}
+				/>
+			</div>
+			<div className={styles.ProfileImageContainer}>
+				<input type='file' onChange={handleChange} className={styles.input} />
+				<button
+					type='submit'
+					disabled={loading || !photo}
+					onClick={handleUpload}
+					className={styles.button}
+				>
+					Upload
+				</button>
+			</div>
 		</div>
 	);
 };

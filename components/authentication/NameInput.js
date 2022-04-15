@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { db } from '../../firebase/config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot } from 'firebase/firestore';
 import styles from '../../styles/NameInput.module.css';
 
 const NameInput = () => {
 
   const [name, setName] = useState('');
+	const [profile, setProfile] = useState([]);
     const { user } = useAuthContext();
 
   	const handleSubmit = async (e) => {
@@ -16,11 +17,27 @@ const NameInput = () => {
 					user_id: user.uid,
 					name: name,
 				});
+				setName('');
 			} catch (err) {
 				alert(err);
 			}
 	} 
 
+	const userCollectionRef = collection(db, 'users');
+/*
+	useEffect(() => {
+		onSnapshot(userCollectionRef, snapshot => {
+			setProfile(
+				snapshot.docs.map(doc => {
+					return {
+						id: doc.id,
+						name: doc.name,
+					};
+				})
+			);
+		});
+	}, []);
+*/
   return (
 		<div>
 			<form onSubmit={handleSubmit} className={styles.form}>
@@ -36,6 +53,10 @@ const NameInput = () => {
 				</label>
 				<button className={styles.form__button}>Submit</button>
 			</form>
+			<div>
+			{profile}
+			</div>
+			{name}
      
 		</div>
 	);
