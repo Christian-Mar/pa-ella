@@ -7,10 +7,11 @@ import blankProfile from '../../public/images/blankProfile.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useDeleteProfile } from '../../hooks/useDeleteProfile';
 
-const ProfileImage = ({deleteUser}) => {
+const ProfileImage = ({deleteUser, time}) => {
 	const [photo, setPhoto] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [photoURL, setPhotoURL] = useState(blankProfile);
+
 
 	/*
   ********************************************
@@ -25,14 +26,17 @@ const ProfileImage = ({deleteUser}) => {
 
 	const router = useRouter();
 
-	const handleChange = e => {
+	const handleChange = async (e) => {
 		if (e.target.files[0]) {
-			setPhoto(e.target.files[0]);
+			await setPhoto(e.target.files[0]);
+			
 		}
+		
 	};
 
 	const handleUpload = () => {
 		upload(photo, user, setLoading);
+		
 	};
 
 	// user?.photoURL -> if both are not null

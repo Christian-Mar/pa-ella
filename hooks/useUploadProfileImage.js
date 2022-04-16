@@ -14,5 +14,5 @@ export async function useUploadProfileImage(file, user, setLoading) {
 	//update for the user who's logged in
 	updateProfile(user, { photoURL: photoURL });
 	setLoading(false);
-	alert('Uploaded file!');
+	//alert('Uploaded file!');
 }

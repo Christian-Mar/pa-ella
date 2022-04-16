@@ -21,7 +21,7 @@ export const useCollection = (c) => {
       setDocuments(results)
     })
     return () => unsub() // clean up
-  }, [c]) //dependancy als trigger voor de hook
+  }, [c]) //dependancy to trigger the hook
   
   return { documents }
 }
