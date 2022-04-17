@@ -6,20 +6,35 @@ import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import styles from '../../styles/CreateRecipe.module.css';
 
 const CreateRecipe = () => {
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
+
+	const [recipe, setRecipe] = useState({
+		title: '',
+		category: '',
+		description: '',
+		
+		
+	});
+	//const [count, setCount] = useState(1);
+	console.log(recipe);
+	const updateForm = e => {
+		setRecipe({
+			...recipe,
+			[e.target.name]: e.target.value,
+		});
+	};
+
 	
 
 	const handleSubmit = async e => {
 		e.preventDefault();
 		try {
 			await addDoc(collection(db, 'recipes'), {
-				title: title,
-				description: description,
+				title: recipe.title,
+				category: recipe.category,
+				description: recipe.description,
 				created: Timestamp.now(),
 			});
-			setTitle('');
-			setDescription('');
+			
 		} catch (err) {
 			alert(err);
 		}
@@ -34,20 +49,60 @@ const CreateRecipe = () => {
 			</Head>
 			<Navbar />
 			<h1>Create Recipe</h1>
+
 			<form onSubmit={handleSubmit} name='createRecipe'>
 				<input
 					type='text'
 					name='title'
-					onChange={e => setTitle(e.target.value)}
-					value={title}
+					onChange={updateForm}
+					value={recipe.title}
 					placeholder='new recipe'
+					className={styles.form__inputField}
 				/>
-				<textarea
-					onChange={e => setDescription(e.target.value)}
-					placeholder='description'
-					value={description}
-				></textarea>
-				<button type='submit'>Submit</button>
+				<div className={styles.form__radio}>
+					<h3 className={styles.form__radioTitle}>Category </h3>
+					<div className={styles.form__radioFieldContainer}>
+						<input
+							className={styles.form__radioField}
+							type='radio'
+							name='category'
+							onChange={updateForm}
+							value='breakfast'
+							checked={recipe.category == 'breakfast'}
+							id='breakfast'
+						/>
+						<label className={styles.form__radioLabel} htmlFor='breakfast'>
+							breakfast
+						</label>
+						<input
+							className={styles.form__radioField}
+							type='radio'
+							name='category'
+							onChange={updateForm}
+							value='lunch'
+							checked={recipe.category == 'lunch'}
+							id='lunch'
+						/>
+						<label className={styles.form__radioLabel} htmlFor='lunch'>
+							lunch
+						</label>
+						<input
+							className={styles.form__radioField}
+							type='radio'
+							name='dessert'
+							onChange={updateForm}
+							value='dessert'
+							checked={recipe.category == 'dessert'}
+							id='dessert'
+						/>
+						<label className={styles.form__radioLabel} htmlFor='dessert'>
+							dessert
+						</label>
+					</div>
+				</div>
+				<button type='submit' className={styles.form__SubmitButton}>
+					Submit
+				</button>
 			</form>
 		</div>
 	);
