@@ -7,11 +7,10 @@ import blankProfile from '../../public/images/blankProfile.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useDeleteProfile } from '../../hooks/useDeleteProfile';
 
-const ProfileImage = ({deleteUser, time}) => {
+const ProfileImage = ({ deleteUser, imageUpload }) => {
 	const [photo, setPhoto] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [photoURL, setPhotoURL] = useState(blankProfile);
-
 
 	/*
   ********************************************
@@ -26,32 +25,38 @@ const ProfileImage = ({deleteUser, time}) => {
 
 	const router = useRouter();
 
-	const handleChange = async (e) => {
+	// uploading file to 'photo' state
+	const handleChange = e => {
 		if (e.target.files[0]) {
-			await setPhoto(e.target.files[0]);
+			setPhoto(e.target.files[0]);
 			
 		}
-		
+	
 	};
 
-	const handleUpload = () => {
-		upload(photo, user, setLoading);
-		
+	// uploading photo to firebase storage
+	const handleUpload = async () => {
+		await upload(photo, user, setLoading);
+		await imageUpload();
+		await setPhotoURL(user.photoURL)
 	};
 
-	// user?.photoURL -> if both are not null
 
-	useEffect(() => {
-		if (user?.photoURL) {
-			setPhotoURL(user.photoURL);
-		}
-	}, [user]);
-
+	// delete entire profile - if time, make a second modal
 	const handleOnClickDelete = e => {
 		e.preventDefault();
 		deleteUser();
 		router.push('/');
 	};
+
+	// user?.photoURL -> if both are not null - the same as: user && user.photoURL
+
+	useEffect(() => {
+		if (user?.photoURL) {
+			console.log(user.photoURL);
+			setPhotoURL(user.photoURL);
+		}
+	}, [user]);
 
 	return (
 		<div>
@@ -59,8 +64,8 @@ const ProfileImage = ({deleteUser, time}) => {
 				<Image
 					src={photoURL}
 					alt='Avatar'
-					width={80}
-					height={80}
+					width={140}
+					height={140}
 					className={styles.avatar}
 				/>
 			</div>
@@ -77,7 +82,7 @@ const ProfileImage = ({deleteUser, time}) => {
 					</button>
 					<div onClick={handleOnClickDelete}>
 						<button type='submit' onClick={deleteU} className={styles.button}>
-							Delete Profile
+							Delete My Account
 						</button>
 					</div>
 				</div>

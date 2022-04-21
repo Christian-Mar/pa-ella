@@ -7,11 +7,13 @@ import Modal from '../authentication/Modal';
 import ProfileImage from '../authentication/ProfileImage';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 
-const Navbar = ({photoURL}) => {
+const Navbar = () => {
 
 	const [showModal, setShowModal] = useState(false);
+	const [imageUploaded, setImageUploaded] = useState(false)
 
 	const { logout } = useLogout();
 
@@ -48,6 +50,10 @@ const Navbar = ({photoURL}) => {
 		e.preventDefault();
 		router.push('/');
 	};
+
+	const imageUpload = () => {
+		setImageUploaded(!imageUploaded) 
+	}
 
 
 
@@ -97,15 +103,15 @@ const Navbar = ({photoURL}) => {
 									<Image
 										src={user.photoURL}
 										alt='Avatar'
-										width={40}
-										height={40}
+										width={50}
+										height={50}
 										className={styles.avatar}
 									/>
 									: <Image
 										src='/images/blankProfile.png'
 										alt='Avatar'
-										width={40}
-										height={40}
+										width={50}
+										height={50}
 										className={styles.avatar}
 									/>
 								}
@@ -164,7 +170,7 @@ const Navbar = ({photoURL}) => {
 					setShowModal(false);
 				}}
 			>
-				<ProfileImage deleteUser={() => setShowModal(false)}/>
+				<ProfileImage deleteUser={() => setShowModal(false)} imageUpload={imageUpload}/>
 			</Modal>
 		</div>
 	);

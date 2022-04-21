@@ -48,9 +48,10 @@ const CreateRecipe = () => {
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 			<Navbar />
-			<h1>Create Recipe</h1>
+			<h1 className={styles.container__title}>Create Recipe</h1>
 
 			<form onSubmit={handleSubmit} name='createRecipe'>
+				<h3 className={styles.form__radioTitle}>Title: </h3>
 				<input
 					type='text'
 					name='title'
@@ -60,7 +61,7 @@ const CreateRecipe = () => {
 					className={styles.form__inputField}
 				/>
 				<div className={styles.form__radio}>
-					<h3 className={styles.form__radioTitle}>Category </h3>
+					<h3 className={styles.form__radioTitle}>Category: </h3>
 					<div className={styles.form__radioFieldContainer}>
 						<input
 							className={styles.form__radioField}
@@ -89,7 +90,7 @@ const CreateRecipe = () => {
 						<input
 							className={styles.form__radioField}
 							type='radio'
-							name='dessert'
+							name='category'
 							onChange={updateForm}
 							value='dessert'
 							checked={recipe.category == 'dessert'}

@@ -27,19 +27,18 @@ const auth = getAuth();
 
 //  init storage
 
-//const storage = getStorage();
 const storage = getStorage();
 
 export async function upload(file, user, setLoading) {
 	const fileRef = ref(storage, 'profileImages/' + user.uid + '.png');
 	setLoading(true);
-	const snapshot = await uploadBytes(fileRef, file);
+	const snapshot = await uploadBytes(fileRef, file); // till here, this is uploading to firebase storage
 	const photoURL = await getDownloadURL(fileRef);
 
 	//update for the user who's logged in
 	updateProfile(user, { photoURL });
 	setLoading(false);
-	alert('Uploaded file!');
+	
 }
 
 
