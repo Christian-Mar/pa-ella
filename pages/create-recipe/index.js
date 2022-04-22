@@ -4,6 +4,7 @@ import Navbar from '../../components/nav/Navbar';
 import { db } from '../../firebase/config';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import styles from '../../styles/CreateRecipe.module.css';
+import Title from '../../components/recipeForm/Title'
 
 const CreateRecipe = () => {
 
@@ -51,6 +52,7 @@ const CreateRecipe = () => {
 			<h1 className={styles.container__title}>Create Recipe</h1>
 
 			<form onSubmit={handleSubmit} name='createRecipe'>
+				<Title title={recipe.title} updateForm={updateForm}/>
 				<h3 className={styles.form__radioTitle}>Title: </h3>
 				<input
 					type='text'
