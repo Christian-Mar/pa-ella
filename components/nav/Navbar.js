@@ -71,6 +71,7 @@ const Navbar = () => {
 							</h1>
 						</a>
 					</Link>
+					<span className={styles.logoSubtitle}>Recipes For Everybody</span>
 				</div>
 				{/* 
 				<div className={styles.searchContainer}>
@@ -99,7 +100,7 @@ const Navbar = () => {
 								className={styles.avatar__container}
 								onClick={() => setShowModal(true)}
 							>
-								{user.photoURL ? 
+								{user.photoURL ? (
 									<Image
 										src={user.photoURL}
 										alt='Avatar'
@@ -107,14 +108,15 @@ const Navbar = () => {
 										height={50}
 										className={styles.avatar}
 									/>
-									: <Image
+								) : (
+									<Image
 										src='/images/blankProfile.png'
 										alt='Avatar'
 										width={50}
 										height={50}
 										className={styles.avatar}
 									/>
-								}
+								)}
 							</div>
 						</>
 					)}
@@ -156,7 +158,7 @@ const Navbar = () => {
 						</Link>
 					</li>
 				)}
-				
+
 				{user && (
 					<li className={styles.navbarListItem} onClick={logout}>
 						<a onClick={handleOnClickLogout}>Log out</a>
@@ -170,7 +172,10 @@ const Navbar = () => {
 					setShowModal(false);
 				}}
 			>
-				<ProfileImage deleteUser={() => setShowModal(false)} imageUpload={imageUpload}/>
+				<ProfileImage
+					deleteUser={() => setShowModal(false)}
+					imageUpload={imageUpload}
+				/>
 			</Modal>
 		</div>
 	);

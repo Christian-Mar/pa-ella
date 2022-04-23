@@ -1,24 +1,18 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { upload } from '../../firebase/config';
 import { useRouter } from 'next/router';
 import styles from '../../styles/ProfileImage.module.css';
 import blankProfile from '../../public/images/blankProfile.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useDeleteProfile } from '../../hooks/useDeleteProfile';
+import { useProfileImage } from '../../hooks/useProfileImage';
 
 const ProfileImage = ({ deleteUser, imageUpload }) => {
 	const [photo, setPhoto] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [photoURL, setPhotoURL] = useState(blankProfile);
 
-	/*
-  ********************************************
-  profile img not rendering after loading
-  try serversideprops or unique key in props
-  ********************************************
-  */
-
+	const { upload } = useProfileImage();
 	const { deleteU } = useDeleteProfile();
 
 	const { user } = useAuthContext();

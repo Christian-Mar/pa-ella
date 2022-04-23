@@ -15,7 +15,7 @@
 
 .logoSearchContainer {
   width: 95vw;
-  padding: O 2rem;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,24 +23,30 @@
 }
 
 .logo { 
-  padding-left: 3rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding: O 2rem;
+  padding-left: 3rem;
+  align-items: flex-start;
 }
 
 .logoCharacters {
   /*
   background: linear-gradient(90deg, rgba(214,162,249,1) 0%, rgba(254,161,161,1) 50%, rgba(250,209,151,1) 100%);
   background-clip: text;
-  color: transparent; */
-  font-family: 'Abril Fatface', cursive;
-  font-size: 2.5rem;
+  color: transparent; 
+  font-family: 'Abril Fatface', cursive; */
+  font-size: 2.8rem;
   margin: 0; 
+}
+
+.logoSubtitle {
+  font-size: 0.9rem;
 }
 
 .logoCharacters__begin {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.1rem;
 }
 
 .searchContainer {
