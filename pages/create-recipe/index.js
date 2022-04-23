@@ -4,7 +4,8 @@ import Navbar from '../../components/nav/Navbar';
 import { db } from '../../firebase/config';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import styles from '../../styles/CreateRecipe.module.css';
-import Title from '../../components/recipeForm/Title'
+import Title from '../../components/recipeForm/Title';
+import Category from '../../components/recipeForm/Category';
 
 const CreateRecipe = () => {
 
@@ -54,56 +55,7 @@ const CreateRecipe = () => {
 
 				<form onSubmit={handleSubmit} name='createRecipe'>
 					<Title title={recipe.title} updateForm={updateForm} />
-					{/*<h3 className={styles.form__radioTitle}>Title: </h3>
-				<input
-					type='text'
-					name='title'
-					onChange={updateForm}
-					value={recipe.title}
-					placeholder='new recipe'
-					className={styles.form__inputField}
-	/>*/}
-					<div className={styles.form__radio}>
-						<h3 className={styles.form__radioTitle}>Category: </h3>
-						<div className={styles.form__radioFieldContainer}>
-							<input
-								className={styles.form__radioField}
-								type='radio'
-								name='category'
-								onChange={updateForm}
-								value='breakfast'
-								checked={recipe.category == 'breakfast'}
-								id='breakfast'
-							/>
-							<label className={styles.form__radioLabel} htmlFor='breakfast'>
-								breakfast
-							</label>
-							<input
-								className={styles.form__radioField}
-								type='radio'
-								name='category'
-								onChange={updateForm}
-								value='lunch'
-								checked={recipe.category == 'lunch'}
-								id='lunch'
-							/>
-							<label className={styles.form__radioLabel} htmlFor='lunch'>
-								lunch
-							</label>
-							<input
-								className={styles.form__radioField}
-								type='radio'
-								name='category'
-								onChange={updateForm}
-								value='dessert'
-								checked={recipe.category == 'dessert'}
-								id='dessert'
-							/>
-							<label className={styles.form__radioLabel} htmlFor='dessert'>
-								dessert
-							</label>
-						</div>
-					</div>
+					<Category category={recipe.category} updateForm={updateForm} />
 					<button type='submit' className={styles.form__SubmitButton}>
 						Submit
 					</button>

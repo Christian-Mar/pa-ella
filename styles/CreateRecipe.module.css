@@ -11,7 +11,13 @@
 
 
 .container__title {
-    margin: 3rem;   
+    margin: 3rem  0 1rem 3rem;  
+}
+
+.label {
+   margin: 3rem  0 1rem 3rem; 
+   font-size: .9rem;
+   font-weight: 500; 
 }
 
 .form {
@@ -31,13 +37,25 @@
 }
 
 .form__inputField {
-    border: solid 1px black;
-    border-radius: 0px;
-    margin-left: 2rem;
-    width: 25vw;
-    font-size: 1rem;
+    border: none; 
+    border-bottom: solid 1px grey;
+    margin-left: 3rem;
+    width: 50vw;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #5fc349;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: .2rem .5rem;
+}
+
+.form__inputField::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(188, 188, 188);
+  font-weight: 600;
+  opacity: 1; /* Firefox */
+}
+
+.form__inputField:focus {
+    outline: none;
 }
 
 .form__select {
