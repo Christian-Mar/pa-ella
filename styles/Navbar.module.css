@@ -9,7 +9,7 @@
   align-content: center;
   top: 0;
   position: sticky;
-  box-shadow: rgba(27, 31, 35, 0.04) 4px 4px 4px, rgba(255, 255, 255, 0.25) 4px 4px 4px inset;
+  /*box-shadow: rgba(27, 31, 35, 0.04) 4px 4px 4px, rgba(255, 255, 255, 0.25) 4px 4px 4px inset;*/
   z-index: 100;
 }
 
@@ -31,17 +31,14 @@
 }
 
 .logoCharacters {
-  /*
-  background: linear-gradient(90deg, rgba(214,162,249,1) 0%, rgba(254,161,161,1) 50%, rgba(250,209,151,1) 100%);
-  background-clip: text;
-  color: transparent; 
-  font-family: 'Abril Fatface', cursive; */
   font-size: 2.8rem;
   margin: 0; 
 }
 
 .logoSubtitle {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  word-spacing: 3px;
 }
 
 .logoCharacters__begin {
@@ -100,9 +97,11 @@
   font-family: 'Roboto', sans-serif;
   list-style: none;
   font-size: .8rem;
+  font-weight: 600;
   margin: 0 0 0 1rem;
   cursor: pointer;
 }
+
 
 .avatar__container {
   margin-left: 3rem;

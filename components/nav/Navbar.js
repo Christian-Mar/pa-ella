@@ -129,7 +129,7 @@ const Navbar = () => {
 						className={styles.navbarListItem}
 						onClick={handleOnClickCreateRecipe}
 					>
-						<Link href='/create-recipe'>
+						<Link href="/create-recipe" >
 							<a>Create recipe</a>
 						</Link>
 					</li>

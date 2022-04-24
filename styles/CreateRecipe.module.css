@@ -39,7 +39,7 @@
 .form__inputField {
     border: none; 
     border-bottom: solid 1px grey;
-    margin-left: 3rem;
+    margin-left: 2rem;
     width: 50vw;
     font-size: 2.5rem;
     font-weight: 600;
@@ -81,25 +81,28 @@
 }
 
 .form__radioTitle {
-    margin: 2rem 3rem;
+    margin: 0rem 3rem;
     
 }
 .form__radioField {
     display: none;
 }
 
+.form__radioFieldContainer {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
 .form__radioField:checked + .form__radioLabel {
     color: #5fc349;
 }
 
-.form__radioLabel {
-    padding: 8px 14px;
-    margin: 2rem;
-    font-size: 1rem;
+.form__radioLabel {   
+    margin: 0 2rem;
     font-weight: 600;
     color: black;
     font-size: 30px;
-    height: 14rem;
     cursor: pointer;
     transition: background-color 0.1s;
 }

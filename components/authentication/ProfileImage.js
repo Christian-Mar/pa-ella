@@ -8,10 +8,10 @@ import { useDeleteProfile } from '../../hooks/useDeleteProfile';
 import { useProfileImage } from '../../hooks/useProfileImage';
 
 const ProfileImage = ({ deleteUser, imageUpload }) => {
-	const [photo, setPhoto] = useState(null);
+	const [photo, setPhoto] = useState(blankProfile);
 	const [loading, setLoading] = useState(false);
 	const [photoURL, setPhotoURL] = useState(blankProfile);
-
+	
 	const { upload } = useProfileImage();
 	const { deleteU } = useDeleteProfile();
 
@@ -22,17 +22,15 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 	// uploading file to 'photo' state
 	const handleChange = e => {
 		if (e.target.files[0]) {
-			setPhoto(e.target.files[0]);
-			
+			setPhoto(e.target.files[0]);	
 		}
-	
 	};
 
 	// uploading photo to firebase storage
 	const handleUpload = async () => {
 		await upload(photo, user, setLoading);
-		await imageUpload();
-		await setPhotoURL(user.photoURL)
+		await imageUpload(user.photoURL);
+		await setPhotoURL(user.photoURL || blankProfile)
 	};
 
 
