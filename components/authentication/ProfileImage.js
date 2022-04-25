@@ -29,8 +29,8 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 	// uploading photo to firebase storage
 	const handleUpload = async () => {
 		await upload(photo, user, setLoading);
-		await imageUpload(user.photoURL);
-		await setPhotoURL(user.photoURL || blankProfile)
+		await imageUpload();
+		await setPhotoURL( user.photoURL || blankProfile)
 	};
 
 
@@ -45,7 +45,6 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 
 	useEffect(() => {
 		if (user?.photoURL) {
-			console.log(user.photoURL);
 			setPhotoURL(user.photoURL);
 		}
 	}, [user]);
@@ -67,7 +66,7 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 					<button
 						type='submit'
 						disabled={loading || !photo}
-						onClick={handleUpload}
+						onClick={() => handleUpload}
 						className={styles.button}
 					>
 						Upload

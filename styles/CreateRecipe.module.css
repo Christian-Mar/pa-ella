@@ -130,3 +130,18 @@
 .form__SubmitButton:hover {
     background: #5fc349;
 }
+
+.form__DirectionButton {
+    height: 30px;
+    width: 80px;
+    font-size: 1.4rem;
+    color: #03045e;
+    border: none;
+    border-radius: 25px;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.form__DirectionButton:disabled {
+    display: none;
+}

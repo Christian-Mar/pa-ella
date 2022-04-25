@@ -8,24 +8,22 @@ import Title from '../../components/recipeForm/Title';
 import Category from '../../components/recipeForm/Category';
 
 const CreateRecipe = () => {
-
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
 		description: '',
-		
-		
 	});
-	//const [count, setCount] = useState(1);
+
+	const [count, setCount] = useState(1);
+
 	console.log(recipe);
+
 	const updateForm = e => {
 		setRecipe({
 			...recipe,
 			[e.target.name]: e.target.value,
 		});
 	};
-
-	
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -36,7 +34,6 @@ const CreateRecipe = () => {
 				description: recipe.description,
 				created: Timestamp.now(),
 			});
-			
 		} catch (err) {
 			alert(err);
 		}
@@ -52,14 +49,41 @@ const CreateRecipe = () => {
 			<Navbar />
 			<div className={styles.form__container}>
 				<h1 className={styles.container__title}>Create Recipe</h1>
+				<h4 className={styles.container__title}>Step {count} of 5</h4>
 
 				<form onSubmit={handleSubmit} name='createRecipe'>
-					<Title title={recipe.title} updateForm={updateForm} />
-					<Category category={recipe.category} updateForm={updateForm} />
-					<button type='submit' className={styles.form__SubmitButton}>
-						Submit
-					</button>
+					{count === 1 ? (
+						<div>
+							<Title title={recipe.title} updateForm={updateForm} />
+							<Category category={recipe.category} updateForm={updateForm} />
+						</div>
+					) : null}
+
+					{count === 5 ? (
+						<button className={styles.form__SubmitButton} type='submit'>
+							Submit
+						</button>
+					) : null}
+
 				</form>
+				<div className={styles.form__DirectionButtonContainer}>
+					<button
+						className={styles.form__DirectionButton}
+						type='submit'
+						onClick={() => setCount(count - 1)}
+						disabled={count < 2}
+					>
+						&larr;
+					</button>
+					<button
+						className={styles.form__DirectionButton}
+						type='submit'
+						onClick={() => setCount(count + 1)}
+						disabled={count > 4}
+					>
+						&rarr;
+					</button>
+				</div>
 			</div>
 		</div>
 	);
