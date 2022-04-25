@@ -8,7 +8,7 @@ import { useDeleteProfile } from '../../hooks/useDeleteProfile';
 import { useProfileImage } from '../../hooks/useProfileImage';
 
 const ProfileImage = ({ deleteUser, imageUpload }) => {
-	const [photo, setPhoto] = useState(blankProfile);
+	const [photo, setPhoto] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [photoURL, setPhotoURL] = useState(blankProfile);
 	
@@ -30,7 +30,7 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 	const handleUpload = async () => {
 		await upload(photo, user, setLoading);
 		await imageUpload();
-		await setPhotoURL( user.photoURL || blankProfile)
+		setPhotoURL(user.photoURL || blankProfile);
 	};
 
 
@@ -47,7 +47,8 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 		if (user?.photoURL) {
 			setPhotoURL(user.photoURL);
 		}
-	}, [user]);
+	}, [photoURL]);
+
 
 	return (
 		<div>
@@ -66,7 +67,7 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 					<button
 						type='submit'
 						disabled={loading || !photo}
-						onClick={() => handleUpload}
+						onClick={() => handleUpload()}
 						className={styles.button}
 					>
 						Upload
