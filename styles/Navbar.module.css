@@ -11,6 +11,7 @@
   position: sticky;
   /*box-shadow: rgba(27, 31, 35, 0.04) 4px 4px 4px, rgba(255, 255, 255, 0.25) 4px 4px 4px inset;*/
   z-index: 100;
+  padding: 0 15px;
 }
 
 .logoSearchContainer {
@@ -108,12 +109,10 @@
 }
 
 .avatar {
-  /*vertical-align: middle;*/
   border-radius: 50%;
   border: 5px solid black;
 }
 
 .avatar:hover {
-  /*vertical-align: middle;*/
   cursor: pointer;
 }

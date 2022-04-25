@@ -13,8 +13,9 @@ export const useProfileImage = () => {
 		const photoURL = await getDownloadURL(fileRef);
 
 		//update for the user who's logged in
-		updateProfile(user, { photoURL });
-		setLoading(false);
+		await updateProfile(user, { photoURL });
+		await setLoading(false);
+		return photoURL 
 	}
 
 	return { upload };

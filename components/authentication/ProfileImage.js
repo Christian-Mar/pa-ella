@@ -28,7 +28,7 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 
 	// uploading photo to firebase storage
 	const handleUpload = async () => {
-		await upload(photo, user, setLoading);
+		await upload(photo, user, setLoading); // state loading meezetten in hook - loading state return in de hook -> lijn 15 ook loading
 		await imageUpload();
 		setPhotoURL(user.photoURL || blankProfile);
 	};
@@ -47,9 +47,10 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 		if (user?.photoURL) {
 			setPhotoURL(user.photoURL);
 		}
-	}, [photoURL]);
+	}, []);
 
 
+console.log(photoURL);
 	return (
 		<div>
 			<div className={styles.ProfileImageContainer}>
