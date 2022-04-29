@@ -6,12 +6,14 @@ import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import styles from '../../styles/CreateRecipe.module.css';
 import Title from '../../components/recipeForm/Title';
 import Category from '../../components/recipeForm/Category';
+import Ingredients from '../../components/recipeForm/Ingredients';
+import { setConfig } from 'next/config';
 
 const CreateRecipe = () => {
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
-		description: '',
+		ingredients: [{ ingredient: '', amount: '', unit: '' }],
 	});
 
 	const [count, setCount] = useState(1);
@@ -31,7 +33,7 @@ const CreateRecipe = () => {
 			await addDoc(collection(db, 'recipes'), {
 				title: recipe.title,
 				category: recipe.category,
-				description: recipe.description,
+				ingredients: recipe.ingredients,
 				created: Timestamp.now(),
 			});
 		} catch (err) {
@@ -59,12 +61,47 @@ const CreateRecipe = () => {
 						</div>
 					) : null}
 
+					{count === 2 ? (
+						<div>
+							<Ingredients />
+							<form>
+								{recipe.ingredients.map((ingredient, index) => (
+									<div key={index}>
+										<input
+											type='text'
+											name='ingredient'
+											placeholder='ingredient'
+											value={ingredient.ingredient}
+										/>
+										<input
+											type='text'
+											name='amount'
+											placeholder='amount'
+											value={ingredient.amount}
+										/>
+										<input
+											type='text'
+											name='unit'
+											placeholder='unit'
+											value={ingredient.unit}
+										/>
+										<button>-</button>
+										<button>+</button>
+									</div>
+								))}
+							</form>
+						</div>
+					) : null}
+
+					{count === 3 ? <div>Time + method </div> : null}
+
+					{count === 4 ? <div>Photo </div> : null}
+
 					{count === 5 ? (
 						<button className={styles.form__SubmitButton} type='submit'>
 							Submit
 						</button>
 					) : null}
-
 				</form>
 				<div className={styles.form__DirectionButtonContainer}>
 					<button
