@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import { db } from '../../firebase/config';
@@ -7,25 +7,30 @@ import styles from '../../styles/CreateRecipe.module.css';
 import Title from '../../components/recipeForm/Title';
 import Category from '../../components/recipeForm/Category';
 import Ingredients from '../../components/recipeForm/Ingredients';
-import { setConfig } from 'next/config';
+import Method from '../../components/recipeForm/Method';
 
 const CreateRecipe = () => {
+	
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
-		ingredients: [{ ingredient: '', amount: '', unit: '' }],
+		ingredients: [],
+		method: '',
+		methodTime: '',
 	});
 
 	const [count, setCount] = useState(1);
 
 	console.log(recipe);
+		
 
-	const updateForm = e => {
+	const updateForm = (e) => {
 		setRecipe({
 			...recipe,
 			[e.target.name]: e.target.value,
 		});
 	};
+
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -34,6 +39,8 @@ const CreateRecipe = () => {
 				title: recipe.title,
 				category: recipe.category,
 				ingredients: recipe.ingredients,
+				method: recipe.method,
+				methodTime: recipe.methodTime,
 				created: Timestamp.now(),
 			});
 		} catch (err) {
@@ -63,37 +70,22 @@ const CreateRecipe = () => {
 
 					{count === 2 ? (
 						<div>
-							<Ingredients />
-							<form>
-								{recipe.ingredients.map((ingredient, index) => (
-									<div key={index}>
-										<input
-											type='text'
-											name='ingredient'
-											placeholder='ingredient'
-											value={ingredient.ingredient}
-										/>
-										<input
-											type='text'
-											name='amount'
-											placeholder='amount'
-											value={ingredient.amount}
-										/>
-										<input
-											type='text'
-											name='unit'
-											placeholder='unit'
-											value={ingredient.unit}
-										/>
-										<button>-</button>
-										<button>+</button>
-									</div>
-								))}
-							</form>
+							<Ingredients
+								ingredients={recipe.ingredients}
+								updateForm={updateForm}
+							/>
 						</div>
 					) : null}
 
-					{count === 3 ? <div>Time + method </div> : null}
+					{count === 3 ? (
+						<div>
+							<Method
+								method={recipe.method}
+								methodTime={recipe.methodTime}
+								updateForm={updateForm}
+							/>
+						</div>
+					) : null}
 
 					{count === 4 ? <div>Photo </div> : null}
 

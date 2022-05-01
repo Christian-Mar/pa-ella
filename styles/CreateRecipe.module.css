@@ -69,15 +69,17 @@
 }
 
 .form__selectField {
-    margin-left: 1rem;
+    margin-left: 2rem;
     height: 1.5rem;
-    font-size: 1rem;
-    border-radius: 1rem;
+    font-size: .8rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: none;
+    border: solid 1px grey;
     padding: 0 1rem;
-    background: #e9e9e9;
-    box-shadow: 3px 3px 5px #ffffff, -3px -3px 5px #797979;
+    
+}
+
+.form__selectField:focus {
+    outline: none;
 }
 
 .form__radioTitle {
@@ -144,4 +146,20 @@
 
 .form__DirectionButton:disabled {
     display: none;
+}
+
+.form__textAreaField {
+    border: solid 1px grey;
+    height: 35vh;
+    margin-left: 2rem;
+    width: 70vw;
+    font-size: 1rem;
+    font-weight: 500;
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: .8rem .8rem;
+}
+
+.form__textAreaField:focus {
+    outline: none;
 }
