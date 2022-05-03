@@ -1,6 +1,7 @@
 import styles from '../../styles/CreateRecipe.module.css';
 
-const Category = ({ category, updateForm }) => {
+const Category = ({ category, updateForm}) => {
+	const onChange=(e) => updateForm(e.target.name, e.target.value)
 	return (
 		<div>
 			<div className={styles.form__radio}>
@@ -10,7 +11,7 @@ const Category = ({ category, updateForm }) => {
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
-						onChange={updateForm}
+						onChange={onChange}
 						value='breakfast'
 						checked={category == 'breakfast'}
 						id='breakfast'
@@ -22,7 +23,7 @@ const Category = ({ category, updateForm }) => {
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
-						onChange={updateForm}
+						onChange={onChange}
 						value='soup'
 						checked={category == 'soup'}
 						id='soup'
@@ -34,7 +35,7 @@ const Category = ({ category, updateForm }) => {
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
-						onChange={updateForm}
+						onChange={onChange}
 						value='starter'
 						checked={category == 'starter'}
 						id='starter'
@@ -46,7 +47,7 @@ const Category = ({ category, updateForm }) => {
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
-						onChange={updateForm}
+						onChange={onChange}
 						value='snack'
 						checked={category == 'snack'}
 						id='snack'
@@ -58,7 +59,7 @@ const Category = ({ category, updateForm }) => {
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
-						onChange={updateForm}
+						onChange={onChange}
 						value='dinner'
 						checked={category == 'dinner'}
 						id='dinner'
@@ -70,7 +71,7 @@ const Category = ({ category, updateForm }) => {
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
-						onChange={updateForm}
+						onChange={onChange}
 						value='dessert'
 						checked={category == 'dessert'}
 						id='dessert'

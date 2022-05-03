@@ -24,17 +24,19 @@ const CreateRecipe = () => {
 	console.log(recipe);
 		
 
-	const updateForm = (e) => {
+	const updateForm = (name, value) => {
 		setRecipe({
 			...recipe,
-			[e.target.name]: e.target.value,
+			//[e.target.name]: e.target.value,
+			[name]: value,
 		});
 	};
 
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		try {
+		try {	
+			console.log('in here');
 			await addDoc(collection(db, 'recipes'), {
 				title: recipe.title,
 				category: recipe.category,
@@ -43,6 +45,7 @@ const CreateRecipe = () => {
 				methodTime: recipe.methodTime,
 				created: Timestamp.now(),
 			});
+		
 		} catch (err) {
 			alert(err);
 		}
@@ -60,7 +63,7 @@ const CreateRecipe = () => {
 				<h1 className={styles.container__title}>Create Recipe</h1>
 				<h4 className={styles.container__title}>Step {count} of 5</h4>
 
-				<form onSubmit={handleSubmit} name='createRecipe'>
+				<form  name='createRecipe'>
 					{count === 1 ? (
 						<div>
 							<Title title={recipe.title} updateForm={updateForm} />
@@ -90,7 +93,7 @@ const CreateRecipe = () => {
 					{count === 4 ? <div>Photo </div> : null}
 
 					{count === 5 ? (
-						<button className={styles.form__SubmitButton} type='submit'>
+						<button className={styles.form__SubmitButton} onClick={handleSubmit} type='submit'>
 							Submit
 						</button>
 					) : null}
