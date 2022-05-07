@@ -47,7 +47,7 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 		if (user?.photoURL) {
 			setPhotoURL(user.photoURL);
 		}
-	}, []);
+	}, [user.photoURL]);
 
 
 console.log(photoURL);

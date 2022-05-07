@@ -1,3 +1,4 @@
+/*
 import { useDropzone } from 'react-dropzone';
 import { useState, useCallback, useEffect } from 'react';
 import Image from 'next/image';
@@ -6,11 +7,11 @@ import {storage} from '../../firebase/config'
 const RecipeImage = ({updateForm}) => {
 	const [selectedImages, setSelectedImages] = useState([]);
 	console.log('selectedImages', selectedImages);
-/*
+
 	useEffect(() => {
 		updateForm('imageUrl', selectedImages);
 	}, [selectedImages]);
-*/
+
 	//console.log('storage', storage);
 	const onDrop = useCallback(acceptedFiles => {
 		setSelectedImages(
@@ -48,7 +49,7 @@ const RecipeImage = ({updateForm}) => {
 };
 
 export default RecipeImage;
-
+*/
 /*
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
