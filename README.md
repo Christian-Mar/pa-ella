@@ -14,16 +14,16 @@
 
 3. Firebase not connecting
 
-- Always restart dev server after changing the /env file
+- Always restart dev server after changing the .env file
 - For deploying environment variables need to be inserted in Vercel!
 
 4. _document.js link needs to be crossOrigin instead of crossorigin from google fonts
 
-##Problems
+5. Array of ingredients creates a document in firestore after each object that comes up in the array -> probably is this a problem of submitting on the form. So, onclick on the submit button instead of the submit on the form. And ..., in the component e.preventDefault() added to handleAddField.
 
-1. Profile image is loading but show up only after rerendering -> serversiderendering or add unique key as a prop
+6. Profile image is loading but show up only after rerendering -> forgot to 'await' the imageUpload in handleUpload in the ProfileImage component
 
-
+7. Array of ingredients do not stay in the form when you go back or forward in the form. Use session storage? Or, adjust the code? !!!!!!!!!!!!!!!!! TO DO  
 
 
 ##Rendering

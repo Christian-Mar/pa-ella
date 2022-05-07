@@ -51,6 +51,7 @@ const Ingredients = ({ updateForm }) => {
 							placeholder='ingredient'
 							value={ingredientValues.ingredient}
 							onChange={e => handleChangeInput(index, e)}
+							className={styles.form__inputFieldIngredients}
 						/>
 						<input
 							type='text'
@@ -58,6 +59,7 @@ const Ingredients = ({ updateForm }) => {
 							placeholder='amount'
 							value={ingredientValues.amount}
 							onChange={e => handleChangeInput(index, e)}
+							className={styles.form__inputFieldIngredients}
 						/>
 						<input
 							type='text'
@@ -65,9 +67,10 @@ const Ingredients = ({ updateForm }) => {
 							placeholder='unit'
 							value={ingredientValues.unit}
 							onChange={e => handleChangeInput(index, e)}
+							className={styles.form__inputFieldIngredients}
 						/>
-						<button onClick={() => handleRemoveField(index)}>-</button>
-						<button onClick={handleAddField}>+</button>
+						<button onClick={() => handleRemoveField(index)} className={styles.IngredientsButton}>-</button>
+						<button onClick={handleAddField} className={styles.IngredientsButton}>+</button>
 					</div>
 				))}
 				

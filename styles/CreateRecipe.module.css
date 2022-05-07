@@ -40,7 +40,7 @@
     border: none; 
     border-bottom: solid 1px grey;
     margin-left: 2rem;
-    width: 50vw;
+    width: 45vw;
     font-size: 2.5rem;
     font-weight: 600;
     color: #5fc349;
@@ -56,6 +56,36 @@
 
 .form__inputField:focus {
     outline: none;
+}
+
+.form__inputFieldIngredients {
+    border: none; 
+    border-bottom: solid 1px grey;
+    margin-left: 2rem;
+    width: 25vw;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #5fc349;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: .2rem .5rem;
+}
+
+.form__inputFieldIngredients::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(188, 188, 188);
+  font-weight: 600;
+  opacity: 1; /* Firefox */
+}
+
+.form__inputFieldIngredients:focus {
+    outline: none;
+}
+
+.IngredientsButton {
+    border: none;
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-left: 2rem;
 }
 
 .form__select {
@@ -155,7 +185,7 @@
     width: 70vw;
     font-size: 1rem;
     font-weight: 500;
-    
+    resize: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: .8rem .8rem;
 }

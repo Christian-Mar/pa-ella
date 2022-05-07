@@ -2,27 +2,32 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import { db } from '../../firebase/config';
-import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import { collection, addDoc, Timestamp, onSnapshot } from 'firebase/firestore';
 import styles from '../../styles/CreateRecipe.module.css';
 import Title from '../../components/recipeForm/Title';
 import Category from '../../components/recipeForm/Category';
 import Ingredients from '../../components/recipeForm/Ingredients';
 import Method from '../../components/recipeForm/Method';
+import { useAuthContext } from '../../hooks/useAuthContext';
+//import RecipeImage from '../../components/recipeForm/RecipeImage';
 
 const CreateRecipe = () => {
 	
+	const [imageUrl, setImageUrl] = useState(null); 
+
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
 		ingredients: [],
 		method: '',
 		methodTime: '',
+		image: '',
 	});
 
 	const [count, setCount] = useState(1);
 
 	console.log(recipe);
-		
+	const { user } = useAuthContext();	
 
 	const updateForm = (name, value) => {
 		setRecipe({
@@ -43,6 +48,8 @@ const CreateRecipe = () => {
 				ingredients: recipe.ingredients,
 				method: recipe.method,
 				methodTime: recipe.methodTime,
+				image: recipe.image,
+				userId: user.uid,
 				created: Timestamp.now(),
 			});
 		
@@ -90,7 +97,7 @@ const CreateRecipe = () => {
 						</div>
 					) : null}
 
-					{count === 4 ? <div>Photo </div> : null}
+					{count === 4 ? <div>photo </div> : null}
 
 					{count === 5 ? (
 						<button className={styles.form__SubmitButton} onClick={handleSubmit} type='submit'>

@@ -10,7 +10,7 @@ const Method = ({ method, updateForm }) => {
 				name='method'
 				onChange={onChange}
 				value={method}
-				placeholder='Decribe the preparation'
+				placeholder='Describe the preparation'
 				className={styles.form__textAreaField}
 			/>
 			<h3 className={styles.label}>Preparation time: </h3>
