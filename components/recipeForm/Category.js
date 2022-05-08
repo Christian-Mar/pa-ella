@@ -13,7 +13,7 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='breakfast'
-						checked={category == 'breakfast'}
+						checked={category === 'breakfast'}
 						id='breakfast'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='breakfast'>
@@ -25,7 +25,7 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='soup'
-						checked={category == 'soup'}
+						checked={category === 'soup'}
 						id='soup'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='soup'>
@@ -37,7 +37,7 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='starter'
-						checked={category == 'starter'}
+						checked={category === 'starter'}
 						id='starter'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='starter'>
@@ -49,7 +49,7 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='snack'
-						checked={category == 'snack'}
+						checked={category === 'snack'}
 						id='snack'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='snack'>
@@ -61,7 +61,7 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='dinner'
-						checked={category == 'dinner'}
+						checked={category === 'dinner'}
 						id='dinner'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='dinner'>
@@ -73,7 +73,7 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='dessert'
-						checked={category == 'dessert'}
+						checked={category === 'dessert'}
 						id='dessert'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='dessert'>

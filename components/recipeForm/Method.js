@@ -17,8 +17,9 @@ const Method = ({ method, updateForm }) => {
 			<select
 				className={styles.form__selectField}
 				onChange={onChange}
+				defaultValue={'default'}
 				name='methodTime'
-			>
+			> <option value={'default'} disabled>Choose an option</option>
 				<option value='max 20 minutes'>less than 20 min </option>
 				<option value='25 minutes'>20-25 min</option>
 				<option value='30 minutes'>25-30 min</option>

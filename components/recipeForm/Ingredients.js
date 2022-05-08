@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import styles from '../../styles/CreateRecipe.module.css';
 
+
+
+
 const Ingredients = ({ updateForm }) => {
 
 	const [ingredientValues, setIngredientValues] = useState([
@@ -10,7 +13,7 @@ const Ingredients = ({ updateForm }) => {
 	console.log(ingredientValues);
 
 	useEffect(() => {
-		updateForm('ingredients', ingredientValues)
+		updateForm('ingredients', ingredientValues);
 	}, [
 		ingredientValues
 	])
@@ -33,7 +36,7 @@ const Ingredients = ({ updateForm }) => {
 		]);
 	};
 
-	const handleRemoveField = index => {
+	const handleRemoveField = (index) => {
 		const values = [...ingredientValues];
 		values.splice(index, 1);
 		setIngredientValues(values);

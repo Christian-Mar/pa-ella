@@ -59,7 +59,6 @@ const CreateRecipe = () => {
 				ingredients: recipe.ingredients,
 				method: recipe.method,
 				methodTime: recipe.methodTime,
-				//image: recipe.image,
 				image: imageUrl,
 				userId: user.uid,
 				created: Timestamp.now(),
