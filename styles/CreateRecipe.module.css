@@ -193,3 +193,13 @@
 .form__textAreaField:focus {
     outline: none;
 }
+
+.form__imageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}   
+    
+.image__dish {
+    margin: 1rem;
+}

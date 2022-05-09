@@ -1,6 +1,6 @@
 import { createContext, useReducer, useEffect } from 'react';
 import { auth } from '../firebase/config';
-import { onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 
 //creating the context
 

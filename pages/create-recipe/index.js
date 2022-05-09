@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import { db, storage } from '../../firebase/config';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
@@ -14,7 +15,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 
 const CreateRecipe = () => {
 
-	const [imageUrl, setImageUrl] = useState([])
+	const [imageUrl, setImageUrl] = useState('/images/plate.png')
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
@@ -39,7 +40,7 @@ const CreateRecipe = () => {
 	const uploadFile = async (e) => {
 		let file = e.target.files[0];
 		// create reference
-		let fileRef = ref(storage, 'recipeImages/' + Date.now() + file.name)
+		let fileRef = ref(storage, 'recipeImages/'+ Date.now() + file.name)
 		// create uploadtask
 		const uploadTask = await uploadBytesResumable(fileRef, file)
 		const photoURL = await getDownloadURL(fileRef).then((url) => {
@@ -81,7 +82,7 @@ const CreateRecipe = () => {
 				<h1 className={styles.container__title}>Create Recipe</h1>
 				<h4 className={styles.container__title}>Step {count} of 5</h4>
 
-				<form  name='createRecipe'>
+				<form name='createRecipe'>
 					{count === 1 ? (
 						<div>
 							<Title title={recipe.title} updateForm={updateForm} />
@@ -100,6 +101,7 @@ const CreateRecipe = () => {
 
 					{count === 3 ? (
 						<div>
+							{recipe.methodTime}
 							<Method
 								method={recipe.method}
 								methodTime={recipe.methodTime}
@@ -108,14 +110,27 @@ const CreateRecipe = () => {
 						</div>
 					) : null}
 
-					{count === 4 ? <div>
-						<input type="file" onChange={uploadFile}/>
-						
-						
-						</div> : null}
+					{count === 4 ? (
+						<div className={styles.form__imageContainer}>
+							
+								<Image
+									src={imageUrl}
+									alt='Dish'
+									width={400}
+									height={400}
+									className={styles.image__dish}
+								/>
+							
+							<input type='file' onChange={uploadFile} />
+						</div>
+					) : null}
 
 					{count === 5 ? (
-						<button className={styles.form__SubmitButton} onClick={handleSubmit} type='submit'>
+						<button
+							className={styles.form__SubmitButton}
+							onClick={handleSubmit}
+							type='submit'
+						>
 							Submit
 						</button>
 					) : null}

@@ -1,6 +1,6 @@
 import styles from '../../styles/CreateRecipe.module.css';
 
-const Method = ({ method, updateForm }) => {
+const Method = ({ method, methodTime, updateForm }) => {
 	const onChange = e => updateForm(e.target.name, e.target.value);
 	return (
 		<div>
@@ -14,11 +14,13 @@ const Method = ({ method, updateForm }) => {
 				className={styles.form__textAreaField}
 			/>
 			<h3 className={styles.label}>Preparation time: </h3>
+			{methodTime}
 			<select
 				className={styles.form__selectField}
 				onChange={onChange}
 				defaultValue={'default'}
 				name='methodTime'
+				
 			> <option value={'default'} disabled>Choose an option</option>
 				<option value='max 20 minutes'>less than 20 min </option>
 				<option value='25 minutes'>20-25 min</option>
