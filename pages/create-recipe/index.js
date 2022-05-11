@@ -11,15 +11,15 @@ import Category from '../../components/recipeForm/Category';
 import Ingredients from '../../components/recipeForm/Ingredients';
 import Method from '../../components/recipeForm/Method';
 import { useAuthContext } from '../../hooks/useAuthContext';
-//import RecipeImage from '../../components/recipeForm/RecipeImage';
+import Allergens from '../../components/recipeForm/Allergens';
 
 const CreateRecipe = () => {
-
-	const [imageUrl, setImageUrl] = useState('/images/plate.png')
+	const [imageUrl, setImageUrl] = useState('/images/plate.png');
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
 		ingredients: [],
+		allergens: [],
 		method: '',
 		methodTime: '',
 		image: '',
@@ -28,7 +28,7 @@ const CreateRecipe = () => {
 	const [count, setCount] = useState(1);
 
 	console.log(recipe);
-	const { user } = useAuthContext();	
+	const { user } = useAuthContext();
 
 	const updateForm = (name, value) => {
 		setRecipe({
@@ -37,34 +37,32 @@ const CreateRecipe = () => {
 		});
 	};
 
-	const uploadFile = async (e) => {
+	const uploadFile = async e => {
 		let file = e.target.files[0];
 		// create reference
-		let fileRef = ref(storage, 'recipeImages/'+ Date.now() + file.name)
+		let fileRef = ref(storage, 'recipeImages/' + Date.now() + file.name);
 		// create uploadtask
-		const uploadTask = await uploadBytesResumable(fileRef, file)
-		const photoURL = await getDownloadURL(fileRef).then((url) => {
-			setImageUrl(url)
+		const uploadTask = await uploadBytesResumable(fileRef, file);
+		const photoURL = await getDownloadURL(fileRef).then(url => {
+			setImageUrl(url);
 		});
-		
-	}
-
+	};
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		try {	
+		try {
 			console.log('in here');
 			await addDoc(collection(db, 'recipes'), {
 				title: recipe.title,
 				category: recipe.category,
 				ingredients: recipe.ingredients,
+				allergens: recipe.allergens,
 				method: recipe.method,
 				methodTime: recipe.methodTime,
 				image: imageUrl,
 				userId: user.uid,
 				created: Timestamp.now(),
 			});
-		
 		} catch (err) {
 			alert(err);
 		}
@@ -80,8 +78,26 @@ const CreateRecipe = () => {
 			<Navbar />
 			<div className={styles.form__container}>
 				<h1 className={styles.container__title}>Create Recipe</h1>
-				<h4 className={styles.container__title}>Step {count} of 5</h4>
 
+				<div className={styles.form__DirectionButtonContainer}>
+					<button
+						className={styles.form__DirectionButton}
+						type='submit'
+						onClick={() => setCount(count - 1)}
+						disabled={count < 2}
+					>
+						&larr;
+					</button>
+					<h4 className={styles.container__title}>Step {count} of 5</h4>
+					<button
+						className={styles.form__DirectionButton}
+						type='submit'
+						onClick={() => setCount(count + 1)}
+						disabled={count > 4}
+					>
+						&rarr;
+					</button>
+				</div>
 				<form name='createRecipe'>
 					{count === 1 ? (
 						<div>
@@ -111,48 +127,36 @@ const CreateRecipe = () => {
 					) : null}
 
 					{count === 4 ? (
-						<div className={styles.form__imageContainer}>
-							
-								<Image
-									src={imageUrl}
-									alt='Dish'
-									width={400}
-									height={400}
-									className={styles.image__dish}
-								/>
-							
-							<input type='file' onChange={uploadFile} />
+						<div>
+							<Allergens updateForm={updateForm} />
 						</div>
 					) : null}
 
 					{count === 5 ? (
-						<button
-							className={styles.form__SubmitButton}
-							onClick={handleSubmit}
-							type='submit'
-						>
-							Submit
-						</button>
+						<div className={styles.form__submitContainer}>
+							<div className={styles.form__imageContainer}>
+								<div className={styles.image__dish}>
+									<Image
+										src={imageUrl}
+										alt='Dish'
+										width={600}
+										height={400}
+										objectFit='cover'
+									/>
+								</div>
+
+								<input type='file' onChange={uploadFile} />
+							</div>
+							<button
+								className={styles.form__SubmitButton}
+								onClick={handleSubmit}
+								type='submit'
+							>
+								Submit
+							</button>
+						</div>
 					) : null}
 				</form>
-				<div className={styles.form__DirectionButtonContainer}>
-					<button
-						className={styles.form__DirectionButton}
-						type='submit'
-						onClick={() => setCount(count - 1)}
-						disabled={count < 2}
-					>
-						&larr;
-					</button>
-					<button
-						className={styles.form__DirectionButton}
-						type='submit'
-						onClick={() => setCount(count + 1)}
-						disabled={count > 4}
-					>
-						&rarr;
-					</button>
-				</div>
 			</div>
 		</div>
 	);
