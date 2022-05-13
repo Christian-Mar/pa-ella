@@ -48,14 +48,7 @@ const Ingredients = ({ updateForm }) => {
 			<div>
 				{ingredientValues.map((ingredientValues, index) => (
 					<div key={index}>
-						<input
-							type='text'
-							name='ingredient'
-							placeholder='ingredient'
-							value={ingredientValues.ingredient}
-							onChange={e => handleChangeInput(index, e)}
-							className={styles.form__inputFieldIngredients}
-						/>
+					
 						<input
 							type='text'
 							name='amount'
@@ -69,6 +62,14 @@ const Ingredients = ({ updateForm }) => {
 							name='unit'
 							placeholder='unit'
 							value={ingredientValues.unit}
+							onChange={e => handleChangeInput(index, e)}
+							className={styles.form__inputFieldIngredients}
+						/>	
+						<input
+							type='text'
+							name='ingredient'
+							placeholder='ingredient'
+							value={ingredientValues.ingredient}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
 						/>

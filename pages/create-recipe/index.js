@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
@@ -29,6 +30,7 @@ const CreateRecipe = () => {
 
 	console.log(recipe);
 	const { user } = useAuthContext();
+	const router = useRouter();
 
 	const updateForm = (name, value) => {
 		setRecipe({
@@ -63,6 +65,7 @@ const CreateRecipe = () => {
 				userId: user.uid,
 				created: Timestamp.now(),
 			});
+			router.push('/');
 		} catch (err) {
 			alert(err);
 		}

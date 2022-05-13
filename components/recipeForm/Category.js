@@ -48,6 +48,18 @@ const Category = ({ category, updateForm}) => {
 						type='radio'
 						name='category'
 						onChange={onChange}
+						value='salad'
+						checked={category === 'salad'}
+						id='salad'
+					/>
+					<label className={styles.form__radioLabel} htmlFor='salad'>
+						salad
+					</label>
+					<input
+						className={styles.form__radioField}
+						type='radio'
+						name='category'
+						onChange={onChange}
 						value='snack'
 						checked={category === 'snack'}
 						id='snack'
