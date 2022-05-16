@@ -19,7 +19,9 @@ const CreateRecipe = () => {
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
-		ingredients: [],
+		ingredients: [
+		{ ingredient: '', amount: '', unit: '' },
+	],
 		allergens: [],
 		method: '',
 		methodTime: '',

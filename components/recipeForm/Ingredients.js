@@ -4,11 +4,9 @@ import styles from '../../styles/CreateRecipe.module.css';
 
 
 
-const Ingredients = ({ updateForm }) => {
+const Ingredients = ({ updateForm, ingredients }) => {
 
-	const [ingredientValues, setIngredientValues] = useState([
-		{ ingredient: '', amount: '', unit: '' },
-	]);
+	const [ingredientValues, setIngredientValues] = useState(ingredients);
 
 	console.log(ingredientValues);
 

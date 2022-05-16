@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase/config';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 
 
 
@@ -10,9 +10,11 @@ export const useCollection = (c) => {
   const [documents, setDocuments] = useState(null);
 
   useEffect(() => {
-    let ref = collection(db, c);
+    const ref = collection(db, c);
+    const q = query(ref, where("category", "==", "salad"))
 
-    const unsub = onSnapshot(ref, (snapshot) => {
+
+    const unsub = onSnapshot(q, (snapshot) => {
       let results = [];
       //realtime listener
       snapshot.docs.forEach(doc => {
