@@ -19,10 +19,23 @@ const CreateRecipe = () => {
 	const [recipe, setRecipe] = useState({
 		title: '',
 		category: '',
-		ingredients: [
-		{ ingredient: '', amount: '', unit: '' },
-	],
-		allergens: [],
+		ingredients: [{ ingredient: '', amount: '', unit: '' }],
+		allergens: {
+			gluten: false,
+			ei: false,
+			vis: false,
+			pinda: false,
+			noten: false,
+			soja: false,
+			melk: false,
+			schaaldieren: false,
+			weekdieren: false,
+			selder: false,
+			mosterd: false,
+			sesamzaad: false,
+			sulfiet: false,
+			lupine: false,
+		},
 		method: '',
 		methodTime: '',
 		image: '',
@@ -133,7 +146,10 @@ const CreateRecipe = () => {
 
 					{count === 4 ? (
 						<div>
-							<Allergens updateForm={updateForm} />
+							<Allergens
+								allergens={recipe.allergens}
+								updateForm={updateForm}
+							/>
 						</div>
 					) : null}
 

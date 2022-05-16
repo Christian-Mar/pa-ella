@@ -1,30 +1,15 @@
 import { useState, useEffect } from 'react';
 import styles from '../../styles/CreateRecipe.module.css';
 
-function Allergens({ updateForm }) {
-	const [allergens, setAllergens] = useState({
-		gluten: false,
-		ei: false,
-		vis: false,
-		pinda: false,
-		noten: false,
-		soja: false,
-		melk: false,
-		schaaldieren: false,
-		weekdieren: false,
-		selder: false,
-		mosterd: false,
-		sesamzaad: false,
-    sulfiet: false,
-    lupine: false,
-	});
+function Allergens({ updateForm, allergens }) {
+	const [allergenValues, setAllergenValues] = useState(allergens);
 
 	useEffect(() => {
-		updateForm('allergens', allergens);
-	}, [allergens]);
+		updateForm('allergens', allergenValues);
+	}, [allergenValues]);
 
 	const onChange = e => {
-		setAllergens({ ...allergens, [e.target.value]: e.target.checked });
+		setAllergenValues({ ...allergens, [e.target.value]: e.target.checked });
 	};
 
 	return (
@@ -34,7 +19,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='gluten'
 					name='allergen'
-					checked={allergens.gluten}
+					checked={allergenValues.gluten}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='gluten'
@@ -46,7 +31,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='ei'
 					name='allergen'
-					checked={allergens.ei}
+					checked={allergenValues.ei}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='ei'
@@ -58,7 +43,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='vis'
 					name='allergen'
-					checked={allergens.vis}
+					checked={allergenValues.vis}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='vis'
@@ -70,7 +55,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='pinda'
 					name='allergen'
-					checked={allergens.pinda}
+					checked={allergenValues.pinda}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='pinda'
@@ -82,7 +67,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='noten'
 					name='allergen'
-					checked={allergens.noten}
+					checked={allergenValues.noten}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='noten'
@@ -94,7 +79,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='soja'
 					name='allergen'
-					checked={allergens.soja}
+					checked={allergenValues.soja}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='soja'
@@ -106,7 +91,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='melk'
 					name='allergen'
-					checked={allergens.melk}
+					checked={allergenValues.melk}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='melk'
@@ -118,7 +103,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='schaaldieren'
 					name='allergen'
-					checked={allergens.schaaldieren}
+					checked={allergenValues.schaaldieren}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='schaaldieren'
@@ -130,7 +115,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='weekdieren'
 					name='allergen'
-					checked={allergens.weekdieren}
+					checked={allergenValues.weekdieren}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='weekdieren'
@@ -142,7 +127,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='selder'
 					name='allergen'
-					checked={allergens.selder}
+					checked={allergenValues.selder}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='selder'
@@ -154,7 +139,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='mosterd'
 					name='allergen'
-					checked={allergens.mosterd}
+					checked={allergenValues.mosterd}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='mosterd'
@@ -166,7 +151,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='sesamzaad'
 					name='allergen'
-					checked={allergens.sesamzaad}
+					checked={allergenValues.sesamzaad}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='sesamzaad'
@@ -178,7 +163,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='sulfiet'
 					name='allergen'
-					checked={allergens.sulfiet}
+					checked={allergenValues.sulfiet}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='sulfiet'
@@ -190,7 +175,7 @@ function Allergens({ updateForm }) {
 					type='checkbox'
 					value='lupine'
 					name='allergen'
-					checked={allergens.lupine}
+					checked={allergenValues.lupine}
 					onChange={onChange}
 					className={styles.form__radioField}
 					id='lupine'
@@ -199,13 +184,6 @@ function Allergens({ updateForm }) {
 					lupine
 				</label>
 			</div>
-			{/* 
-			<ul>
-				{items.map(item => (
-					<li key={item.id}>{item.language}</li>
-				))}
-			</ul>
-    */}
 		</>
 	);
 }
