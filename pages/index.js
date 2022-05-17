@@ -6,6 +6,7 @@ import Navbar from '../components/nav/Navbar';
 import SectionCards from '../components/card/SectionCards';
 import styles from '../styles/Home.module.css';
 import { useCollection } from '../hooks/useCollection';
+import { useAuthContext } from '../hooks/useAuthContext';
 import { db } from '../firebase/config';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 //import { getRecipes } from '../utils/recipeData';
@@ -23,10 +24,10 @@ export async function getServerSideProps() {
 export default function Home() {
 	const { documents: recipes } = useCollection('recipes');
 
-	console.log(recipes);
-
 	
-  return (
+	const { user } = useAuthContext();
+	
+	return (
 		<div className={styles.container}>
 			<Head>
 				<title>pa'ella</title>
@@ -42,22 +43,76 @@ export default function Home() {
 					<SectionCards title='Simple dishes' />
 				</div>
 				<div className='(styles.list)'>
+					{user && (
+						<div>
+							<h4>My recipes</h4>
+
+							<ul>
+								{recipes?.map(recipe => 
+									(recipe.userId === user.uid) && (
+										<li key={recipe.id}>
+											<div>
+												<h3>{recipe.title}</h3>
+												<h4>{recipe.category}</h4>
+												<Image
+													src={recipe.image}
+													alt='Dish'
+													width={200}
+													height={150}
+													objectFit='cover'
+												></Image>
+											</div>
+										</li>)
+									)};
+									
+							</ul>
+						</div>
+							)}
+				</div>
+				<div className='(styles.list)'>
+					<h4>Salads</h4>
 					<ul>
-						{recipes.map(recipe => (
-							<li key={recipe.id}>
-								<div>
-									<h3>{recipe.title}</h3>
-									 <h4>{recipe.category}</h4>
-									<Image
-										src={recipe.image}
-										alt='Dish'
-										width={200}
-										height={150}
-										objectFit='cover'
-									></Image>
-								</div>
-							</li>
-						))}
+						{recipes?.map(
+							recipe =>
+								recipe.category === 'salad' && (
+									<li key={recipe.id}>
+										<div>
+											<h3>{recipe.title}</h3>
+											<h4>{recipe.category}</h4>
+											<Image
+												src={recipe.image}
+												alt='Dish'
+												width={200}
+												height={150}
+												objectFit='cover'
+											></Image>
+										</div>
+									</li>
+								)
+						)}
+					</ul>
+				</div>
+				<div className='(styles.list)'>
+					<h4>Desserts</h4>
+					<ul>
+						{recipes?.map(
+							recipe =>
+								recipe.category === 'dessert' && (
+									<li key={recipe.id}>
+										<div>
+											<h3>{recipe.title}</h3>
+											<h4>{recipe.category}</h4>
+											<Image
+												src={recipe.image}
+												alt='Dish'
+												width={200}
+												height={150}
+												objectFit='cover'
+											></Image>
+										</div>
+									</li>
+								)
+						)}
 					</ul>
 				</div>
 			</div>

@@ -11,10 +11,10 @@ export const useCollection = (c) => {
 
   useEffect(() => {
     const ref = collection(db, c);
-    const q = query(ref, where("category", "==", "salad"))
+    //const q = query(ref, where("category", "==", "salad"))
 
 
-    const unsub = onSnapshot(q, (snapshot) => {
+    const unsub = onSnapshot(ref, (snapshot) => {
       let results = [];
       //realtime listener
       snapshot.docs.forEach(doc => {
