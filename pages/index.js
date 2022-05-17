@@ -8,7 +8,18 @@ import styles from '../styles/Home.module.css';
 import { useCollection } from '../hooks/useCollection';
 import { db } from '../firebase/config';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
-
+//import { getRecipes } from '../utils/recipeData';
+/*
+export async function getServerSideProps() {
+	const response = await fetch(
+		`https://firestore.googleapis.com/v1/projects/NEXT_PUBLIC_PROJECT_ID/databases/(default)/documents/recipes`
+	);
+	const recipes = await response.json();
+	console.log(recipes)
+	return { props: { recipes }
+}
+};
+*/
 export default function Home() {
 	const { documents: recipes } = useCollection('recipes');
 
@@ -32,7 +43,7 @@ export default function Home() {
 				</div>
 				<div className='(styles.list)'>
 					<ul>
-						{recipes?.map(recipe => (
+						{recipes.map(recipe => (
 							<li key={recipe.id}>
 								<div>
 									<h3>{recipe.title}</h3>
