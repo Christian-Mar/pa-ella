@@ -7,11 +7,30 @@
 }
 
 .title {
-  font-family: 'Abril Fatface', cursive;
   margin-left: 2rem;
 }
 
 .list {
   top: 0;
   margin: 0;
+}
+
+.recipe__listitems {
+  list-style: none;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 1px solid;
+  max-width: 220px;
+}
+
+.recipe__list {
+  display: flex;
+}
+
+.recipe__title {
+  height: 40px;
+}
+
+.recipe__category {
+  font-size: 0.8rem;
 }

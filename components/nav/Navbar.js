@@ -71,7 +71,7 @@ const Navbar = () => {
 							</h1>
 						</a>
 					</Link>
-					<span className={styles.logoSubtitle}>Recipes For Everybody</span>
+					<span className={styles.logoSubtitle}>Recepten voor iedereen</span>
 				</div>
 				{/* 
 				<div className={styles.searchContainer}>

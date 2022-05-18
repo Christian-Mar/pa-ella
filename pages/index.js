@@ -31,51 +31,56 @@ export default function Home() {
 		<div className={styles.container}>
 			<Head>
 				<title>pa'ella</title>
-				<meta name='description' content='The recipe website' />
+				<meta name='description' content='De recepten' />
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 
 			<div className={styles.container}>
-				<Navbar username='donald.duck@disney.com' />
+				<Navbar />
 				<Banner imgUrl='/images/bannercolor.jpg' />
-				<h1 className={styles.title}>Recipes</h1>
+				<h1 className={styles.title}>Wat eten we vandaag?</h1>
 				<div className={styles.image__container}>
-					<SectionCards title='Simple dishes' />
+					{/*<SectionCards title='Simple dishes' />*/}
 				</div>
-				<div className='(styles.list)'>
+				<div className={styles.list}>
 					{user && (
 						<div>
-							<h4>My recipes</h4>
+							<h4>Mijn recepten</h4>
 
-							<ul>
-								{recipes?.map(recipe => 
-									(recipe.userId === user.uid) && (
-										<li key={recipe.id}>
-											<div>
-												<h3>{recipe.title}</h3>
-												<h4>{recipe.category}</h4>
-												<Image
-													src={recipe.image}
-													alt='Dish'
-													width={200}
-													height={150}
-													objectFit='cover'
-												></Image>
-											</div>
-										</li>)
-									)};
-									
+							<ul className={styles.recipe__list}>
+								{recipes?.map(
+									recipe =>
+										recipe.userId === user.uid && (
+											<li key={recipe.id} className={styles.recipe__listitems}>
+												<div>
+													<h3 className={styles.recipe__title}>
+														{recipe.title}
+													</h3>
+													<h4 className={styles.recipe__category}>
+														{recipe.category}
+													</h4>
+													<Image
+														src={recipe.image}
+														alt='Dish'
+														width={200}
+														height={150}
+														objectFit='cover'
+													></Image>
+												</div>
+											</li>
+										)
+								)}
 							</ul>
 						</div>
-							)}
+					)}
 				</div>
 				<div className='(styles.list)'>
 					<h4>Salads</h4>
-					<ul>
+					<ul className={styles.recipe__list}>
 						{recipes?.map(
 							recipe =>
 								recipe.category === 'salad' && (
-									<li key={recipe.id}>
+									<li key={recipe.id} className={styles.recipe__listitems}>
 										<div>
 											<h3>{recipe.title}</h3>
 											<h4>{recipe.category}</h4>
@@ -94,11 +99,11 @@ export default function Home() {
 				</div>
 				<div className='(styles.list)'>
 					<h4>Desserts</h4>
-					<ul>
+					<ul className={styles.recipe__list}>
 						{recipes?.map(
 							recipe =>
 								recipe.category === 'dessert' && (
-									<li key={recipe.id}>
+									<li key={recipe.id} className={styles.recipe__listitems}>
 										<div>
 											<h3>{recipe.title}</h3>
 											<h4>{recipe.category}</h4>
