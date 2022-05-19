@@ -1,26 +1,19 @@
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Banner from '../components/banner/Banner';
 import Navbar from '../components/nav/Navbar';
-import SectionCards from '../components/card/SectionCards';
 import styles from '../styles/Home.module.css';
 import { useCollection } from '../hooks/useCollection';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { db } from '../firebase/config';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
-//import { getRecipes } from '../utils/recipeData';
-/*
-export async function getServerSideProps() {
-	const response = await fetch(
-		`https://firestore.googleapis.com/v1/projects/NEXT_PUBLIC_PROJECT_ID/databases/(default)/documents/recipes`
-	);
-	const recipes = await response.json();
-	console.log(recipes)
-	return { props: { recipes }
-}
-};
-*/
+import Carousel from 'react-elastic-carousel';
+
+const breakPoints = [
+	{ width: 1, itemsToShow: 1 },
+	{ width: 550, itemsToShow: 2 },
+	{ width: 768, itemsToShow: 3 },
+	{ width: 1200, itemsToShow: 5 },
+];
+
 export default function Home() {
 	const { documents: recipes } = useCollection('recipes');
 
@@ -39,15 +32,15 @@ export default function Home() {
 				<Navbar />
 				<Banner imgUrl='/images/bannercolor.jpg' />
 				<h1 className={styles.title}>Wat eten we vandaag?</h1>
-				<div className={styles.image__container}>
-					{/*<SectionCards title='Simple dishes' />*/}
-				</div>
+				<div className={styles.image__container}></div>
 				<div className={styles.list}>
 					{user && (
 						<div>
-							<h4>Mijn recepten</h4>
-
-							<ul className={styles.recipe__list}>
+							<h4 className={styles.section__title}>Mijn recepten</h4>
+							<Carousel
+								breakPoints={breakPoints}
+								
+							>
 								{recipes?.map(
 									recipe =>
 										recipe.userId === user.uid && (
@@ -70,20 +63,19 @@ export default function Home() {
 											</li>
 										)
 								)}
-							</ul>
+							</Carousel>
 						</div>
 					)}
 				</div>
-				<div className='(styles.list)'>
-					<h4>Salads</h4>
+				<div className={styles.list}>
+					<h4 className={styles.section__title}>Ontbijt</h4>
 					<ul className={styles.recipe__list}>
 						{recipes?.map(
 							recipe =>
-								recipe.category === 'salad' && (
+								recipe.category === 'breakfast' && (
 									<li key={recipe.id} className={styles.recipe__listitems}>
 										<div>
-											<h3>{recipe.title}</h3>
-											<h4>{recipe.category}</h4>
+											<h3 className={styles.recipe__title}>{recipe.title}</h3>
 											<Image
 												src={recipe.image}
 												alt='Dish'
