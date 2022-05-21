@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CarouselContainer = styled.div`
 	width: 95%;
 	margin-top: ${props => (props.noBroadcast ? '20px' : '0')};
-  margin-left: 2rem;
+	margin-left: 2rem;
 	.rec {
 		margin-bottom: 10px;
 	}
@@ -14,8 +14,9 @@ export const CarouselContainer = styled.div`
 		transition: all 0.3s ease;
 		font-size: 1.6em;
 		background-color: #5fc349;
+		background-color: transparent;
 		color: #ffffff;
-		
+		color: black;
 		border-radius: 50%;
 		border: none;
 		padding: 0;
@@ -28,14 +29,12 @@ export const CarouselContainer = styled.div`
 		align-self: center;
 		cursor: pointer;
 		outline: none;
-		
 	}
 
 	.rec .rec-arrow:hover:enabled,
 	.rec .rec-arrow:focus:enabled {
 		color: #fff;
-		background-image: linear-gradient(45deg, #676565, #b5b0b0);
-		box-shadow: 0 0 2px 0 #333;
+		background-color: #5fc349;
 	}
 
 	.rec .rec-arrow:hover:disabled {

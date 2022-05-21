@@ -7,6 +7,7 @@ import { useCollection } from '../hooks/useCollection';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Carousel from 'react-elastic-carousel';
 import { CarouselContainer } from '../styles/slider';
+import ShowCategories from '../components/showRecipes/ShowCategories';
 
 const breakPoints = [
 	{ width: 300, itemsToShow: 1 },
@@ -14,15 +15,14 @@ const breakPoints = [
 	{ width: 768, itemsToShow: 3 },
 	{ width: 1000, itemsToShow: 4 },
 	{ width: 1200, itemsToShow: 5 },
-	{ width: 1400, itemsToShow: 6},
+	{ width: 1400, itemsToShow: 6 },
 ];
 
 export default function Home() {
 	const { documents: recipes } = useCollection('recipes');
 
-	
 	const { user } = useAuthContext();
-	
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -72,51 +72,13 @@ export default function Home() {
 						</div>
 					)}
 				</div>
-				<div className={styles.list}>
-					<h4 className={styles.section__title}>Ontbijt</h4>
-					<ul className={styles.recipe__list}>
-						{recipes?.map(
-							recipe =>
-								recipe.category === 'breakfast' && (
-									<li key={recipe.id} className={styles.recipe__listitems}>
-										<div>
-											<h3 className={styles.recipe__title}>{recipe.title}</h3>
-											<Image
-												src={recipe.image}
-												alt='Dish'
-												width={200}
-												height={150}
-												objectFit='cover'
-											></Image>
-										</div>
-									</li>
-								)
-						)}
-					</ul>
-				</div>
-				<div className='(styles.list)'>
-					<h4>Desserts</h4>
-					<ul className={styles.recipe__list}>
-						{recipes?.map(
-							recipe =>
-								recipe.category === 'dessert' && (
-									<li key={recipe.id} className={styles.recipe__listitems}>
-										<div>
-											<h3>{recipe.title}</h3>
-											<h4>{recipe.category}</h4>
-											<Image
-												src={recipe.image}
-												alt='Dish'
-												width={200}
-												height={150}
-												objectFit='cover'
-											></Image>
-										</div>
-									</li>
-								)
-						)}
-					</ul>
-				</div>
+				<ShowCategories title='Ontbijt' category='breakfast' />
+				<ShowCategories title='Salade' category='salad' />
+				<ShowCategories title='Soep' category='soup' />
+				<ShowCategories title='Voorgerecht' category='starter' />
+				<ShowCategories title='Snack' category='snack' />
+				<ShowCategories title='Maaltijd' category='dinner' />
+				<ShowCategories title='Dessert' category='dessert' />
 			</div>
 		</div>
 	);
