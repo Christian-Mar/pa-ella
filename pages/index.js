@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Banner from '../components/banner/Banner';
 import Navbar from '../components/nav/Navbar';
+import Footer from '../components/footer/Footer';
 import styles from '../styles/Home.module.css';
 import { useCollection } from '../hooks/useCollection';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -72,7 +73,7 @@ export default function Home() {
 						</div>
 					)}
 				</div>
-				<ShowCategories title='Ontbijt' category='breakfast' />
+				<ShowCategories title='Ontbijt' category='breakfast' CarouselContainer={CarouselContainer}/>
 				<ShowCategories title='Salade' category='salad' />
 				<ShowCategories title='Soep' category='soup' />
 				<ShowCategories title='Voorgerecht' category='starter' />
@@ -80,6 +81,7 @@ export default function Home() {
 				<ShowCategories title='Maaltijd' category='dinner' />
 				<ShowCategories title='Dessert' category='dessert' />
 			</div>
+			<Footer />
 		</div>
 	);
 }

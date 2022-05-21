@@ -1,0 +1,15 @@
+.footer__container {
+  background-color: rgb(107, 107, 107);
+  color: white;
+  height: 100px;
+  width: 100vw;
+  display: flex;
+}
+
+.footer__list {
+  list-style: none;
+}
+
+.footer__listItem {
+  margin: 0.5rem;
+}

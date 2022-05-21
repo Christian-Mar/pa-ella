@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const CarouselContainer = styled.div`
 	width: 95%;
-	margin-top: ${props => (props.noBroadcast ? '20px' : '0')};
 	margin-left: 2rem;
 	.rec {
 		margin-bottom: 10px;
