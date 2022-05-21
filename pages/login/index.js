@@ -12,7 +12,7 @@ export default function LoginPage() {
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 			<Navbar />
-			<Banner imgUrl='/images/bannercolor.jpg' />
+			<Banner imgUrl='/images/ellas.jpg' />
 			<Login />
 		</div>
 	);
