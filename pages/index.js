@@ -6,12 +6,15 @@ import styles from '../styles/Home.module.css';
 import { useCollection } from '../hooks/useCollection';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Carousel from 'react-elastic-carousel';
+import { CarouselContainer } from '../styles/slider';
 
 const breakPoints = [
-	{ width: 1, itemsToShow: 1 },
+	{ width: 300, itemsToShow: 1 },
 	{ width: 550, itemsToShow: 2 },
 	{ width: 768, itemsToShow: 3 },
+	{ width: 1000, itemsToShow: 4 },
 	{ width: 1200, itemsToShow: 5 },
+	{ width: 1400, itemsToShow: 6},
 ];
 
 export default function Home() {
@@ -30,40 +33,42 @@ export default function Home() {
 
 			<div className={styles.container}>
 				<Navbar />
-				<Banner imgUrl='/images/bannercolor.jpg' />
+				<Banner imgUrl='/images/ellas.jpg' />
 				<h1 className={styles.title}>Wat eten we vandaag?</h1>
 				<div className={styles.image__container}></div>
 				<div className={styles.list}>
 					{user && (
 						<div>
 							<h4 className={styles.section__title}>Mijn recepten</h4>
-							<Carousel
-								breakPoints={breakPoints}
-								
-							>
-								{recipes?.map(
-									recipe =>
-										recipe.userId === user.uid && (
-											<li key={recipe.id} className={styles.recipe__listitems}>
-												<div>
-													<h3 className={styles.recipe__title}>
-														{recipe.title}
-													</h3>
-													<h4 className={styles.recipe__category}>
-														{recipe.category}
-													</h4>
-													<Image
-														src={recipe.image}
-														alt='Dish'
-														width={200}
-														height={150}
-														objectFit='cover'
-													></Image>
-												</div>
-											</li>
-										)
-								)}
-							</Carousel>
+							<CarouselContainer>
+								<Carousel breakPoints={breakPoints}>
+									{recipes?.map(
+										recipe =>
+											recipe.userId === user.uid && (
+												<li
+													key={recipe.id}
+													className={styles.recipe__listitems}
+												>
+													<div>
+														<h3 className={styles.recipe__title}>
+															{recipe.title}
+														</h3>
+														<h4 className={styles.recipe__category}>
+															{recipe.category}
+														</h4>
+														<Image
+															src={recipe.image}
+															alt='Dish'
+															width={200}
+															height={150}
+															objectFit='cover'
+														></Image>
+													</div>
+												</li>
+											)
+									)}
+								</Carousel>
+							</CarouselContainer>
 						</div>
 					)}
 				</div>

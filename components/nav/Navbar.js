@@ -104,16 +104,16 @@ const Navbar = () => {
 									<Image
 										src={user.photoURL}
 										alt='Avatar'
-										width={50}
-										height={50}
+										width={40}
+										height={40}
 										className={styles.avatar}
 									/>
 								) : (
 									<Image
 										src='/images/blankProfile.png'
 										alt='Avatar'
-										width={50}
-										height={50}
+										width={40}
+										height={40}
 										className={styles.avatar}
 									/>
 								)}
@@ -130,7 +130,7 @@ const Navbar = () => {
 						onClick={handleOnClickCreateRecipe}
 					>
 						<Link href="/create-recipe" >
-							<a>Create recipe</a>
+							<a>Creëer recept</a>
 						</Link>
 					</li>
 				)}
@@ -140,33 +140,33 @@ const Navbar = () => {
 						onClick={handleOnClickWeekPlanner}
 					>
 						<Link href='/week-planner'>
-							<a>Week planner</a>
+							<a>Weekplanner</a>
 						</Link>
 					</li>
 				)}
 				{!user && (
 					<li className={styles.navbarListItem} onClick={handleOnClickSignUp}>
 						<Link href='/signup'>
-							<a>Sign up</a>
+							<a>Profiel aanmaken</a>
 						</Link>
 					</li>
 				)}
 				{!user && (
 					<li className={styles.navbarListItem} onClick={handleOnClickSignIn}>
 						<Link href='/login'>
-							<a>Sign in</a>
+							<a>Aanmelden</a>
 						</Link>
 					</li>
 				)}
 
 				{user && (
 					<li className={styles.navbarListItem} onClick={logout}>
-						<a onClick={handleOnClickLogout}>Log out</a>
+						<a onClick={handleOnClickLogout}>Afmelden</a>
 					</li>
 				)}
 			</ul>
 			<Modal
-				title='Change profile image'
+				title='Verander de profielfoto'
 				show={showModal}
 				onClose={() => {
 					setShowModal(false);
