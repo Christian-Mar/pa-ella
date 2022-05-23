@@ -9,6 +9,8 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import Carousel from 'react-elastic-carousel';
 import { CarouselContainer } from '../styles/slider';
 import ShowCategories from '../components/showRecipes/ShowCategories';
+import { db } from '../firebase/config';
+import { getDoc, doc, collection, onSnapshot, query, where } from 'firebase/firestore';
 
 const breakPoints = [
 	{ width: 300, itemsToShow: 1 },
@@ -19,8 +21,18 @@ const breakPoints = [
 	{ width: 1400, itemsToShow: 6 },
 ];
 
-export default function Home() {
-	const { documents: recipes } = useCollection('recipes');
+export const getStaticProps = async () => {
+	
+	
+	const docRef = doc(collection(db, "recipes"));
+	const docSnap = await getDoc(docRef);
+	return {
+		props: { recipes: JSON.stringify(docSnap.data()) || null },
+	};
+};
+
+export default function Home({recipes}) {
+	//const { documents: recipes } = useCollection('recipes');
 
 	const { user } = useAuthContext();
 

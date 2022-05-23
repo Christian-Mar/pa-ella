@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCollection } from '../../hooks/useCollection';
 import Carousel from 'react-elastic-carousel';
 import { CarouselContainer } from '../../styles/slider';
@@ -25,6 +26,7 @@ export default function ShowCategories({ title, category }) {
 						recipe =>
 							recipe.category === category && (
 								<li key={recipe.id} className={styles.recipe__listitems}>
+								<Link href={recipe.id}>
 									<div>
 										<h3 className={styles.recipe__title}>{recipe.title}</h3>
 										<Image
@@ -34,7 +36,7 @@ export default function ShowCategories({ title, category }) {
 											height={150}
 											objectFit='cover'
 										></Image>
-									</div>
+									</div></Link>
 								</li>
 							)
 					)}
