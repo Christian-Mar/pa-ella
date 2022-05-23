@@ -3,6 +3,8 @@
   height: 100px;
   width: 100vw;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .footer__list {
@@ -11,4 +13,11 @@
 
 .footer__listItem {
   margin: 0.5rem;
+}
+
+.footer__github {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  font-size: .8rem;
 }

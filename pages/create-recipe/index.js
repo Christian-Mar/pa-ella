@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
+import Footer from '../../components/footer/Footer';
 import { db, storage } from '../../firebase/config';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -179,6 +180,7 @@ const CreateRecipe = () => {
 					) : null}
 				</form>
 			</div>
+			<Footer />
 		</div>
 	);
 };
