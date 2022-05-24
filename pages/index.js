@@ -10,7 +10,7 @@ import Carousel from 'react-elastic-carousel';
 import { CarouselContainer } from '../styles/slider';
 import ShowCategories from '../components/showRecipes/ShowCategories';
 import { db } from '../firebase/config';
-import { getDoc, doc, collection, onSnapshot, query, where } from 'firebase/firestore';
+import { getDocs, doc, collection, query } from 'firebase/firestore';
 
 const breakPoints = [
 	{ width: 300, itemsToShow: 1 },
@@ -21,21 +21,30 @@ const breakPoints = [
 	{ width: 1400, itemsToShow: 6 },
 ];
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (context) => {
 	
-	
-	const docRef = doc(collection(db, "recipes"));
-	const docSnap = await getDoc(docRef);
+	const querySnapshot = await getDocs(collection(db,'recipes'));
+	let recipes= [];
+
+	querySnapshot.forEach((doc) => {
+		recipes.push({...doc.data(), id: doc.id})
+	})
+	//const docRef = query(collection(db, 'recipes'));
+	//const docSnap = await getDocs(docRef);
+	//return docSnap.doc.map(doc => ({id: doc.id, ...doc.data()}))
 	return {
-		props: { recipes: JSON.stringify(docSnap.data()) || null },
+		props: { recipes: JSON.stringify(recipes) || null},
 	};
 };
 
 export default function Home({recipes}) {
-	//const { documents: recipes } = useCollection('recipes');
-
+	//const { documents: recipesUser } = useCollection('recipes');
+	
 	const { user } = useAuthContext();
-
+	const recipes2 = JSON.parse(recipes)
+  const recipesData = Array.from(recipes2);
+	console.log(recipes2);
+	console.log(user)
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -55,7 +64,7 @@ export default function Home({recipes}) {
 							<h4 className={styles.section__title}>Mijn recepten</h4>
 							<CarouselContainer>
 								<Carousel breakPoints={breakPoints}>
-									{recipes?.map(
+									{recipesData?.map(
 										recipe =>
 											recipe.userId === user.uid && (
 												<li
@@ -79,7 +88,7 @@ export default function Home({recipes}) {
 													</div>
 												</li>
 											)
-									)}
+											)}
 								</Carousel>
 							</CarouselContainer>
 						</div>
