@@ -1,0 +1,14 @@
+.container {
+  margin: 0 2rem;
+}
+
+.table__cell {
+  width: 45vw;
+  padding: 0.1rem 0.2rem 0rem 3rem;
+  font-size: 0.9rem;
+  vertical-align: text-top;
+}
+
+.table__used {
+  color: #5fc349;
+}

@@ -1,6 +1,6 @@
 .footer__container {
   background-color: rgb(216, 216, 216);
-  height: 100px;
+  height: 120px;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -13,11 +13,12 @@
 
 .footer__listItem {
   margin: 0.5rem;
+  font-size: .9rem;
 }
 
 .footer__github {
   display: flex;
   justify-content: center;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   font-size: .8rem;
 }
