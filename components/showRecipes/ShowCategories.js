@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCollection } from '../../hooks/useCollection';
 import Carousel from 'react-elastic-carousel';
 import { CarouselContainer } from '../../styles/slider';
 import styles from '../../styles/Home.module.css';
@@ -14,15 +13,16 @@ const breakPoints = [
 	{ width: 1400, itemsToShow: 6 },
 ];
 
-export default function ShowCategories({ title, category }) {
-	const { documents: recipes } = useCollection('recipes');
 
+export default function ShowCategories({ recipesData, title, category }) {
+	// recipesData is given as a property form the Homepage since we cannot get getServerSideprops (or staticp rops) from a component in next.js.
+	
 	return (
 		<div className={styles.list}>
 			<h4 className={styles.section__title}>{title}</h4>
 			<CarouselContainer>
 				<Carousel breakPoints={breakPoints}>
-					{recipes?.map(
+					{recipesData?.map(
 						recipe =>
 							recipe.category === category && (
 								<li key={recipe.id} className={styles.recipe__listitems}>

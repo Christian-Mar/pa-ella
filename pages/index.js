@@ -21,7 +21,7 @@ const breakPoints = [
 	{ width: 1400, itemsToShow: 6 },
 ];
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
 	
 	const querySnapshot = await getDocs(collection(db,'recipes'));
 	let recipes= [];
@@ -29,21 +29,21 @@ export const getServerSideProps = async (context) => {
 	querySnapshot.forEach((doc) => {
 		recipes.push({...doc.data(), id: doc.id})
 	})
-	//const docRef = query(collection(db, 'recipes'));
-	//const docSnap = await getDocs(docRef);
-	//return docSnap.doc.map(doc => ({id: doc.id, ...doc.data()}))
+
 	return {
 		props: { recipes: JSON.stringify(recipes) || null},
+		
 	};
+	
 };
 
 export default function Home({recipes}) {
 	//const { documents: recipesUser } = useCollection('recipes');
 	
 	const { user } = useAuthContext();
-	const recipes2 = JSON.parse(recipes)
-  const recipesData = Array.from(recipes2);
-	console.log(recipes2);
+	const recipesReadable = JSON.parse(recipes)
+  const recipesData = Array.from(recipesReadable);
+	console.log(recipesReadable);
 	console.log(user)
 	return (
 		<div className={styles.container}>
@@ -88,19 +88,48 @@ export default function Home({recipes}) {
 													</div>
 												</li>
 											)
-											)}
+									)}
 								</Carousel>
 							</CarouselContainer>
 						</div>
 					)}
 				</div>
-				<ShowCategories title='Ontbijt' category='breakfast' CarouselContainer={CarouselContainer}/>
-				<ShowCategories title='Salade' category='salad' />
-				<ShowCategories title='Soep' category='soup' />
-				<ShowCategories title='Voorgerecht' category='starter' />
-				<ShowCategories title='Snack' category='snack' />
-				<ShowCategories title='Maaltijd' category='dinner' />
-				<ShowCategories title='Dessert' category='dessert' />
+				<ShowCategories
+					title='Ontbijt'
+					category='breakfast'
+					CarouselContainer={CarouselContainer}
+					recipesData={recipesData}
+				/>
+				<ShowCategories
+					title='Salade'
+					category='salad'
+					recipesData={recipesData}
+				/>
+				<ShowCategories
+					title='Soep'
+					category='soup'
+					recipesData={recipesData}
+				/>
+				<ShowCategories
+					title='Voorgerecht'
+					category='starter'
+					recipesData={recipesData}
+				/>
+				<ShowCategories
+					title='Snack'
+					category='snack'
+					recipesData={recipesData}
+				/>
+				<ShowCategories
+					title='Maaltijd'
+					category='dinner'
+					recipesData={recipesData}
+				/>
+				<ShowCategories
+					title='Dessert'
+					category='dessert'
+					recipesData={recipesData}
+				/>
 			</div>
 			<Footer />
 		</div>
