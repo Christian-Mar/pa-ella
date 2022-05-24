@@ -9,6 +9,22 @@
   vertical-align: text-top;
 }
 
+.table__cellSmall {
+  width: 15vw;
+  padding: 0.1rem 0.2rem 0rem 3rem;
+  font-size: 0.9rem;
+  vertical-align: text-top;
+}
+
 .table__used {
   color: #5fc349;
+}
+
+.table__title {
+  text-align: left;
+  padding: 0.1rem 0.2rem 0rem 3rem;
+}
+
+.table__total {
+   color: #5fc349;
 }

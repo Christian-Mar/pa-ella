@@ -1,6 +1,6 @@
 
 .navbarContainer {
-  height: 15vh;
+  height: 100%;
   background: #ffffff;
   font-family: 'Monda', sans-serif;
   display: flex;
@@ -9,7 +9,6 @@
   align-content: center;
   top: 0;
   position: sticky;
-  /*box-shadow: rgba(27, 31, 35, 0.04) 4px 4px 4px, rgba(255, 255, 255, 0.25) 4px 4px 4px inset;*/
   z-index: 100;
   padding: 0 15px;
 }
