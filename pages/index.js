@@ -21,7 +21,7 @@ const breakPoints = [
 	{ width: 1400, itemsToShow: 6 },
 ];
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	
 	const querySnapshot = await getDocs(collection(db,'recipes'));
 	let recipes= [];
