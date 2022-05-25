@@ -240,10 +240,7 @@ const making = () => {
 						aangenaam qua <i>user experience</i>. Dit laat bovendien toe de
 						pagina's als html op te laden met de mogelijkheid om gericht SEO
 						door te voeren en aldus gemakkelijker vindbaar te zijn voor{' '}
-						<i>search engines</i> als Google. Bovendien bezuinigt het drastisch
-						op het gebruik van de database. Zolang er niets wijzigt, blijven
-						alle data voor handen en hoeft de database niet opnieuw gelezen te
-						worden.
+						<i>search engines</i> als Google. 
 					</p>
 					<h2>4. Het concept van de website</h2>
 					<p>

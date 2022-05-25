@@ -44,8 +44,6 @@ export default function Home({recipes}) {
 	const { user } = useAuthContext();
 	const recipesReadable = JSON.parse(recipes)
   const recipesData = Array.from(recipesReadable);
-	console.log(recipesReadable);
-	console.log(user)
 	return (
 		<div className={styles.container}>
 			<Head>
