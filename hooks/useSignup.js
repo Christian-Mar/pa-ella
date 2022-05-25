@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import { auth } from '../firebase/config';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -16,7 +16,6 @@ export const useSignup = () => {
     .catch((err) => {
       setError(err.message)
     })
-
   }
 
   return { error, signup } 

@@ -1,6 +1,7 @@
 
 .navbarContainer {
   height: 100%;
+  width: 100vw;
   background: #ffffff;
   font-family: 'Monda', sans-serif;
   display: flex;
@@ -9,13 +10,12 @@
   align-content: center;
   top: 0;
   position: sticky;
-  z-index: 100;
+  z-index: 90;
   padding: 0 15px;
 }
 
 .logoSearchContainer {
-  width: 95vw;
-  
+  width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +61,7 @@
   justify-content:space-evenly;
   align-items: center;
 }
-
+/*
 .searchInput {
   border: none;
   border-radius: 25px;
@@ -76,10 +76,10 @@
   color: white;
   cursor: pointer;
 }
-
+*/
 .login__profile {
   font-size: .8rem;
-  color: navy;
+  color: #5fc349;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -87,7 +87,7 @@
 }
 
 .navbarList {
-  width: 95vw;
+  width: 95%;
   display: flex;
   justify-content: flex-end;
   align-items: center;

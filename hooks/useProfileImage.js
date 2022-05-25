@@ -12,7 +12,6 @@ export const useProfileImage = () => {
 		setLoading(true);
 		const snapshot = await uploadBytes(fileRef, file); // till here, this is uploading to firebase storage
 		const photoURL = await getDownloadURL(fileRef);
-
 		//update for the user who's logged in
 		await updateProfile(user, { photoURL });
 		await setLoading(false);

@@ -3,12 +3,27 @@
   margin: 2rem;
 }
 
+
+
+.title {
+  color: #5fc349;
+  margin-bottom: 2rem
+}
+
+.image__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .ingredients__list {
  list-style: none;
+ margin: 0;
+ padding: 0;
 }
 
 .ingredients__listItem {
   display: flex;
+  justify-content: flex-start;
   margin: 0;
   padding: 0;
 }
@@ -16,8 +31,8 @@
 .ingredients__listItemAmount {
   width: 50px;
   height: 1rem;
-  margin: 0;
-  text-align: center;
+  margin: 0 10px 0;
+  text-align: end;
 }
 
 .ingredients__listItemUnit {
@@ -36,4 +51,8 @@
 
 .allergens__item {
   margin-right: 1rem;
+}
+
+.method {
+  margin-top: 2rem;
 }
