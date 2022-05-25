@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
 import Banner from '../components/banner/Banner';
 import Navbar from '../components/nav/Navbar';
@@ -70,7 +71,7 @@ export default function Home({recipes}) {
 												<li
 													key={recipe.id}
 													className={styles.recipe__listitems}
-												>
+												><Link href={`/recipe-detail/${recipe.id}`}>
 													<div>
 														<h3 className={styles.recipe__title}>
 															{recipe.title}
@@ -85,7 +86,7 @@ export default function Home({recipes}) {
 															height={150}
 															objectFit='cover'
 														></Image>
-													</div>
+													</div></Link>
 												</li>
 											)
 									)}
