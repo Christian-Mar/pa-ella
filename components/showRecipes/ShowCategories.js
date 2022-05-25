@@ -16,7 +16,7 @@ const breakPoints = [
 
 export default function ShowCategories({ recipesData, title, category }) {
 	// recipesData is given as a property form the Homepage since we cannot get getServerSideprops (or staticp rops) from a component in next.js.
-	
+
 	return (
 		<div className={styles.list}>
 			<h4 className={styles.section__title}>{title}</h4>
@@ -26,17 +26,18 @@ export default function ShowCategories({ recipesData, title, category }) {
 						recipe =>
 							recipe.category === category && (
 								<li key={recipe.id} className={styles.recipe__listitems}>
-								<Link href={recipe.id}>
-									<div>
-										<h3 className={styles.recipe__title}>{recipe.title}</h3>
-										<Image
-											src={recipe.image}
-											alt='Dish'
-											width={200}
-											height={150}
-											objectFit='cover'
-										></Image>
-									</div></Link>
+									<Link href={`/recipe-detail/${recipe.id}`}>
+										<div>
+											<h3 className={styles.recipe__title}>{recipe.title}</h3>
+											<Image
+												src={recipe.image}
+												alt='Dish'
+												width={200}
+												height={150}
+												objectFit='cover'
+											></Image>
+										</div>
+									</Link>
 								</li>
 							)
 					)}

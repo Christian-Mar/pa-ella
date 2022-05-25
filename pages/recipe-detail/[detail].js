@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
@@ -18,7 +19,13 @@ const RecipeDetail = ({id, recipeProps}) => {
 			<p>{recipeReadable.category}</p>
 			<p>{recipeReadable.title}</p>
 			<p>{recipeReadable.method}</p>
-			<p></p>
+			<Image
+				src={recipeReadable.image}
+				alt='Dish'
+				width={400}
+				height={300}
+				objectFit='cover'
+			></Image>
 		</div>
 	);
 };
