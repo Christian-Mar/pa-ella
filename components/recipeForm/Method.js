@@ -22,16 +22,16 @@ const Method = ({ method, methodTime, updateForm }) => {
 				name='methodTime'
 				
 			> <option value={'default'} disabled>Choose an option</option>
-				<option value='max 20 minutes'>less than 20 min </option>
-				<option value='25 minutes'>20-25 min</option>
-				<option value='30 minutes'>25-30 min</option>
-				<option value='35 minutes'>30-35 min</option>
-				<option value='40 minutes'>35-40 min</option>
-				<option value='45 minutes'>40-45 min</option>
-				<option value='50 minutes'>45-50 min</option>
-				<option value='55 minutes'>50-55 min</option>
-				<option value='60 minutes'>55-60 min</option>
-				<option value='more than 1 hour'>more than 1 hour</option>
+				<option value='max 20 minuten'>minder dan 20 min </option>
+				<option value='25 minuten'>25 min</option>
+				<option value='30 minuten'>30 min</option>
+				<option value='35 minuten'>35 min</option>
+				<option value='40 minuten'>40 min</option>
+				<option value='45 minuten'>45 min</option>
+				<option value='50 minuten'>50 min</option>
+				<option value='55 minuten'>55 min</option>
+				<option value='60 minute'>60 min</option>
+				<option value='meer dan een uur'>more than 1 hour</option>
 			</select>
 		</div>
 	);

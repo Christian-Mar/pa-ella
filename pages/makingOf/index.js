@@ -374,7 +374,7 @@ const making = () => {
 							<tr>
 								<td className={styles.table__cell}> Recept detailpagina </td>
 								<td className={styles.table__cellSmall}>4 uur 30 minuten</td>
-								<td className={styles.table__cellSmall}></td>
+								<td className={styles.table__cellSmall}>5 uur</td>
 							</tr>
 							<tr>
 								<td className={styles.table__cell}> Rating recept </td>

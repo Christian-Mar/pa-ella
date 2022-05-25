@@ -1,3 +1,39 @@
 .container {
   min-height: 100vh;
+  margin: 2rem;
+}
+
+.ingredients__list {
+ list-style: none;
+}
+
+.ingredients__listItem {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.ingredients__listItemAmount {
+  width: 50px;
+  height: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.ingredients__listItemUnit {
+  width: 100px;
+  margin: 0;
+}
+
+.ingredients__listItemIngredient {
+ width: 250px;
+ margin: 0;
+}
+
+.allergens {
+  display: flex;
+}
+
+.allergens__item {
+  margin-right: 1rem;
 }
