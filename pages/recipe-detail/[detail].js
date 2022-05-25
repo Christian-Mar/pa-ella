@@ -1,12 +1,29 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
+import StarRating from '../../components/recipeRating/RecipeRating';
+
+export async function getServerSideProps(context) {
+	const { params } = context;
+	const recipeId = params.detail;
+	const docRef = doc(db, 'recipes', recipeId);
+	const docSnap = await getDoc(docRef);
+
+	return {
+		props: {
+			id: recipeId,
+			recipeProps: JSON.stringify(docSnap.data()) || null,
+		},
+	};
+}
 
 const RecipeDetail = ({ id, recipeProps }) => {
 	const recipeReadable = JSON.parse(recipeProps);
+	let [score, setScore] = useState();
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -94,22 +111,16 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				</div>
 			</div>
 			<p className={styles.method}>{recipeReadable.method}</p>
+			<h4 className={styles.ratingTitle}>Welke score geef je aan dit gerecht?</h4>
+			<div className={styles.rating}>
+							
+				<StarRating changeScore={star => setScore(star)} />
+				<p>{score}</p>
+			</div>
 		</div>
 	);
 };
 
 export default RecipeDetail;
 
-export async function getServerSideProps(context) {
-	const { params } = context;
-	const recipeId = params.detail;
-	const docRef = doc(db, 'recipes', recipeId);
-	const docSnap = await getDoc(docRef);
 
-	return {
-		props: {
-			id: recipeId,
-			recipeProps: JSON.stringify(docSnap.data()) || null,
-		},
-	};
-}
