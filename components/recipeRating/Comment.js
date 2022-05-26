@@ -60,7 +60,7 @@ const Comment = ({recipeId}) => {
 	}, [db]);
 
 	useEffect(() => {
-		setHasLiked(likes.findIndex(like => like.id === user.uid) !== -1);
+		setHasLiked(likes.findIndex(like => like.id === (user && user.uid ) !== -1));
 	}, [likes]);
 
 	async function likePost() {
@@ -80,7 +80,7 @@ const Comment = ({recipeId}) => {
 					<p>
 						{likes.length > 0 && (
 							<p>
-								Dit gerecht heeft {likes.length}{' '}
+								Dit gerecht heeft {likes.length}
 								<FaHeart className={styles.filledHeart} /> veroverd
 							</p>
 						)}

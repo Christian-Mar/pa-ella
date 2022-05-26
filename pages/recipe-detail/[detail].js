@@ -6,7 +6,6 @@ import Footer from '../../components/footer/Footer';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
-import StarRating from '../../components/recipeRating/StarRating';
 import Comment from '../../components/recipeRating/Comment';
 
 export async function getServerSideProps(context) {
@@ -50,7 +49,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						<ul className={styles.ingredients__list}>
 							{recipeReadable.ingredients?.map(ingredient => (
 								<li
-									key={ingredient.index}
+									key={ingredient.id}
 									className={styles.ingredients__listItem}
 								>
 									<p className={styles.ingredients__listItemAmount}>
@@ -68,7 +67,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						<h4>Allergenen</h4>
 						<div className={styles.allergens}>
 							{recipeReadable.allergens.ei === true && (
-								<p className={styles.allergens__item}>ei</p>
+								<p className={styles.allergens__item} key='ei'>ei</p>
 							)}
 							{recipeReadable.allergens.gluten === true && (
 								<p className={styles.allergens__item}>gluten</p>
