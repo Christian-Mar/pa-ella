@@ -80,7 +80,7 @@ const Comment = ({recipeId}) => {
 					<p>
 						{likes.length > 0 && (
 							<p>
-								Dit gerecht heeft {likes.length} <FaHeart className={styles.filledHeart} /> veroverd
+								Dit gerecht heeft <span className={styles.heartScore}>{likes.length} <FaHeart className={styles.filledHeart} /></span> veroverd
 							</p>
 						)}
 					</p>

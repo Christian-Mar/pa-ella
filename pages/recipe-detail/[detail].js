@@ -66,7 +66,9 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						<h4>Allergenen</h4>
 						<div className={styles.allergens}>
 							{recipeReadable.allergens.ei === true && (
-								<p className={styles.allergens__item} key='ei'>ei</p>
+								<p className={styles.allergens__item} key='ei'>
+									ei
+								</p>
 							)}
 							{recipeReadable.allergens.gluten === true && (
 								<p className={styles.allergens__item}>gluten</p>
@@ -111,12 +113,6 @@ const RecipeDetail = ({ id, recipeProps }) => {
 					</div>
 				</div>
 				<p className={styles.method}>{recipeReadable.method}</p>
-				{/*<h4 className={styles.ratingTitle}>Welke score geef je aan dit gerecht?</h4>
-			<div className={styles.rating}>
-							
-				<StarRating changeScore={star => setScore(star)} />
-				<p>{score}</p>
-						</div>*/}
 				<div className={styles.comments}>
 					<h4 className={styles.ratingTitle}>...</h4>
 					<Comment recipeId={id} />
@@ -128,5 +124,3 @@ const RecipeDetail = ({ id, recipeProps }) => {
 };
 
 export default RecipeDetail;
-
-

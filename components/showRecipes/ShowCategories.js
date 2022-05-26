@@ -29,6 +29,9 @@ export default function ShowCategories({ recipesData, title, category }) {
 									<Link href={`/recipe-detail/${recipe.id}`}>
 										<div>
 											<h3 className={styles.recipe__title}>{recipe.title}</h3>
+											<h4 className={styles.recipe__category}>
+												{recipe.methodTime}
+											</h4>
 											<Image
 												src={recipe.image}
 												alt='Dish'

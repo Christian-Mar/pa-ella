@@ -12,6 +12,7 @@ import { CarouselContainer } from '../styles/slider';
 import ShowCategories from '../components/showRecipes/ShowCategories';
 import { db } from '../firebase/config';
 import { getDocs, doc, collection, query } from 'firebase/firestore';
+import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 
 const breakPoints = [
 	{ width: 300, itemsToShow: 1 },
@@ -44,6 +45,7 @@ export default function Home({recipes}) {
 	const { user } = useAuthContext();
 	const recipesReadable = JSON.parse(recipes)
   const recipesData = Array.from(recipesReadable);
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -75,7 +77,7 @@ export default function Home({recipes}) {
 															{recipe.title}
 														</h3>
 														<h4 className={styles.recipe__category}>
-															{recipe.category}
+															{recipe.methodTime}
 														</h4>
 														<Image
 															src={recipe.image}
