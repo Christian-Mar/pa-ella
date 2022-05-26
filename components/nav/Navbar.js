@@ -7,8 +7,6 @@ import Modal from '../authentication/Modal';
 import ProfileImage from '../authentication/ProfileImage';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
-//import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
-
 
 const Navbar = () => {
 
@@ -73,25 +71,6 @@ const Navbar = () => {
 					</Link>
 					<span className={styles.logoSubtitle}>Recepten voor iedereen</span>
 				</div>
-				{/* 
-				<div className={styles.searchContainer}>
-					<div className={styles.searchBar}>
-						<input
-							type='text'
-							className={styles.searchInput}
-							placeholder='Waar heb jij zin in? '
-						/>
-
-						<Image
-							className={styles.searchIcon}
-							src='/images/search_black.svg'
-							alt='search-icon'
-							width='24px'
-							height='24px'
-						/>
-					</div>
-				</div>
-*/}
 				<div className={styles.login__profile}>
 					{user && (
 						<>

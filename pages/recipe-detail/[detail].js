@@ -6,6 +6,7 @@ import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
 import StarRating from '../../components/recipeRating/StarRating';
+import Comment from '../../components/recipeRating/Comment';
 
 export async function getServerSideProps(context) {
 	const { params } = context;
@@ -116,6 +117,9 @@ const RecipeDetail = ({ id, recipeProps }) => {
 							
 				<StarRating changeScore={star => setScore(star)} />
 				<p>{score}</p>
+			</div>
+			<div>
+							<Comment recipeId={id}/>
 			</div>
 		</div>
 	);

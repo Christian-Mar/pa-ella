@@ -69,7 +69,6 @@ const CreateRecipe = () => {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		try {
-			console.log('in here');
 			await addDoc(collection(db, 'recipes'), {
 				title: recipe.title,
 				category: recipe.category,
