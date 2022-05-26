@@ -106,11 +106,14 @@ const making = () => {
 								</td>
 								<td className={styles.table__cell}>nog niet gebruikt</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Laat rating of commentaren toe op recepten
 								</td>
-								<td className={styles.table__cell}>nog niet gebruikt</td>
+								<td className={styles.table__cell}>
+									Favorieten (harten) aanduiden + commentaren in subcollectie
+									van recept
+								</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
@@ -139,12 +142,12 @@ const making = () => {
 								</td>
 								<td className={styles.table__cell}>niet gebruikt</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Maak een detailpagina voor het recept
 								</td>
 								<td className={styles.table__cell}>
-									gebruikt - in ontwikkeling
+									gebruikt
 								</td>
 							</tr>
 							<tr className={styles.table__used}>
@@ -240,7 +243,7 @@ const making = () => {
 						aangenaam qua <i>user experience</i>. Dit laat bovendien toe de
 						pagina's als html op te laden met de mogelijkheid om gericht SEO
 						door te voeren en aldus gemakkelijker vindbaar te zijn voor{' '}
-						<i>search engines</i> als Google. 
+						<i>search engines</i> als Google.
 					</p>
 					<h2>4. Het concept van de website</h2>
 					<p>
@@ -379,7 +382,7 @@ const making = () => {
 							<tr>
 								<td className={styles.table__cell}> Recept commentaar </td>
 								<td className={styles.table__cellSmall}>6 uur 00 minuten</td>
-								<td className={styles.table__cellSmall}>3 uur 00 minuten</td>
+								<td className={styles.table__cellSmall}>5 uur 00 minuten</td>
 							</tr>
 							<tr>
 								<td className={styles.table__cell}> Filter - Search </td>
@@ -469,9 +472,9 @@ const making = () => {
 						traject! Ik ga er niet ver naast zitten als we honderdduizend lijnen
 						code hebben geschreven om er amper tienduizend werkzame regels van
 						over te houden. Uren en uren heeft het gekost. Spreekwoordelijk
-						spreekt men van bloed, zweet en tranen, maar laat het ons gewoon houden op
-						meerdere deodoranten. Het heeft me de hemel gekost aan vloeken. Het
-						heeft me slapeloze nachten bezorgd als ik uit een
+						spreekt men van bloed, zweet en tranen, maar laat het ons gewoon
+						houden op meerdere deodoranten. Het heeft me de hemel gekost aan
+						vloeken. Het heeft me slapeloze nachten bezorgd als ik uit een
 						Javascript-nachtmerrie wakker schoot, zo dicht bij de oplossing en
 						dan toch weer niet dicht genoeg om een array te lezen zonder
 						<i> JSON.parse</i>. Net daarom is zoveel dank verschuldigd aan
@@ -481,18 +484,19 @@ const making = () => {
 						details.
 					</p>
 					<p>
-						
 						Programeren, coderen, <i>whatever</i>, ... is in essentie problemen
 						opdelen, zoals je maaltijden opdeelt in ingrediënten en die
 						verschillende elementen op een zodanige wijze samenbrengt dat het
 						smaakt, dat het goed is, dat het werkt. Voorbij die essentie ligt de
-						 <i> community</i>, de groep die je mee helpt zoeken en die mee
+						<i> community</i>, de groep die je mee helpt zoeken en die mee
 						toekijkt van <i>boilerplate syntax</i> tot werkelijke <i>app</i>.
 					</p>
-					<p>Bij deze, mijn bijzondere dank aan de volgende personen in die <i>community</i>:</p>
+					<p>
+						Bij deze, mijn bijzondere dank aan de volgende personen in die{' '}
+						<i>community</i>:
+					</p>
 
 					<p>
-						
 						- <b>Brecht</b>: voor het geduld, het steeds weer open minded zoeken
 						- bij ieder klein of groot probleem - en het geven van de oplossing.
 						Uiteraard ook grote dank voor het hele traject van zero tot semi
@@ -502,24 +506,33 @@ const making = () => {
 					</p>
 					<p>
 						- <b>Rune</b>: voor de rigoureuze en gestructureerde introductie in
-						styling, mooie slides, kordate regels, waarin iedere pixel telt. Een beter
-						fundament hadden we niet kunnen krijgen.
+						styling, mooie slides, kordate regels, waarin iedere pixel telt. Een
+						beter fundament hadden we niet kunnen krijgen.
 					</p>
 					<p>
 						- <b>Simon</b>: voor het enthousiamse van de vereenvoudiging,
 						waarmee hij de moed kan geven om de Mont Blanc beklimmen als was het
-						ordinair de volgende verdieping in een huis. Hij is er alvast in geslaagd complexe zaken simpel te maken, ons
-						dingen te laten doen die we niet voor mogelijk hadden geacht, wat
-						een ongelooflijk talent is. Quote: <i>'Programmeren is in se nog altijd zoals honderd jaar geleden. Er
+						ordinair de volgende verdieping in een huis. Hij is er alvast in
+						geslaagd complexe zaken simpel te maken, ons dingen te laten doen
+						die we niet voor mogelijk hadden geacht, wat een ongelooflijk talent
+						is. Quote:{' '}
+						<i>
+							'Programmeren is in se nog altijd zoals honderd jaar geleden. Er
 							is nog niets veranderd in de oorspronkelijke functies.'
-						</i></p>
-						  <p><i>Kan er mij dan iemand de code van 1922
-						geven voor een recipe-app? Dat is vijf jaar voor de eerste uitgave van het kookboek van de Boerinnenbond!</i>
+						</i>
 					</p>
 					<p>
-						- <b>Kim</b>: voor de pertinente vragen, het samen zoeken op de code en het delen van 
-						leuke visies op het leven, over kinderen, konijnen, Cobol in sociale
-						secretariaten en het niet nodig hebben van boekhouders.
+						<i>
+							Kan er mij dan iemand de code van 1922 geven voor een recipe-app?
+							Dat is vijf jaar voor de eerste uitgave van het kookboek van de
+							Boerinnenbond!
+						</i>
+					</p>
+					<p>
+						- <b>Kim</b>: voor de pertinente vragen, het samen zoeken op de code
+						en het delen van leuke visies op het leven, over kinderen, konijnen,
+						Cobol in sociale secretariaten en het niet nodig hebben van
+						boekhouders.
 					</p>
 					<p>
 						- <b>Mo</b>: wie ik enorm bewonder om een moeilijk materie als deze
@@ -546,19 +559,21 @@ const making = () => {
 						programmeren, ... door op te splitsen en op te bouwen in blokken.{' '}
 					</p>
 					<p>
-						- <b>Jesse</b>: altijd chill, met zijn styling waarin eenvoud siert op het
-						hoogste niveau en degene die ik onverwachts betrapte in mijn tuin
-						met mijn vriendin (voor het kopen van een tuintafel). Creatief
-						inspirator! Ik hou van dat <i>haute couture</i> design in die sierlijke eenvoud! 
+						- <b>Jesse</b>: altijd chill, met zijn styling waarin eenvoud siert
+						op het hoogste niveau en degene die ik onverwachts betrapte in mijn
+						tuin met mijn vriendin (voor het kopen van een tuintafel). Creatief
+						inspirator! Ik hou van dat <i>haute couture</i> design in die
+						sierlijke eenvoud!
 					</p>
 					<p>
 						- <b>Hans</b>: die altijd die voorsprong had op de rest en een
 						wizard in het stylen. Degene die volgens mij vrouwen kan
 						programmeren. Als hij zichtzelf bier toekent als beloning voor het
 						oplossen van een code probleem, is het zijn vrouw die dit brengt.
-						Tussen die 'useState' <i>(setCodeProblem(false))</i> en 'Edith returnt
-						bier' moet er toch nog ergens een 'useEffect'
-						zitten, niet? Of, Edith is gewoon een heel straffe madam, nog straffer dan Hans. Dat kan natuurlijk ook. Heeft hij ze dan zo geprogrammeerd?
+						Tussen die 'useState' <i>(setCodeProblem(false))</i> en 'Edith
+						returnt bier' moet er toch nog ergens een 'useEffect' zitten, niet?
+						Of, Edith is gewoon een heel straffe madam, nog straffer dan Hans.
+						Dat kan natuurlijk ook. Heeft hij ze dan zo geprogrammeerd?
 					</p>
 				</div>
 			</div>

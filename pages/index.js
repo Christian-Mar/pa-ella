@@ -58,10 +58,10 @@ export default function Home({recipes}) {
 				<h1 className={styles.title}>Wat eten we vandaag?</h1>
 				<div className={styles.image__container}></div>
 				<div className={styles.list}>
-					{user && (
+					{(user && recipesData?.find(recipe => recipe.userId === user.uid)) && (
 						<div>
 							<h4 className={styles.section__title}>Mijn recepten</h4>
-							<CarouselContainer>
+							<CarouselContainer className={styles.CarouselContainer}>
 								<Carousel breakPoints={breakPoints}>
 									{recipesData?.map(
 										recipe =>

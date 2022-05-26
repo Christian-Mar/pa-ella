@@ -17,7 +17,7 @@ const Footer = () => {
 	}
 
 	return (
-		<div>
+		
 			<div className={styles.footer__container}>
 				<ul className={styles.footer__list}>
 					<li onClick={handleOnClickAbout} className={styles.footer__listItem}>
@@ -49,7 +49,7 @@ const Footer = () => {
 						&copy; voor iedereen - open source
 				</div>
 			</div>
-		</div>
+		
 	);
 };
 
