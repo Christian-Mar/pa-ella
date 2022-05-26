@@ -60,8 +60,8 @@ const Comment = ({recipeId}) => {
 	}, [db]);
 
 	useEffect(() => {
-		setHasLiked(likes.findIndex(like => like.id === user.uid ) !== -1);
-	}, [likes, user]);
+		user &&	setHasLiked(likes.findIndex((like) => like.id === user.uid ) !== -1);
+	}, [likes]);
 
 	async function likePost() {
 		if (hasLiked) {
