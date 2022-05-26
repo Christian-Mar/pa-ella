@@ -24,7 +24,6 @@ export async function getServerSideProps(context) {
 
 const RecipeDetail = ({ id, recipeProps }) => {
 	const recipeReadable = JSON.parse(recipeProps);
-	let [score, setScore] = useState();
 	return (
 		<div>
 			<Head>
@@ -49,7 +48,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						<ul className={styles.ingredients__list}>
 							{recipeReadable.ingredients?.map(ingredient => (
 								<li
-									key={ingredient.id}
+									key={ingredient.index}
 									className={styles.ingredients__listItem}
 								>
 									<p className={styles.ingredients__listItemAmount}>
