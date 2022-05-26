@@ -22,19 +22,19 @@ const Comment = ({recipeId}) => {
 	const [comment, setComment] = useState('');
 	const [comments, setComments] = useState([]);
 	const { user } = useAuthContext();
-/*
+
 	useEffect(() => {
 		const unsubscribe = onSnapshot(
 			query(
-				collection(db, 'recipes', id, 'comments'),
-				orderBy('timestamp', 'desc')
+				collection(db, 'recipes', recipeId, 'comments'),
+				orderBy('created', 'asc')
 			),
 			snapshot => {
 				setComments(snapshot.docs);
 			}
 		);
-	}, [db, id]);
-*/
+	}, [db, recipeId]);
+
 	async function sendComment(event) {
 		event.preventDefault();
 		const commentToSend = comment;
@@ -49,57 +49,61 @@ const Comment = ({recipeId}) => {
 
 	return (
 		<div>
-			{user && (
-				<div className={styles.profileContainer}>
-					<div>
-						<Image
-							src={user.photoURL}
-							alt='avatar'
-							width={30}
-							height={30}
-							className={styles.avatar}
-						/>
-					</div>
-					<p className={styles.profileName}>{user.displayName}</p>
-				</div>
-			)}
 			{comments.length > 0 && (
 				<div>
 					{comments.map(comment => (
-						<div
-							key={comment.data().id}
-							
-						>
-							<img
-								
+						<div key={comment.data().id} className={styles.commentContainer}>
+							<div className={styles.profileContainer}>
+							<Image
 								src={comment.data().userImage}
 								alt='user-image'
+								width={25}
+								height={25}
+								className={styles.avatar}
 							/>
-							<p >{comment.data().username}</p>
-							<p >{comment.data().comment}</p>
-							
+							<p className={styles.profileName}>{comment.data().username}</p>
+							</div>
+							<p className={styles.showComment}>{comment.data().comment}</p>
 						</div>
 					))}
 				</div>
 			)}
-			{user && (
-				<form>
-					<input
-						value={comment}
-						onChange={event => setComment(event.target.value)}
-						className='border-none flex-1 focus:ring-0'
-						type='text'
-						placeholder='Enter your comment...'
-					/>
-					<button
-						type='submit'
-						onClick={sendComment}
-						disabled={!comment.trim()}
-					>
-						Post
-					</button>
-				</form>
-			)}
+			<div className={styles.commentContainerInput}>
+				{user && (
+					<div className={styles.profileContainer}>
+						<div>
+							<Image
+								src={user.photoURL}
+								alt='avatar'
+								width={25}
+								height={25}
+								className={styles.avatar}
+							/>
+						</div>
+						<p className={styles.profileNameInput}>{user.displayName}</p>
+					</div>
+				)}
+
+				{user && (
+					<form className={styles.commentForm}>
+						<input
+							value={comment}
+							onChange={event => setComment(event.target.value)}
+							className={styles.inputComment}
+							type='text'
+							placeholder='geef je mening hier ...'
+						/>
+						<button
+							type='submit'
+							onClick={sendComment}
+							disabled={!comment.trim()}
+							className={styles.commentButton}
+						>
+							Verstuur
+						</button>
+					</form>
+				)}
+			</div>
 		</div>
 	);
 };

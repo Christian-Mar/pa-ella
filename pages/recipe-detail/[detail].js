@@ -112,14 +112,17 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				</div>
 			</div>
 			<p className={styles.method}>{recipeReadable.method}</p>
-			<h4 className={styles.ratingTitle}>Welke score geef je aan dit gerecht?</h4>
+			{/*<h4 className={styles.ratingTitle}>Welke score geef je aan dit gerecht?</h4>
 			<div className={styles.rating}>
 							
 				<StarRating changeScore={star => setScore(star)} />
 				<p>{score}</p>
-			</div>
-			<div>
-							<Comment recipeId={id}/>
+						</div>*/}
+			<div className={styles.comments}>
+				<h4 className={styles.ratingTitle}>
+					Hoe wordt dit gesmaakt?
+				</h4>
+				<Comment recipeId={id} />
 			</div>
 		</div>
 	);
