@@ -95,7 +95,7 @@ const Navbar = () => {
 				<div className={styles.login__profile}>
 					{user && (
 						<>
-							<p>{user.email}</p>
+							<p>{user.displayName}</p>
 							<div
 								className={styles.avatar__container}
 								onClick={() => setShowModal(true)}

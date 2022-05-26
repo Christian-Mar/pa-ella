@@ -373,8 +373,8 @@ const making = () => {
 							</tr>
 							<tr>
 								<td className={styles.table__cell}> Recept detailpagina </td>
-								<td className={styles.table__cellSmall}>4 uur 30 minuten</td>
-								<td className={styles.table__cellSmall}>5 uur</td>
+								<td className={styles.table__cellSmall}>6 uur 30 minuten</td>
+								<td className={styles.table__cellSmall}>6 uur</td>
 							</tr>
 							<tr>
 								<td className={styles.table__cell}> Rating recept </td>
@@ -448,7 +448,7 @@ const making = () => {
 									<b>TOTAAL</b>
 								</td>
 								<td className={styles.table__cellSmall}>
-									<b>113 uur 15 minuten</b>
+									<b>115 uur 15 minuten</b>
 								</td>
 								<td className={styles.table__cellSmall}>
 									<b></b>

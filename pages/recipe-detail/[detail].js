@@ -5,7 +5,7 @@ import Navbar from '../../components/nav/Navbar';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
-import StarRating from '../../components/recipeRating/RecipeRating';
+import StarRating from '../../components/recipeRating/StarRating';
 
 export async function getServerSideProps(context) {
 	const { params } = context;

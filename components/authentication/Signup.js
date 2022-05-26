@@ -8,22 +8,22 @@ import styles from '../../styles/SignUpIn.module.css';
 export default function Signup() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [displayName, setDisplayName] = useState('');
 	const { error, signup } = useSignup();
 
 	const router = useRouter();
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		signup(email, password);
+		signup(email, password, displayName,);
 		router.push('/');
 	};
 
 	return (
 		<div className={styles.container}>
-		
 			<div className={styles.form__position}>
 				<div className={styles.form__container}>
-					<h2 className={styles.form__title}>Sign up</h2>
+					<h2 className={styles.form__title}>Maak een account</h2>
 					<form onSubmit={handleSubmit} className={styles.form}>
 						<label className={styles.form__label}>
 							<span className={styles.form__labelTitle}>Email</span>
@@ -36,7 +36,7 @@ export default function Signup() {
 							/>
 						</label>
 						<label className={styles.form__label}>
-							<span className={styles.form__labelTitle}>Password</span>
+							<span className={styles.form__labelTitle}>Paswoord</span>
 							<input
 								required
 								type='password'
@@ -45,7 +45,17 @@ export default function Signup() {
 								className={styles.form__labelInput}
 							/>
 						</label>
-						<button className={styles.form__button}>Submit</button>
+						<label className={styles.form__label}>
+							<span className={styles.form__labelTitle}>Naam</span>
+							<input
+								required
+								type='text'
+								onChange={e => setDisplayName(e.target.value)}
+								value={displayName}
+								className={styles.form__labelInput}
+							/>
+						</label>
+						<button className={styles.form__button}>Bevestig</button>
 						{error && <p>{error}</p>}
 					</form>
 				</div>
