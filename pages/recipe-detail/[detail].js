@@ -120,7 +120,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						</div>*/}
 			<div className={styles.comments}>
 				<h4 className={styles.ratingTitle}>
-					Hoe wordt dit gesmaakt?
+					Over dit gerecht ...
 				</h4>
 				<Comment recipeId={id} />
 			</div>

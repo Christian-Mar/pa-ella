@@ -9,19 +9,22 @@ import {
 	onSnapshot,
 	orderBy,
 	query,
-	serverTimestamp,
 	setDoc,
 	Timestamp,
 } from 'firebase/firestore';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { useProfileImage } from '../../hooks/useProfileImage';
 import styles from '../../styles/Comment.module.css';
-import { connectStorageEmulator } from 'firebase/storage';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+
 
 const Comment = ({recipeId}) => {
 	const [comment, setComment] = useState('');
 	const [comments, setComments] = useState([]);
+	const [likes, setLikes] = useState([]);
+	const [hasLiked, setHasLiked] = useState(false);
 	const { user } = useAuthContext();
+
+// comments 
 
 	useEffect(() => {
 		const unsubscribe = onSnapshot(
@@ -47,21 +50,67 @@ const Comment = ({recipeId}) => {
 		});
 	}
 
+	//likes
+
+	useEffect(() => {
+		const unsubscribe = onSnapshot(
+			collection(db, 'recipes', recipeId, 'likes'),
+			snapshot => setLikes(snapshot.docs)
+		);
+	}, [db]);
+
+	useEffect(() => {
+		setHasLiked(likes.findIndex(like => like.id === user.uid) !== -1);
+	}, [likes]);
+
+	async function likePost() {
+		if (hasLiked) {
+			await deleteDoc(doc(db, 'recipes', recipeId, 'likes', user.uid));
+		} else {
+			await setDoc(doc(db, 'recipes', recipeId, 'likes', user.uid), {
+				username: user.displayName,
+			});
+		}
+	}
+
 	return (
 		<div>
+			<div className={styles.heartContainer}>
+				<div>
+					<p>
+						{likes.length > 0 && (
+							<p>
+								Dit gerecht heeft {likes.length}{' '}
+								<FaHeart className={styles.filledHeart} /> veroverd
+							</p>
+						)}
+					</p>
+				</div>
+				<div>
+					{user && (
+						<div>
+							{hasLiked ? (
+								<FaHeart onClick={likePost} className={styles.inputHeart} />
+							) : (
+								<FaRegHeart onClick={likePost} className={styles.inputHeart} />
+							)}
+						</div>
+					)}
+				</div>
+			</div>
 			{comments.length > 0 && (
 				<div>
 					{comments.map(comment => (
 						<div key={comment.data().id} className={styles.commentContainer}>
 							<div className={styles.profileContainer}>
-							<Image
-								src={comment.data().userImage}
-								alt='user-image'
-								width={25}
-								height={25}
-								className={styles.avatar}
-							/>
-							<p className={styles.profileName}>{comment.data().username}</p>
+								<Image
+									src={comment.data().userImage}
+									alt='user-image'
+									width={25}
+									height={25}
+									className={styles.avatar}
+								/>
+								<p className={styles.profileName}>{comment.data().username}</p>
 							</div>
 							<p className={styles.showComment}>{comment.data().comment}</p>
 						</div>
