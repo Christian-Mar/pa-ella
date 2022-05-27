@@ -377,7 +377,7 @@ const making = () => {
 							<tr>
 								<td className={styles.table__cell}> Recept detailpagina </td>
 								<td className={styles.table__cellSmall}>6 uur 30 minuten</td>
-								<td className={styles.table__cellSmall}>6 uur</td>
+								<td className={styles.table__cellSmall}>6 uur 30 minuten</td>
 							</tr>
 							<tr>
 								<td className={styles.table__cell}> Recept commentaar </td>
@@ -510,12 +510,12 @@ const making = () => {
 						beter fundament hadden we niet kunnen krijgen.
 					</p>
 					<p>
-						- <b>Simon</b>: voor het enthousiamse van de vereenvoudiging,
+						- <b>Simon</b>: voor het enthousiasme van de vereenvoudiging,
 						waarmee hij de moed kan geven om de Mont Blanc beklimmen als was het
 						ordinair de volgende verdieping in een huis. Hij is er alvast in
 						geslaagd complexe zaken simpel te maken, ons dingen te laten doen
 						die we niet voor mogelijk hadden geacht, wat een ongelooflijk talent
-						is. Quote:{' '}
+						is. Quote:
 						<i>
 							'Programmeren is in se nog altijd zoals honderd jaar geleden. Er
 							is nog niets veranderd in de oorspronkelijke functies.'

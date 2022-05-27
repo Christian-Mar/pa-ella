@@ -4,16 +4,16 @@ const Method = ({ method, methodTime, updateForm }) => {
 	const onChange = e => updateForm(e.target.name, e.target.value);
 	return (
 		<div>
-			<h3 className={styles.label}>Preparation: </h3>
+			<h3 className={styles.label}>Bereiding: </h3>
 			<textarea
 				type='text'
 				name='method'
 				onChange={onChange}
 				value={method}
-				placeholder='Describe the preparation'
+				placeholder='Beschrijf eenvoudig de verschillende stappen om tot het gerecht te komen'
 				className={styles.form__textAreaField}
 			/>
-			<h3 className={styles.label}>Preparation time: </h3>
+			<h3 className={styles.label}>Actieve bereidingstijd: </h3>
 			{methodTime}
 			<select
 				className={styles.form__selectField}
@@ -21,7 +21,7 @@ const Method = ({ method, methodTime, updateForm }) => {
 				defaultValue={'default'}
 				name='methodTime'
 				
-			> <option value={'default'} disabled>Choose an option</option>
+			> <option value={'default'} disabled>Kies</option>
 				<option value='max 20 minuten'>minder dan 20 min </option>
 				<option value='25 minuten'>25 min</option>
 				<option value='30 minuten'>30 min</option>

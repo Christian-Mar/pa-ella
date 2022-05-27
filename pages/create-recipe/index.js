@@ -106,7 +106,7 @@ const CreateRecipe = () => {
 					>
 						&larr;
 					</button>
-					<h4 className={styles.container__title}>Step {count} of 5</h4>
+					<h4 className={styles.container__title}>Stap {count} van 5</h4>
 					<button
 						className={styles.form__DirectionButton}
 						type='submit'
@@ -146,15 +146,13 @@ const CreateRecipe = () => {
 
 					{count === 4 ? (
 						<div>
-							<Allergens
-								allergens={recipe.allergens}
-								updateForm={updateForm}
-							/>
+							<Allergens allergens={recipe.allergens} updateForm={updateForm} />
 						</div>
 					) : null}
 
 					{count === 5 ? (
 						<div className={styles.form__submitContainer}>
+							<h3 className={styles.label}>Foto toevoegen: </h3>
 							<div className={styles.form__imageContainer}>
 								<div className={styles.image__dish}>
 									<Image
@@ -173,7 +171,7 @@ const CreateRecipe = () => {
 								onClick={handleSubmit}
 								type='submit'
 							>
-								Submit
+								Bevestig
 							</button>
 						</div>
 					) : null}

@@ -12,48 +12,48 @@ const Category = ({ category, updateForm}) => {
 						type='radio'
 						name='category'
 						onChange={onChange}
-						value='breakfast'
+						value='ontbijt'
 						checked={category === 'breakfast'}
 						id='breakfast'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='breakfast'>
-						breakfast
+						ontbijt
 					</label>
 					<input
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
 						onChange={onChange}
-						value='soup'
+						value='soep'
 						checked={category === 'soup'}
 						id='soup'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='soup'>
-						soup
+						soep
 					</label>
 					<input
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
 						onChange={onChange}
-						value='starter'
+						value='voorgerecht'
 						checked={category === 'starter'}
 						id='starter'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='starter'>
-						starter
+						voorgerecht
 					</label>
 					<input
 						className={styles.form__radioField}
 						type='radio'
 						name='category'
 						onChange={onChange}
-						value='salad'
+						value='salade'
 						checked={category === 'salad'}
 						id='salad'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='salad'>
-						salad
+						salade
 					</label>
 					<input
 						className={styles.form__radioField}
@@ -72,12 +72,12 @@ const Category = ({ category, updateForm}) => {
 						type='radio'
 						name='category'
 						onChange={onChange}
-						value='dinner'
+						value='maatlijd'
 						checked={category === 'dinner'}
 						id='dinner'
 					/>
 					<label className={styles.form__radioLabel} htmlFor='dinner'>
-						dinner
+						maaltijd
 					</label>
 					<input
 						className={styles.form__radioField}

@@ -42,7 +42,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 	
 	return (
 		<div>
-			<h3 className={styles.label}>Ingredients component </h3>
+			<h3 className={styles.label}>Ingredienten: </h3>
 			<div>
 				{ingredientValues.map((ingredientValues, index) => (
 					<div key={index}>
@@ -50,7 +50,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 						<input
 							type='text'
 							name='amount'
-							placeholder='amount'
+							placeholder='hoeveelheid'
 							value={ingredientValues.amount}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
@@ -58,7 +58,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 						<input
 							type='text'
 							name='unit'
-							placeholder='unit'
+							placeholder='eenheid'
 							value={ingredientValues.unit}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}

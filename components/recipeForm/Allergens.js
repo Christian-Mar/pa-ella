@@ -14,6 +14,7 @@ function Allergens({ updateForm, allergens }) {
 
 	return (
 		<>
+			<h3 className={styles.label}>Allergenen: </h3>
 			<div className={styles.form__radioFieldContainer}>
 				<input
 					type='checkbox'

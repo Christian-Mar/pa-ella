@@ -7,7 +7,7 @@ export const useProfileImage = () => {
   const user = auth.currentUser;
 
 	async function upload(file, user, setLoading) {
-		//console.log(user);
+		
 		const fileRef = ref(storage, 'profileImages/' + user.uid + '.png');
 		setLoading(true);
 		const snapshot = await uploadBytes(fileRef, file); // till here, this is uploading to firebase storage
