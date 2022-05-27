@@ -97,23 +97,23 @@ export default function Home({recipes}) {
 				</div>
 				<ShowCategories
 					title='Ontbijt'
-					category='breakfast'
+					category='ontbijt'
 					CarouselContainer={CarouselContainer}
 					recipesData={recipesData}
 				/>
 				<ShowCategories
 					title='Salade'
-					category='salad'
+					category='salade'
 					recipesData={recipesData}
 				/>
 				<ShowCategories
 					title='Soep'
-					category='soup'
+					category='soep'
 					recipesData={recipesData}
 				/>
 				<ShowCategories
 					title='Voorgerecht'
-					category='starter'
+					category='voorgerecht'
 					recipesData={recipesData}
 				/>
 				<ShowCategories
@@ -123,7 +123,7 @@ export default function Home({recipes}) {
 				/>
 				<ShowCategories
 					title='Maaltijd'
-					category='dinner'
+					category='maaltijd'
 					recipesData={recipesData}
 				/>
 				<ShowCategories

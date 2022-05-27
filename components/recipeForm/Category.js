@@ -13,10 +13,10 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='ontbijt'
-						checked={category === 'breakfast'}
-						id='breakfast'
+						checked={category === 'ontbijt'}
+						id='ontbijt'
 					/>
-					<label className={styles.form__radioLabel} htmlFor='breakfast'>
+					<label className={styles.form__radioLabel} htmlFor='ontbijt'>
 						ontbijt
 					</label>
 					<input
@@ -25,10 +25,10 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='soep'
-						checked={category === 'soup'}
-						id='soup'
+						checked={category === 'soep'}
+						id='soep'
 					/>
-					<label className={styles.form__radioLabel} htmlFor='soup'>
+					<label className={styles.form__radioLabel} htmlFor='soep'>
 						soep
 					</label>
 					<input
@@ -37,10 +37,10 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='voorgerecht'
-						checked={category === 'starter'}
-						id='starter'
+						checked={category === 'voorgerecht'}
+						id='voorgerecht'
 					/>
-					<label className={styles.form__radioLabel} htmlFor='starter'>
+					<label className={styles.form__radioLabel} htmlFor='voorgerecht'>
 						voorgerecht
 					</label>
 					<input
@@ -49,10 +49,10 @@ const Category = ({ category, updateForm}) => {
 						name='category'
 						onChange={onChange}
 						value='salade'
-						checked={category === 'salad'}
-						id='salad'
+						checked={category === 'salade'}
+						id='salade'
 					/>
-					<label className={styles.form__radioLabel} htmlFor='salad'>
+					<label className={styles.form__radioLabel} htmlFor='salade'>
 						salade
 					</label>
 					<input
@@ -72,11 +72,11 @@ const Category = ({ category, updateForm}) => {
 						type='radio'
 						name='category'
 						onChange={onChange}
-						value='maatlijd'
-						checked={category === 'dinner'}
-						id='dinner'
+						value='maaltijd'
+						checked={category === 'maaltijd'}
+						id='maaltijd'
 					/>
-					<label className={styles.form__radioLabel} htmlFor='dinner'>
+					<label className={styles.form__radioLabel} htmlFor='maaltijd'>
 						maaltijd
 					</label>
 					<input
