@@ -12,7 +12,7 @@ import { CarouselContainer } from '../styles/slider';
 import ShowCategories from '../components/showRecipes/ShowCategories';
 import { db } from '../firebase/config';
 import { getDocs, doc, collection, query } from 'firebase/firestore';
-import { FaExternalLinkSquareAlt } from 'react-icons/fa';
+
 
 const breakPoints = [
 	{ width: 300, itemsToShow: 1 },

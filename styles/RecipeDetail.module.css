@@ -71,3 +71,20 @@
 .comments {
   margin-top: 3rem;
 }
+
+.submitButton {
+    height: 50px;
+    width: 200px;
+    color: white;
+    
+    background: black;
+    
+    border: none;
+    border-radius: 25px;
+    margin: 3rem 2rem 1rem;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background: #5fc349;
+}

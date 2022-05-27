@@ -5,8 +5,10 @@ import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, deleteDoc } from 'firebase/firestore';
 import Comment from '../../components/recipeRating/Comment';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
 	const { params } = context;
@@ -22,8 +24,26 @@ export async function getServerSideProps(context) {
 	};
 }
 
+
+
+
+
+
+
 const RecipeDetail = ({ id, recipeProps }) => {
 	const recipeReadable = JSON.parse(recipeProps);
+	console.log(recipeReadable);
+	const { user } = useAuthContext();
+	const router = useRouter();
+	const handleDelete = async id => {
+		const taskDocRef = doc(db, 'recipes', id);
+		try {
+			await deleteDoc(taskDocRef);
+			router.push('/');
+		} catch (err) {
+			alert(err);
+		}
+	};
 	return (
 		<div>
 			<Head>
@@ -32,6 +52,17 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 			<Navbar />
+
+			
+			{(user && recipeReadable.userId === user.uid) && 
+			<button
+				className={styles.submitButton}
+				onClick={() => handleDelete(id)}
+			>
+				Verwijder
+			</button>
+			// this button is only visible for own recipes 
+	}
 			<div className={styles.container}>
 				<h1 className={styles.title}>{recipeReadable.title}</h1>
 
