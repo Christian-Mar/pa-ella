@@ -5,7 +5,7 @@ const Category = ({ category, updateForm}) => {
 	return (
 		<div>
 			<div className={styles.form__radio}>
-				<h3 className={styles.label}>Category: </h3>
+				<h3 className={styles.label}>Categorie: </h3>
 				<div className={styles.form__radioFieldContainer}>
 					<input
 						className={styles.form__radioField}

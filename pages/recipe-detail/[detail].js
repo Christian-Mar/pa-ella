@@ -3,12 +3,15 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
+import EditRecipe from '../../components/recipeEdit/EditRecipe'
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc, deleteDoc } from 'firebase/firestore';
 import Comment from '../../components/recipeRating/Comment';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useRouter } from 'next/router';
+
+// next SSR 
 
 export async function getServerSideProps(context) {
 	const { params } = context;
@@ -24,26 +27,38 @@ export async function getServerSideProps(context) {
 	};
 }
 
-
-
-
-
-
+// detail page
 
 const RecipeDetail = ({ id, recipeProps }) => {
+	const [recipeToEdit, setRecipeToEdit] = useState(null)
 	const recipeReadable = JSON.parse(recipeProps);
 	console.log(recipeReadable);
 	const { user } = useAuthContext();
 	const router = useRouter();
+
+	// delete recipe 
 	const handleDelete = async id => {
-		const taskDocRef = doc(db, 'recipes', id);
+		const recipeDocRef = doc(db, 'recipes', id);
 		try {
-			await deleteDoc(taskDocRef);
+			await deleteDoc(recipeDocRef);
 			router.push('/');
 		} catch (err) {
 			alert(err);
 		}
 	};
+
+	/* update 
+	const handleUpdate = async id => {
+		const recipeDocRef = doc(db, 'recipes', id);
+		try {
+			await updateDoc(recipeDocRef), data({merge: true});
+			router.push('/');
+		} catch (err) {
+			alert(err);
+		}
+	};
+*/
+
 	return (
 		<div>
 			<Head>
@@ -53,16 +68,24 @@ const RecipeDetail = ({ id, recipeProps }) => {
 			</Head>
 			<Navbar />
 
-			
-			{(user && recipeReadable.userId === user.uid) && 
-			<button
-				className={styles.submitButton}
-				onClick={() => handleDelete(id)}
-			>
-				Verwijder
-			</button>
-			// this button is only visible for own recipes 
-	}
+			{
+				user && recipeReadable.userId === user.uid && (
+					<button
+						className={styles.submitButton}
+						onClick={() => handleDelete(id)}
+					>
+						Verwijder
+					</button>
+				)
+				// this button is only visible for own recipes
+			}
+
+			<EditRecipe
+				recipeId={id}
+				recipeToEdit={recipeToEdit}
+				setRecipeToEdit={setRecipeToEdit}
+				recipeReadable={recipeReadable}
+			/>
 			<div className={styles.container}>
 				<h1 className={styles.title}>{recipeReadable.title}</h1>
 

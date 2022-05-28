@@ -4,7 +4,7 @@ const Title = ({ title, updateForm }) => {
 	const onChange = e => updateForm(e.target.name, e.target.value);
 	return (
 		<div>
-			<h3 className={styles.label}>Recipe name: </h3>
+			<h3 className={styles.label}>Naam van het recept: </h3>
 			<input
 				type='text'
 				name='title'
