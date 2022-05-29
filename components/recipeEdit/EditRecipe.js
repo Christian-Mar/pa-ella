@@ -19,18 +19,18 @@ console.log(recipeReadable.title)
 		<div>
 			<input
 				type='text'
-				placeholder={recipeReadable.title}
+				defaultValue={recipeReadable.title}
 				onChange={e => setNewTitle(e.target.value)}
 			/>
 			<input
 				type='text'
+				defaultValue={recipeReadable.method}
 				placeholder='Beschrijving'
 				onChange={e => {
 					setNewDescription(e.target.value);
 				}}
 			/>
 			<button
-				
 				onClick={() => {
 					handleEdit(recipeId);
 					setRecipeToEdit(null);
