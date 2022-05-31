@@ -77,13 +77,13 @@ const Comment = ({recipeId}) => {
 		<div>
 			<div className={styles.heartContainer}>
 				<div>
-					<p>
+					<div>
 						{likes.length > 0 && (
 							<p>
 								Dit gerecht heeft <span className={styles.heartScore}>{likes.length} <FaHeart className={styles.filledHeart} /></span> veroverd
 							</p>
 						)}
-					</p>
+					</div>
 				</div>
 				<div>
 					{user && (
@@ -100,7 +100,7 @@ const Comment = ({recipeId}) => {
 			{comments.length > 0 && (
 				<div>
 					{comments.map(comment => (
-						<div key={comment.data().id} className={styles.commentContainer}>
+						<div key={comment.id} className={styles.commentContainer}>
 							<div className={styles.profileContainer}>
 								<Image
 									src={comment.data().userImage}

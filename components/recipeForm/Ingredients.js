@@ -8,8 +8,6 @@ const Ingredients = ({ updateForm, ingredients }) => {
 
 	const [ingredientValues, setIngredientValues] = useState(ingredients);
 
-	console.log(ingredientValues);
-
 	useEffect(() => {
 		updateForm('ingredients', ingredientValues);
 	}, [

@@ -3,15 +3,16 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
-import EditRecipe from '../../components/recipeEdit/EditRecipe'
+import EditRecipe from '../../components/recipeEdit/EditRecipe';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc, deleteDoc } from 'firebase/firestore';
 import Comment from '../../components/recipeRating/Comment';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useRouter } from 'next/router';
+import { v4 as uuidv4 } from 'uuid';
 
-// next SSR 
+// next.js  SSR
 
 export async function getServerSideProps(context) {
 	const { params } = context;
@@ -30,13 +31,12 @@ export async function getServerSideProps(context) {
 // detail page
 
 const RecipeDetail = ({ id, recipeProps }) => {
-	const [recipeToEdit, setRecipeToEdit] = useState(null)
+	const [recipeToEdit, setRecipeToEdit] = useState(null);
 	const recipeReadable = JSON.parse(recipeProps);
-	console.log(recipeReadable);
 	const { user } = useAuthContext();
 	const router = useRouter();
 
-	// delete recipe 
+	// delete recipe
 	const handleDelete = async id => {
 		const recipeDocRef = doc(db, 'recipes', id);
 		try {
@@ -46,18 +46,6 @@ const RecipeDetail = ({ id, recipeProps }) => {
 			alert(err);
 		}
 	};
-
-	/* update 
-	const handleUpdate = async id => {
-		const recipeDocRef = doc(db, 'recipes', id);
-		try {
-			await updateDoc(recipeDocRef), data({merge: true});
-			router.push('/');
-		} catch (err) {
-			alert(err);
-		}
-	};
-*/
 
 	return (
 		<div>
@@ -90,19 +78,21 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				<h1 className={styles.title}>{recipeReadable.title}</h1>
 
 				<div className={styles.image__container}>
-					<Image
-						src={recipeReadable.image}
-						alt='Dish'
-						width={400}
-						height={300}
-						objectFit='cover'
-					></Image>
+					<div>
+						<Image
+							src={recipeReadable.image}
+							alt='Dish'
+							width={400}
+							height={300}
+							objectFit='cover'
+						></Image>
+					</div>
 					<div>
 						<h4>Ingrediënten</h4>
 						<ul className={styles.ingredients__list}>
 							{recipeReadable.ingredients?.map(ingredient => (
 								<li
-									key={ingredient.index}
+									key={uuidv4()}
 									className={styles.ingredients__listItem}
 								>
 									<p className={styles.ingredients__listItemAmount}>
@@ -117,56 +107,88 @@ const RecipeDetail = ({ id, recipeProps }) => {
 								</li>
 							))}
 						</ul>
-						<h4>Allergenen</h4>
+						<div>
+							<h4>Allergenen</h4>
+						</div>
 						<div className={styles.allergens}>
-							{recipeReadable.allergens.ei === true && (
-								<p className={styles.allergens__item} key='ei'>
-									ei
-								</p>
-							)}
-							{recipeReadable.allergens.gluten === true && (
-								<p className={styles.allergens__item}>gluten</p>
-							)}
-							{recipeReadable.allergens.lupine === true && <p>lupine</p>}
-							{recipeReadable.allergens.melk === true && (
-								<p className={styles.allergens__item}>melk</p>
-							)}
-							{recipeReadable.allergens.mosterd === true && (
-								<p className={styles.allergens__item}>mosterd</p>
-							)}
-							{recipeReadable.allergens.noten === true && (
-								<p className={styles.allergens__item}>noten</p>
-							)}
-							{recipeReadable.allergens.pinda === true && (
-								<p className={styles.allergens__item}>pinda</p>
-							)}
-							{recipeReadable.allergens.schaaldieren === true && (
-								<p className={styles.allergens__item}>schaaldieren</p>
-							)}
-							{recipeReadable.allergens.selder === true && (
-								<p className={styles.allergens__item}>selder</p>
-							)}
-							{recipeReadable.allergens.sesamzaad === true && (
-								<p className={styles.allergens__item}>sesamzaad</p>
-							)}
-							{recipeReadable.allergens.soja === true && (
-								<p className={styles.allergens__item}>soja</p>
-							)}
-							{recipeReadable.allergens.sulfiet === true && (
-								<p className={styles.allergens__item}>sulfiet</p>
-							)}
-							{recipeReadable.allergens.vis === true && (
-								<p className={styles.allergens__item}>vis</p>
-							)}
-							{recipeReadable.allergens.weekdieren === true && (
-								<p className={styles.allergens__item}>weekdieren</p>
-							)}
+							<div>
+								{recipeReadable.allergens.ei === true && (
+									<p className={styles.allergens__item} key='ei'>
+										ei
+									</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.gluten === true && (
+									<p className={styles.allergens__item}>gluten</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.lupine === true && <p>lupine</p>}
+							</div>
+							<div>
+								{recipeReadable.allergens.melk === true && (
+									<p className={styles.allergens__item}>melk</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.mosterd === true && (
+									<p className={styles.allergens__item}>mosterd</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.noten === true && (
+									<p className={styles.allergens__item}>noten</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.pinda === true && (
+									<p className={styles.allergens__item}>pinda</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.schaaldieren === true && (
+									<p className={styles.allergens__item}>schaaldieren</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.selder === true && (
+									<p className={styles.allergens__item}>selder</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.sesamzaad === true && (
+									<p className={styles.allergens__item}>sesamzaad</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.soja === true && (
+									<p className={styles.allergens__item}>soja</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.sulfiet === true && (
+									<p className={styles.allergens__item}>sulfiet</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.vis === true && (
+									<p className={styles.allergens__item}>vis</p>
+								)}
+							</div>
+							<div>
+								{recipeReadable.allergens.weekdieren === true && (
+									<p className={styles.allergens__item}>weekdieren</p>
+								)}
+							</div>
 						</div>
 						<h4>Bereidingstijd</h4>
 						<p>{recipeReadable.methodTime}</p>
 					</div>
 				</div>
-				<p className={styles.method}>{recipeReadable.method}</p>
+				<div>
+					<p className={styles.method}>{recipeReadable.method}</p>
+				</div>
 				<div className={styles.comments}>
 					<h4 className={styles.ratingTitle}>...</h4>
 					<Comment recipeId={id} />
