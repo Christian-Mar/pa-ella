@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
-import Category from '../../components/recipeForm/Category';
+
 //import styles from './EditTask.module.css';
 
 const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {

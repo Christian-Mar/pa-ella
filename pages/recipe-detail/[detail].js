@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
 import EditRecipe from '../../components/recipeEdit/EditRecipe';
+import Modal from '../../components/recipeEdit/Modal';
 import styles from '../../styles/RecipeDetail.module.css';
 import { db } from '../../firebase/config';
 import { getDoc, doc, deleteDoc } from 'firebase/firestore';
@@ -32,6 +33,7 @@ export async function getServerSideProps(context) {
 
 const RecipeDetail = ({ id, recipeProps }) => {
 	const [recipeToEdit, setRecipeToEdit] = useState(null);
+	const [showModal, setShowModal] = useState(false);
 	const recipeReadable = JSON.parse(recipeProps);
 	const { user } = useAuthContext();
 	const router = useRouter();
@@ -68,12 +70,30 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				// this button is only visible for own recipes
 			}
 
+			{
+				user && recipeReadable.userId === user.uid && (
+					<button
+						className={styles.submitButton}
+						onClick={() => setShowModal(true)}
+					>
+						Wijzig
+					</button>
+				)
+				// this button is only visible for own recipes
+			}
+			<Modal
+				title='Verander het recept'
+				show={showModal}
+				onClose={() => {
+					setShowModal(false);
+				}}
+			>
 			<EditRecipe
 				recipeId={id}
 				recipeToEdit={recipeToEdit}
 				setRecipeToEdit={setRecipeToEdit}
 				recipeReadable={recipeReadable}
-			/>
+			/></Modal>
 			<div className={styles.container}>
 				<h1 className={styles.title}>{recipeReadable.title}</h1>
 
@@ -91,10 +111,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						<h4>Ingrediënten</h4>
 						<ul className={styles.ingredients__list}>
 							{recipeReadable.ingredients?.map(ingredient => (
-								<li
-									key={uuidv4()}
-									className={styles.ingredients__listItem}
-								>
+								<li key={uuidv4()} className={styles.ingredients__listItem}>
 									<p className={styles.ingredients__listItemAmount}>
 										{ingredient.amount}
 									</p>
