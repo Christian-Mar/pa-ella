@@ -120,7 +120,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 				<label htmlFor='dessert'>dessert</label>
 			</div>
 			<div>
-				{recipeReadable.ingredients.map((ingredients, index) => (
+				{newIngredients.map((ingredients, index) => (
 					<div key={index}>
 						<input
 							type='text'

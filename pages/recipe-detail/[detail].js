@@ -88,12 +88,12 @@ const RecipeDetail = ({ id, recipeProps }) => {
 					setShowModal(false);
 				}}
 			>
-			<EditRecipe
-				recipeId={id}
-				recipeToEdit={recipeToEdit}
-				setRecipeToEdit={setRecipeToEdit}
-				recipeReadable={recipeReadable}
-			/></Modal>
+				<EditRecipe
+					recipeId={id}
+					recipeToEdit={recipeToEdit}
+					setRecipeToEdit={setRecipeToEdit}
+					recipeReadable={recipeReadable}
+				/></Modal>
 			<div className={styles.container}>
 				<h1 className={styles.title}>{recipeReadable.title}</h1>
 
@@ -109,7 +109,9 @@ const RecipeDetail = ({ id, recipeProps }) => {
 					</div>
 					<div>
 						<h4>Ingrediënten</h4>
-						<ul className={styles.ingredients__list}>
+						<div>
+
+							<ul className={styles.ingredients__list}>	
 							{recipeReadable.ingredients?.map(ingredient => (
 								<li key={uuidv4()} className={styles.ingredients__listItem}>
 									<p className={styles.ingredients__listItemAmount}>
@@ -123,7 +125,8 @@ const RecipeDetail = ({ id, recipeProps }) => {
 									</p>
 								</li>
 							))}
-						</ul>
+							</ul>
+						</div>
 						<div>
 							<h4>Allergenen</h4>
 						</div>

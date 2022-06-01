@@ -45,7 +45,7 @@ export default function Home({recipes}) {
 	const { user } = useAuthContext();
 	const recipesReadable = JSON.parse(recipes)
   const recipesData = Array.from(recipesReadable);
-
+	console.log(recipesData.map(recipe => recipe.image))
 	return (
 		<div className={styles.container}>
 			<Head>
