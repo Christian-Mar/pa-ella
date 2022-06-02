@@ -9,7 +9,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const [newDescription, setNewDescription] = useState('');
 	const [newCategory, setNewCategory] = useState(recipeReadable.category);
 	const [newIngredients, setNewIngredients] = useState(recipeReadable.ingredients);
-	console.log(newCategory);
+	console.log(newIngredients)
 	
 
 	const handleEdit = async recipeId => {
@@ -22,10 +22,9 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 		});
 	};
 
-	// new values not working yet, but array is only a spread of existing values?
 	const handleChangeInput = (index, e) => {
 		const values = [...newIngredients];
-		setNewIngredients[index][e.target.name] = e.target.value;
+		newIngredients[index][e.target.name] = e.target.value;
 		setNewIngredients(values);
 	};
 
@@ -120,27 +119,27 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 				<label htmlFor='dessert'>dessert</label>
 			</div>
 			<div>
-				{newIngredients.map((ingredients, index) => (
+				{newIngredients.map((newIngredients, index) => (
 					<div key={index}>
 						<input
 							type='text'
 							name='amount'
 							placeholder='hoeveelheid'
-							value={ingredients.amount}
+							value={newIngredients.amount}
 							onChange={e => handleChangeInput(index, e)}
 						/>
 						<input
 							type='text'
 							name='unit'
 							placeholder='eenheid'
-							value={ingredients.unit}
+							value={newIngredients.unit}
 							onChange={e => handleChangeInput(index, e)}
 						/>
 						<input
 							type='text'
 							name='ingredient'
 							placeholder='ingredient'
-							value={ingredients.ingredient}
+							value={newIngredients.ingredient}
 							onChange={e => handleChangeInput(index, e)}
 						/>
 						<button onClick={() => handleRemoveField(index)}>-</button>
