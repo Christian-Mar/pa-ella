@@ -10,16 +10,16 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const [newCategory, setNewCategory] = useState(recipeReadable.category);
 	const [newIngredients, setNewIngredients] = useState(recipeReadable.ingredients);
 	const [newMethodTime, setNewMethodTime] = useState(recipeReadable.methodTime);
-	
-console.log(newMethod)
+	const [newAllergens, setNewAllergens] = useState(recipeReadable.allergens)
 
 	const handleEdit = async recipeId => {
 		await updateDoc(doc(db, 'recipes', recipeId), {
 			title: newTitle,
 			category: newCategory,
-			method: newDescription,
+			method: newMethod,
 			ingredients: newIngredients,
 			methodTime: newMethodTime,
+			allergens: newAllergens,
 			// add 
 		});
 	};
@@ -48,6 +48,10 @@ console.log(newMethod)
 		setNewIngredients(values);
 	};
 	
+	const onChangeAllergens = e => {
+		setNewAllergens({...newAllergens, [e.target.value]: e.target.checked })
+	}
+
 	return (
 		<div>
 			<input
@@ -158,8 +162,9 @@ console.log(newMethod)
 				}}
 			/>
 			<select
-				
-				onChange={e => {setNewMethodTime(e.target.value)}}
+				onChange={e => {
+					setNewMethodTime(e.target.value);
+				}}
 				value={newMethodTime}
 				name='methodTime'
 			>
@@ -177,6 +182,134 @@ console.log(newMethod)
 				<option value='60 minute'>60 min</option>
 				<option value='meer dan een uur'>more than 1 hour</option>
 			</select>
+			<div>
+				<input
+					type='checkbox'
+					value='gluten'
+					name='allergen'
+					checked={newAllergens.gluten}
+					onChange={onChangeAllergens}
+					id='gluten'
+				/>
+				<label htmlFor='gluten'>gluten</label>
+				<input
+					type='checkbox'
+					value='ei'
+					name='allergen'
+					checked={newAllergens.ei}
+					onChange={onChangeAllergens}
+					id='ei'
+				/>
+				<label htmlFor='ei'>ei</label>
+				<input
+					type='checkbox'
+					value='vis'
+					name='allergen'
+					checked={newAllergens.vis}
+					onChange={onChangeAllergens}
+					id='vis'
+				/>
+				<label htmlFor='vis'>vis</label>
+				<input
+					type='checkbox'
+					value='pinda'
+					name='allergen'
+					checked={newAllergens.pinda}
+					onChange={onChangeAllergens}
+					id='pinda'
+				/>
+				<label htmlFor='pinda'>pinda</label>
+				<input
+					type='checkbox'
+					value='noten'
+					name='allergen'
+					checked={newAllergens.noten}
+					onChange={onChangeAllergens}
+					id='noten'
+				/>
+				<label htmlFor='noten'>noten</label>
+				<input
+					type='checkbox'
+					value='soja'
+					name='allergen'
+					checked={newAllergens.soja}
+					onChange={onChangeAllergens}
+					id='soja'
+				/>
+				<label htmlFor='soja'>soja</label>
+				<input
+					type='checkbox'
+					value='melk'
+					name='allergen'
+					checked={newAllergens.melk}
+					onChange={onChangeAllergens}
+					id='melk'
+				/>
+				<label htmlFor='melk'>melk</label>
+				<input
+					type='checkbox'
+					value='schaaldieren'
+					name='allergen'
+					checked={newAllergens.schaaldieren}
+					onChange={onChangeAllergens}
+					id='schaaldieren'
+				/>
+				<label htmlFor='schaaldieren'>schaaldieren</label>
+				<input
+					type='checkbox'
+					value='weekdieren'
+					name='allergen'
+					checked={newAllergens.weekdieren}
+					onChange={onChangeAllergens}
+					id='weekdieren'
+				/>
+				<label htmlFor='weekdieren'>weekdieren</label>
+				<input
+					type='checkbox'
+					value='selder'
+					name='allergen'
+					checked={newAllergens.selder}
+					onChange={onChangeAllergens}
+					id='selder'
+				/>
+				<label htmlFor='selder'>selder</label>
+				<input
+					type='checkbox'
+					value='mosterd'
+					name='allergen'
+					checked={newAllergens.mosterd}
+					onChange={onChangeAllergens}
+					id='mosterd'
+				/>
+				<label htmlFor='mosterd'>mosterd</label>
+				<input
+					type='checkbox'
+					value='sesamzaad'
+					name='allergen'
+					checked={newAllergens.sesamzaad}
+					onChange={onChangeAllergens}
+					id='sesamzaad'
+				/>
+				<label htmlFor='sesamzaad'>sesamzaad</label>
+				<input
+					type='checkbox'
+					value='sulfiet'
+					name='allergen'
+					checked={newAllergens.sulfiet}
+					onChange={onChangeAllergens}
+					id='sulfiet'
+				/>
+				<label htmlFor='sulfiet'>sulfiet</label>
+				<input
+					type='checkbox'
+					value='lupine'
+					name='allergen'
+					checked={newAllergens.lupine}
+					onChange={onChangeAllergens}
+					id='lupine'
+				/>
+				<label htmlFor='lupine'>lupine</label>
+			</div>
 
 			<button
 				onClick={() => {
