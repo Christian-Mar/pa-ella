@@ -9,9 +9,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const [newDescription, setNewDescription] = useState('');
 	const [newCategory, setNewCategory] = useState(recipeReadable.category);
 	const [newIngredients, setNewIngredients] = useState(recipeReadable.ingredients);
-	//const [ingredientValues, setIngredientValues] = useState(recipeReadable.ingredients);
 	console.log(newCategory);
-	console.log(newIngredients);
+	
 
 	const handleEdit = async recipeId => {
 		await updateDoc(doc(db, 'recipes', recipeId), {
@@ -52,7 +51,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 		<div>
 			<input
 				type='text'
-				defaultValue={newTitle}
+				value={newTitle}
 				onChange={e => setNewTitle(e.target.value)}
 			/>
 			<div>
@@ -60,7 +59,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='ontbijt'
 					checked={newCategory === 'ontbijt'}
 					id='ontbijt'
 				/>
@@ -69,7 +68,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='soep'
 					checked={newCategory === 'soep'}
 					id='soep'
 				/>
@@ -78,7 +77,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='voorgerecht'
 					checked={newCategory === 'voorgerecht'}
 					id='voorgerecht'
 				/>
@@ -87,7 +86,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='salade'
 					checked={newCategory === 'salade'}
 					id='salade'
 				/>
@@ -96,7 +95,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='snack'
 					checked={newCategory === 'snack'}
 					id='snack'
 				/>
@@ -105,7 +104,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='maaltijd'
 					checked={newCategory === 'maaltijd'}
 					id='maaltijd'
 				/>
@@ -114,7 +113,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={newCategory}
+					value='dessert'
 					checked={newCategory === 'dessert'}
 					id='dessert'
 				/>
@@ -127,21 +126,21 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 							type='text'
 							name='amount'
 							placeholder='hoeveelheid'
-							defaultValue={ingredients.amount}
+							value={ingredients.amount}
 							onChange={e => handleChangeInput(index, e)}
 						/>
 						<input
 							type='text'
 							name='unit'
 							placeholder='eenheid'
-							defaultValue={ingredients.unit}
+							value={ingredients.unit}
 							onChange={e => handleChangeInput(index, e)}
 						/>
 						<input
 							type='text'
 							name='ingredient'
 							placeholder='ingredient'
-							defaultValue={ingredients.ingredient}
+							value={ingredients.ingredient}
 							onChange={e => handleChangeInput(index, e)}
 						/>
 						<button onClick={() => handleRemoveField(index)}>-</button>
@@ -151,7 +150,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 			</div>
 			<textarea
 				type='text'
-				defaultValue={recipeReadable.method}
+				value={recipeReadable.method}
 				placeholder='Beschrijving'
 				onChange={e => {
 					setNewDescription(e.target.value);
