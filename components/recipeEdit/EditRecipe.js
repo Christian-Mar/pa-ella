@@ -5,12 +5,12 @@ import { db } from '../../firebase/config';
 //import styles from './EditTask.module.css';
 
 const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
-	const [newTitle, setNewTitle] = useState('');
+	const [newTitle, setNewTitle] = useState(recipeReadable.title);
 	const [newDescription, setNewDescription] = useState('');
-	const [newCategory, setNewCategory] = useState('');
+	const [newCategory, setNewCategory] = useState(recipeReadable.category);
 	const [newIngredients, setNewIngredients] = useState(recipeReadable.ingredients);
 	//const [ingredientValues, setIngredientValues] = useState(recipeReadable.ingredients);
-
+	console.log(newCategory);
 	console.log(newIngredients);
 
 	const handleEdit = async recipeId => {
@@ -23,6 +23,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 		});
 	};
 
+	// new values not working yet, but array is only a spread of existing values?
 	const handleChangeInput = (index, e) => {
 		const values = [...newIngredients];
 		setNewIngredients[index][e.target.name] = e.target.value;
@@ -51,7 +52,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 		<div>
 			<input
 				type='text'
-				defaultValue={recipeReadable.title}
+				defaultValue={newTitle}
 				onChange={e => setNewTitle(e.target.value)}
 			/>
 			<div>
@@ -59,8 +60,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'ontbijt'}
+					defaultValue={newCategory}
+					checked={newCategory === 'ontbijt'}
 					id='ontbijt'
 				/>
 				<label htmlFor='ontbijt'>ontbijt</label>
@@ -68,8 +69,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'soep'}
+					defaultValue={newCategory}
+					checked={newCategory === 'soep'}
 					id='soep'
 				/>
 				<label htmlFor='soep'>soep</label>
@@ -77,8 +78,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'voorgerecht'}
+					defaultValue={newCategory}
+					checked={newCategory === 'voorgerecht'}
 					id='voorgerecht'
 				/>
 				<label htmlFor='soep'>voorgerecht</label>
@@ -86,8 +87,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'salade'}
+					defaultValue={newCategory}
+					checked={newCategory === 'salade'}
 					id='salade'
 				/>
 				<label htmlFor='salade'>salade</label>
@@ -95,8 +96,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'snack'}
+					defaultValue={newCategory}
+					checked={newCategory === 'snack'}
 					id='snack'
 				/>
 				<label htmlFor='snack'>snack</label>
@@ -104,8 +105,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'maaltijd'}
+					defaultValue={newCategory}
+					checked={newCategory === 'maaltijd'}
 					id='maaltijd'
 				/>
 				<label htmlFor='maaltijd'>maaltijd</label>
@@ -113,8 +114,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 					type='radio'
 					name='category'
 					onChange={e => setNewCategory(e.target.value)}
-					defaultValue={recipeReadable.category}
-					checked={recipeReadable.category === 'dessert'}
+					defaultValue={newCategory}
+					checked={newCategory === 'dessert'}
 					id='dessert'
 				/>
 				<label htmlFor='dessert'>dessert</label>
@@ -128,7 +129,6 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 							placeholder='hoeveelheid'
 							defaultValue={ingredients.amount}
 							onChange={e => handleChangeInput(index, e)}
-							
 						/>
 						<input
 							type='text'
@@ -136,7 +136,6 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 							placeholder='eenheid'
 							defaultValue={ingredients.unit}
 							onChange={e => handleChangeInput(index, e)}
-							
 						/>
 						<input
 							type='text'
@@ -144,20 +143,9 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 							placeholder='ingredient'
 							defaultValue={ingredients.ingredient}
 							onChange={e => handleChangeInput(index, e)}
-							
 						/>
-						<button
-							onClick={() => handleRemoveField(index)}
-							
-						>
-							-
-						</button>
-						<button
-							onClick={handleAddField}
-							
-						>
-							+
-						</button>
+						<button onClick={() => handleRemoveField(index)}>-</button>
+						<button onClick={handleAddField}>+</button>
 					</div>
 				))}
 			</div>
