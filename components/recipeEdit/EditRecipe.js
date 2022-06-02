@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { db, storage } from '../../firebase/config';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import Image from 'next/image';
 
 //import styles from './EditTask.module.css';
 
@@ -11,6 +13,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const [newIngredients, setNewIngredients] = useState(recipeReadable.ingredients);
 	const [newMethodTime, setNewMethodTime] = useState(recipeReadable.methodTime);
 	const [newAllergens, setNewAllergens] = useState(recipeReadable.allergens)
+	const [newImage, setNewImage] = useState(recipeReadable.image)
+
 
 	const handleEdit = async recipeId => {
 		await updateDoc(doc(db, 'recipes', recipeId), {
@@ -20,6 +24,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 			ingredients: newIngredients,
 			methodTime: newMethodTime,
 			allergens: newAllergens,
+			image: newImage
 			// add 
 		});
 	};
@@ -51,6 +56,15 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const onChangeAllergens = e => {
 		setNewAllergens({...newAllergens, [e.target.value]: e.target.checked })
 	}
+
+	const uploadFile = async e => {
+		let file = e.target.files[0];
+		let fileRef = ref(storage, 'recipeImages/' + Date.now() + file.name);
+		const uploadTask = await uploadBytesResumable(fileRef, file);
+		const photoURL = await getDownloadURL(fileRef).then(url => {
+			setNewImage(url);
+		});
+	};
 
 	return (
 		<div>
@@ -311,6 +325,19 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 				<label htmlFor='lupine'>lupine</label>
 			</div>
 
+			<div>
+				<div>
+					<Image
+						src={newImage}
+						alt='Dish'
+						width={600}
+						height={400}
+						objectFit='cover'
+					/>
+				</div>
+
+				<input type='file' name='file' onChange={uploadFile} />
+			</div>
 			<button
 				onClick={() => {
 					handleEdit(recipeId);

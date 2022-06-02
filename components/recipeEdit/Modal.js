@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import reactDom from 'react-dom';
 import { FaTimes } from 'react-icons/fa';
-import styles from '../../styles/Modal.module.css';
+import styles from '../../styles/ModalEditRecipe.module.css';
 
 const Modal = ({ show, onClose, children, title }) => {
 	const [isBrowser, setIsBrowser] = useState(false);
