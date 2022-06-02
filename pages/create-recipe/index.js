@@ -44,7 +44,6 @@ const CreateRecipe = () => {
 
 	const [count, setCount] = useState(1);
 
-	console.log(recipe);
 	const { user } = useAuthContext();
 	const router = useRouter();
 

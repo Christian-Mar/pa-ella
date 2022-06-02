@@ -6,18 +6,20 @@ import { db } from '../../firebase/config';
 
 const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const [newTitle, setNewTitle] = useState(recipeReadable.title);
-	const [newDescription, setNewDescription] = useState('');
+	const [newMethod, setNewMethod] = useState(recipeReadable.method);
 	const [newCategory, setNewCategory] = useState(recipeReadable.category);
 	const [newIngredients, setNewIngredients] = useState(recipeReadable.ingredients);
-	console.log(newIngredients)
+	const [newMethodTime, setNewMethodTime] = useState(recipeReadable.methodTime);
 	
+console.log(newMethod)
 
 	const handleEdit = async recipeId => {
 		await updateDoc(doc(db, 'recipes', recipeId), {
 			title: newTitle,
 			category: newCategory,
-			description: newDescription,
+			method: newDescription,
 			ingredients: newIngredients,
+			methodTime: newMethodTime,
 			// add 
 		});
 	};
@@ -149,19 +151,40 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 			</div>
 			<textarea
 				type='text'
-				value={recipeReadable.method}
+				value={newMethod}
 				placeholder='Beschrijving'
 				onChange={e => {
-					setNewDescription(e.target.value);
+					setNewMethod(e.target.value);
 				}}
 			/>
+			<select
+				
+				onChange={e => {setNewMethodTime(e.target.value)}}
+				value={newMethodTime}
+				name='methodTime'
+			>
+				<option value={'default'} disabled>
+					Kies
+				</option>
+				<option value='max 20 minuten'>minder dan 20 min </option>
+				<option value='25 minuten'>25 min</option>
+				<option value='30 minuten'>30 min</option>
+				<option value='35 minuten'>35 min</option>
+				<option value='40 minuten'>40 min</option>
+				<option value='45 minuten'>45 min</option>
+				<option value='50 minuten'>50 min</option>
+				<option value='55 minuten'>55 min</option>
+				<option value='60 minute'>60 min</option>
+				<option value='meer dan een uur'>more than 1 hour</option>
+			</select>
+
 			<button
 				onClick={() => {
 					handleEdit(recipeId);
 					setRecipeToEdit(null);
 				}}
 			>
-				Update
+				Bevestig wijzigingen
 			</button>
 		</div>
 	);
