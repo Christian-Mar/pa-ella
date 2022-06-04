@@ -4,6 +4,7 @@ import { db, storage } from '../../firebase/config';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Image from 'next/image';
 
+
 //import styles from './EditTask.module.css';
 
 const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
