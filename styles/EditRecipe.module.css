@@ -1,3 +1,152 @@
-.container {
-  min-height: 1000vh;
+.titleContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.titleInputField {
+    border: none; 
+    border-bottom: solid 1px grey;
+    margin-left: 2rem;
+    width: 45vw;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #5fc349;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: .2rem .5rem;
+}
+
+.titleInputField:focus {
+  outline: none;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 2rem 0;
+}
+
+.radioField {
+  display: none;
+}
+
+.radioLabel {   
+    font-weight: 600;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    margin-right: 2rem;
+}
+
+.radioField:checked + .radioLabel {
+    color: #5fc349;
+}
+
+.ingredientsContainer {
+  margin: 3rem 0;
+}
+
+.ingredientsInputField {
+    border: none; 
+    border-bottom: solid 1px rgb(190, 190, 190);
+    width: 20vw;
+    font-size: .8rem;
+    font-weight: 500;
+    color: #5fc349;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: .2rem .5rem;
+}
+
+.ingredientsInputField:focus {
+  outline: none;
+}
+
+.ingredientsButton {
+  border: none;
+    background-color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 2rem;
+}
+
+.ingredientsButton:hover {
+  cursor: pointer;
+}
+
+.methodTextArea {
+    border: solid 1px grey;
+    border-radius: 5px;
+    height: 35vh;
+    width: 70vw;
+    font-size: .8rem;
+    font-weight: 500;
+    resize: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: .8rem .8rem;
+}
+
+.methodTextArea:focus {
+  outline: none;
+}
+
+.methodTimeContainer {
+  margin: 2rem 0;
+}
+
+.methodTimeSelectField {
+    border-radius: 3px;
+    height: 1.5rem;
+    font-size: .8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: solid 1px grey;
+    padding: 0 1rem;
+}
+
+.allergensContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 2rem 0;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.imageButtonContainer {
+  margin: 2rem;
+  text-align: center;
+  font-size: .9rem;
+}
+
+.imageButtonSpan {
+  margin-right: 2rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  height: 50px;
+    width: 200px;
+    color: white;
+    
+    background: black;
+    
+    border: none;
+    border-radius: 25px;
+    margin: 2rem;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background: #5fc349;
 }

@@ -52,6 +52,7 @@
 .inputComment {
     border: none; 
     border-bottom: solid 1px grey;
+    margin-left: -15px;
     width: 50vw;
     height: 100%;
     font-size: .8rem;

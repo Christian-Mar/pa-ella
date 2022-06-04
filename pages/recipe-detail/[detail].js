@@ -82,7 +82,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				// this button is only visible for own recipes
 			}
 			<Modal
-				title='Verander het recept'
+				title='Breng wijzigingen aan in het recept'
 				show={showModal}
 				onClose={() => {
 					setShowModal(false);

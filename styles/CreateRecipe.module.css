@@ -90,6 +90,10 @@
     margin-left: 2rem;
 }
 
+.IngredientsButton:hover {
+  cursor: pointer;
+}
+
 .form__select {
     width: 42rem;
     display: flex;
