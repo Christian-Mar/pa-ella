@@ -5,13 +5,12 @@ import Banner from '../components/banner/Banner';
 import Navbar from '../components/nav/Navbar';
 import Footer from '../components/footer/Footer';
 import styles from '../styles/Home.module.css';
-import { useCollection } from '../hooks/useCollection';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Carousel from 'react-elastic-carousel';
 import { CarouselContainer } from '../styles/slider';
 import ShowCategories from '../components/showRecipes/ShowCategories';
 import { db } from '../firebase/config';
-import { getDocs, doc, collection, query } from 'firebase/firestore';
+import { getDocs, collection } from 'firebase/firestore';
 
 
 const breakPoints = [

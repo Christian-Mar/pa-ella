@@ -57,7 +57,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 			<Navbar />
-
+			<div className={styles.buttonContainer}>
 			{
 				user && recipeReadable.userId === user.uid && (
 					<button
@@ -80,7 +80,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 					</button>
 				)
 				// this button is only visible for own recipes
-			}
+			}</div>
 			<Modal
 				title='Breng wijzigingen aan in het recept'
 				show={showModal}

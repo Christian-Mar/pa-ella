@@ -1,3 +1,27 @@
 .container {
   min-height: 100vh;
 }
+
+.recipe__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe__listitems {
+  display: flex;
+
+  list-style: none;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 1px solid;
+  max-width: 220px;
+  border-radius: 4px;
+}
+
+.recipe__title {
+  height: 40px;
+}
+
+.recipe__category {
+  font-size: 0.8rem;
+}
