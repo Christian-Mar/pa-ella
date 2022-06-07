@@ -2,11 +2,19 @@
   min-height: 100vh;
 }
 
+.planning__container {
+  height: 40vh;
+  width: 80vw;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .recipe__list {
   display: flex;
   flex-wrap: wrap;
 }
-
 .recipe__listitems {
   display: flex;
 
