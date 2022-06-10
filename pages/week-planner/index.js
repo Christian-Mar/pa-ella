@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
-	const { user } = useAuthContext();
+	//const { user } = useAuthContext();
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
 
