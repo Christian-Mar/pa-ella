@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
@@ -25,6 +25,7 @@ export const getServerSideProps = async () => {
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
 	//const { user } = useAuthContext();
+	const { dragFunction } = useDrag();
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
 
@@ -36,7 +37,7 @@ const WeekPlanner = ({ recipes }) => {
 	const drags = {};
 
 	recipesData.forEach(recipe => {
-		const drag = useDrag(() => ({
+		const drag = dragFunction(() => ({
 			type: 'li',
 			item: { id: recipe.id, title: recipe.title },
 			collect: monitor => ({
