@@ -7,8 +7,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import styles from '../../styles/Weekplanner.module.css';
 import { db } from '../../firebase/config';
 import { getDocs, collection } from 'firebase/firestore';
-import { useDrag } from 'react-dnd';
-import itemTypes from '../../utils/itemTypes';
+import { useDrag, useDrop } from 'react-dnd';
 
 export const getServerSideProps = async () => {
 	const querySnapshot = await getDocs(collection(db, 'recipes'));
@@ -24,38 +23,35 @@ export const getServerSideProps = async () => {
 };
 
 const WeekPlanner = ({ recipes }) => {
+	const [board, setBoard] = useState([]);
 	const { user } = useAuthContext();
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
-	
-	/*
-	const [{ isDragging }, drag] = useDrag(() => ({
-		type: "li",
-		
-		collect: (monitor) => ({
-			isDragging: !!monitor.isDragging(),
-		}),
-	}));
-*/
+
+	/* 
+	Make recipes draggable -> forEach + push to new array is the solution to make alle recipes draggable. By only mapping over the recipes and using ref in the <li> element only the last recipe was draggable.
+	*/
 
 	const itemList = [];
 	const drags = {};
 
- recipesData.forEach((recipe) => {
-	 const drag = useDrag(() => ({
+	recipesData.forEach(recipe => {
+		const drag = useDrag(() => ({
 			type: 'li',
+			item: { id: recipe.id, title: recipe.title },
 			collect: monitor => ({
 				isDragging: !!monitor.isDragging(),
 			}),
 		}));
-		
-		const [{isDragging}, dragRef] = drag;
-		drags[recipe.title] = drag;
+
+		const [{ isDragging }, dragRef] = drag;
+		drags[recipe.id] = drag;
 
 		itemList.push(
 			<li ref={dragRef} key={recipe.id} className={styles.recipe__listitems}>
 				<div>
 					<h3 className={styles.recipe__title}>{recipe.title}</h3>
+					{recipe.id}
 					<h4 className={styles.recipe__category}>{recipes.methodTime}</h4>
 					<Image
 						src={recipe.image}
@@ -67,13 +63,22 @@ const WeekPlanner = ({ recipes }) => {
 				</div>
 			</li>
 		);
+	});
 
+	// Logic of the dropzone
 
- })
-	
+	const [{ isOver }, dropRef] = useDrop({
+		accept: 'li',
+		drop: recipe => addRecipeToBoard(recipe.id),
+		collect: monitor => ({
+			isOver: !!monitor.isOver(),
+		}),
+	});
 
-
-	
+	const addRecipeToBoard = id => {
+		const draggedRecipe = recipesData.filter((recipe, i) => id === recipe.id);
+		setBoard(board => [...board, draggedRecipe[0]]);
+	};
 
 	return (
 		<div>
@@ -85,36 +90,34 @@ const WeekPlanner = ({ recipes }) => {
 			<div className={styles.container}>
 				<Navbar />
 				<h1>Weekplanner</h1>
-				<div className={styles.planning__container}>
-					The planning will come here
+				<div ref={dropRef} className={styles.planning__container}>
+					Drop here
+						<ul className={styles.recipe__list}>
+					{board.map(recipe => {
+						return (
+								
+							<li key={recipe.id} className={styles.recipe__listitems}>
+								<div>
+									<h3 className={styles.recipe__title}>{recipe.title}</h3>
+									<h4 className={styles.recipe__category}>
+										{recipes.methodTime}
+									</h4>
+									<Image
+										src={recipe.image}
+										alt='Dish'
+										width={200}
+										height={150}
+										objectFit='cover'
+									></Image>
+								</div>
+							</li>
+						);
+					})}</ul>
 				</div>
-				<div className={styles.planning__container}> 
-					The elements wille start here
-				
-
-				<ul className={styles.recipe__list} >
-					{/*recipesData?.map(
-						(recipe, index) =>
-							recipe.category === 'dessert' && (
-								<li ref={drag} key={recipe.id} className={styles.recipe__listitems}>
-									<div >
-										<h3 className={styles.recipe__title}>{recipe.title}</h3>
-										<h4 className={styles.recipe__category}>
-											{recipes.methodTime}
-										</h4>
-										<Image
-											src={recipe.image}
-											alt='Dish'
-											width={200}
-											height={150}
-											objectFit='cover'
-										></Image>
-									</div>
-								</li>
-							)
-							)*/}
-							{ itemList }
-				</ul></div>
+				<div className={styles.planning__container}>
+					All (filtered) recipes start here
+					<ul className={styles.recipe__list}>{itemList}</ul>
+				</div>
 			</div>
 			<Footer />
 		</div>
