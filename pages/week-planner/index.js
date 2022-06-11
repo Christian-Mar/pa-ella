@@ -135,6 +135,7 @@ const WeekPlanner = ({ recipes }) => {
 						{recipesData.map(recipe => {
 							return (
 								<MovableRecipe
+									key={recipesData.id}
 									id={recipe.id}
 									title={recipe.title}
 									methodTime={recipe.methodTime}
