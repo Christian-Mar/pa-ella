@@ -32,10 +32,12 @@ const WeekPlanner = ({ recipes }) => {
 	Make recipes draggable -> forEach + push to new array is the solution to make all recipes draggable. By only mapping over the recipes and using ref in the <li>-element only the last recipe was draggable.
 	*/
 
+
+	
 	const itemList = [];
 	const drags = {};
-
-	recipesData.forEach(recipe => {
+	
+	recipesData.map(recipe => {
 		const drag = useDrag(() => ({
 			type: 'li',
 			item: { id: recipe.id },
