@@ -25,21 +25,23 @@ export const getServerSideProps = async () => {
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
 	//const { user } = useAuthContext();
-	const { dragFunction } = useDrag();
+	//const { dragFunction } = useDrag();
+	// useDrag cannot be used in a callback function, which gave an error in building and deploying 
+
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
 
 	/* 
-	Make recipes draggable -> forEach + push to new array is the solution to make alle recipes draggable. By only mapping over the recipes and using ref in the <li> element only the last recipe was draggable.
+	Make recipes draggable -> forEach + push to new array is the solution to make all recipes draggable. By only mapping over the recipes and using ref in the <li>-element only the last recipe was draggable.
 	*/
 
 	const itemList = [];
 	const drags = {};
 
 	recipesData.forEach(recipe => {
-		const drag = dragFunction(() => ({
+		const drag = useDrag(() => ({
 			type: 'li',
-			item: { id: recipe.id, title: recipe.title },
+			item: { id: recipe.id },
 			collect: monitor => ({
 				isDragging: !!monitor.isDragging(),
 			}),
@@ -52,8 +54,7 @@ const WeekPlanner = ({ recipes }) => {
 			<li ref={dragRef} key={recipe.id} className={styles.recipe__listitems}>
 				<div>
 					<h3 className={styles.recipe__title}>{recipe.title}</h3>
-					{recipe.id}
-					<h4 className={styles.recipe__category}>{recipes.methodTime}</h4>
+					<h4 className={styles.recipe__category}>{recipe.methodTime}</h4>
 					<Image
 						src={recipe.image}
 						alt='Dish'
@@ -101,7 +102,7 @@ const WeekPlanner = ({ recipes }) => {
 								<div>
 									<h3 className={styles.recipe__title}>{recipe.title}</h3>
 									<h4 className={styles.recipe__category}>
-										{recipes.methodTime}
+										{recipe.methodTime}
 									</h4>
 									<Image
 										src={recipe.image}
