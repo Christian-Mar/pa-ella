@@ -11,15 +11,7 @@ const nextConfig = {
 	images: {
 		domains: ['firebasestorage.googleapis.com'],
 	},
-	webpack: (config, options) => {
-		config.resolve.alias = {
-			...config.resolve.alias,
-			react: require.resolve('react').replace('index.js', ''),
-		};
-
-		return config;
-	},
-};
+}
 
 
 module.exports = nextConfig
