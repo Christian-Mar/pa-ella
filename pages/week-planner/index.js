@@ -25,7 +25,7 @@ export const getServerSideProps = async () => {
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
 	//const { user } = useAuthContext();
-	//const {dragFunction}  = useDrag({type: 'li'});
+	
 	// useDrag cannot be used in a callback function, which gave an error in building and deploying 
 
 	const recipesReadable = JSON.parse(recipes);
