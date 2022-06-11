@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
@@ -25,9 +25,6 @@ export const getServerSideProps = async () => {
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
 	//const { user } = useAuthContext();
-	
-	// useDrag cannot be used in a callback function, which gave an error in building and deploying 
-
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
 
