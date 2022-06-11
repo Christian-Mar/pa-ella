@@ -95,7 +95,7 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard(board => [...board, draggedRecipe[0]]);
 	};
 
-	return(
+	return (
 		<div>
 			<Head>
 				<title>pa'ella</title>
@@ -107,38 +107,47 @@ const WeekPlanner = ({ recipes }) => {
 				<h1>Weekplanner</h1>
 				<div ref={dropRef} className={styles.planning__container}>
 					Drop here
-						<ul className={styles.recipe__list}>
-					{board.map(recipe => {
-						return (
-								
-							<li key={recipesData.id} className={styles.recipe__listitems}>
-								<div>
-									<h3 className={styles.recipe__title}>{recipe.title}</h3>
-									<h4 className={styles.recipe__category}>
-										{recipe.methodTime}
-									</h4>
-									<Image
-										src={recipe.image}
-										alt='Dish'
-										width={200}
-										height={150}
-										objectFit='cover'
-									></Image>
-								</div>
-							</li>
-						);
-					})}</ul>
+					<ul className={styles.recipe__list} key={recipesData.id}>
+						{board.map(recipe => {
+							return (
+								<li key={recipesData.id} className={styles.recipe__listitems}>
+									<div>
+										<h3 className={styles.recipe__title}>{recipe.title}</h3>
+										<h4 className={styles.recipe__category}>
+											{recipe.methodTime}
+										</h4>
+										<Image
+											src={recipe.image}
+											alt='Dish'
+											width={200}
+											height={150}
+											objectFit='cover'
+										></Image>
+									</div>
+								</li>
+							);
+						})}
+					</ul>
 				</div>
 				<div className={styles.planning__container}>
-					All (filtered) recipes start here<ul className={styles.recipe__list} key={recipesData.id}>
-					{recipesData.map((recipe)=>{
-						return <MovableRecipe id={recipe.id} title={recipe.title} methodTime={recipe.methodTime} photo={recipe.image} />
-					})}</ul>
+					All (filtered) recipes start here
+					<ul className={styles.recipe__list} key={recipesData.id}>
+						{recipesData.map(recipe => {
+							return (
+								<MovableRecipe
+									id={recipe.id}
+									title={recipe.title}
+									methodTime={recipe.methodTime}
+									photo={recipe.image}
+								/>
+							);
+						})}
+					</ul>
 				</div>
 			</div>
 			<Footer />
 		</div>
-	)
+	);
 				}
 
 export default WeekPlanner;
