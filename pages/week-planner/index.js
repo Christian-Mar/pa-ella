@@ -3,11 +3,12 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
+import MovableRecipe from '../../components/week-planner/MovableRecipe';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import styles from '../../styles/Weekplanner.module.css';
 import { db } from '../../firebase/config';
 import { getDocs, collection } from 'firebase/firestore';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrop } from 'react-dnd';
 
 export const getServerSideProps = async () => {
 	const querySnapshot = await getDocs(collection(db, 'recipes'));
@@ -23,21 +24,34 @@ export const getServerSideProps = async () => {
 };
 
 const WeekPlanner = ({ recipes }) => {
+	
 	const [board, setBoard] = useState([]);
 	//const { user } = useAuthContext();
+	
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
-
+	//console.log(recipesData.image)
 	/* 
 	Make recipes draggable -> forEach + push to new array is the solution to make all recipes draggable. By only mapping over the recipes and using ref in the <li>-element only the last recipe was draggable.
 	*/
+/*
+	const MovableRecipe = ({recipesData}) => {
+		const [{ isDragging }, dragRef] = useDrag({
+			type: 'li',
+			item: { id: recipesData.id },
+			collect: monitor => ({
+				isDragging: !!monitor.isDragging(),
+			}),
+		});
+	}
 
-
+	MovableRecipe();
 	
 	const itemList = [];
-	const drags = {};
+	*/
+	/*	const drags = {};
 	
-	recipesData.map(recipe => {
+	recipesData.forEach(recipe => {
 		const drag = useDrag(() => ({
 			type: 'li',
 			item: { id: recipe.id },
@@ -50,7 +64,7 @@ const WeekPlanner = ({ recipes }) => {
 		drags[recipe.id] = drag;
 
 		itemList.push(
-			<li ref={dragRef} key={recipe.id} className={styles.recipe__listitems}>
+			<li ref={dragRef} key={recipesData.id} className={styles.recipe__listitems}>
 				<div>
 					<h3 className={styles.recipe__title}>{recipe.title}</h3>
 					<h4 className={styles.recipe__category}>{recipe.methodTime}</h4>
@@ -64,13 +78,13 @@ const WeekPlanner = ({ recipes }) => {
 				</div>
 			</li>
 		);
-	});
+	;*/
 
 	// Logic of the dropzone
 
 	const [{ isOver }, dropRef] = useDrop({
 		accept: 'li',
-		drop: recipe => addRecipeToBoard(recipe.id),
+		drop: recipesData => addRecipeToBoard(recipesData.id),
 		collect: monitor => ({
 			isOver: !!monitor.isOver(),
 		}),
@@ -81,7 +95,7 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard(board => [...board, draggedRecipe[0]]);
 	};
 
-	return (
+	return(
 		<div>
 			<Head>
 				<title>pa'ella</title>
@@ -97,7 +111,7 @@ const WeekPlanner = ({ recipes }) => {
 					{board.map(recipe => {
 						return (
 								
-							<li key={recipe.id} className={styles.recipe__listitems}>
+							<li key={recipesData.id} className={styles.recipe__listitems}>
 								<div>
 									<h3 className={styles.recipe__title}>{recipe.title}</h3>
 									<h4 className={styles.recipe__category}>
@@ -116,13 +130,15 @@ const WeekPlanner = ({ recipes }) => {
 					})}</ul>
 				</div>
 				<div className={styles.planning__container}>
-					All (filtered) recipes start here
-					<ul className={styles.recipe__list}>{itemList}</ul>
+					All (filtered) recipes start here<ul className={styles.recipe__list} key={recipesData.id}>
+					{recipesData.map((recipe)=>{
+						return <MovableRecipe id={recipe.id} title={recipe.title} methodTime={recipe.methodTime} photo={recipe.image} />
+					})}</ul>
 				</div>
 			</div>
 			<Footer />
 		</div>
-	);
-};
+	)
+				}
 
 export default WeekPlanner;
