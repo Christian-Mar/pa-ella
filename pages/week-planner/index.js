@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -30,6 +30,19 @@ const WeekPlanner = ({ recipes }) => {
 
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
+
+	useEffect(() => {
+		const droppedRecipes = JSON.parse(localStorage.getItem('dropZoneStorage'))
+		setBoard(droppedRecipes)
+	},[])
+
+
+	useEffect(() =>{
+	
+			localStorage.setItem('dropZoneStorage', JSON.stringify(board))
+		
+	}, [board])
+
 
 	// Logic of the dropzone
 
