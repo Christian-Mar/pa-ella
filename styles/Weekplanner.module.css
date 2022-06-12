@@ -2,8 +2,11 @@
   min-height: 100vh;
 }
 
+.title {
+  margin-left: 2rem;
+  color: #5fc349;
+}
 .planning__container {
-  
   height: 100%;
   min-height: 220px;
   width: 80vw;
@@ -12,6 +15,11 @@
   text-align: center;
   margin: 1rem auto;
   
+}
+
+.planning__containerTitle {
+  margin: 1rem;
+  font-weight: 600;
 }
 
 .recipe__list {

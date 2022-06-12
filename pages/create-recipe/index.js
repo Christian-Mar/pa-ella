@@ -94,7 +94,7 @@ const CreateRecipe = () => {
 			</Head>
 			<Navbar />
 			<div className={styles.form__container}>
-				<h1 className={styles.container__title}>Create Recipe</h1>
+				<h1 className={styles.container__title}>Creëer een recept</h1>
 
 				<div className={styles.form__DirectionButtonContainer}>
 					<button

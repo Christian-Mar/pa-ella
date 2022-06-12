@@ -10,6 +10,7 @@ import styles from '../../styles/Weekplanner.module.css';
 import { db } from '../../firebase/config';
 import { getDocs, collection } from 'firebase/firestore';
 import { useDrop } from 'react-dnd';
+import { v4 as uuidv4 } from 'uuid';
 
 export const getServerSideProps = async () => {
 	const querySnapshot = await getDocs(collection(db, 'recipes'));
@@ -72,14 +73,14 @@ const WeekPlanner = ({ recipes }) => {
 			</Head>
 			<div className={styles.container}>
 				<Navbar />
-				<h1>Weekplanner</h1>
+				<h1 className={styles.title}>Weekplanner</h1>
 				<div ref={dropRef} className={styles.planning__container}>
-					Drop here
-					<ul className={styles.recipe__list} key={recipesData.id}>
+					<div className={styles.planning__containerTitle}>Weekplanning</div>
+					<ul className={styles.recipe__list} >
 						{board.map(recipe => {
 							return (
 								<MovableRecipe
-									key={recipesData.id}
+									key={uuidv4()}
 									id={recipe.id}
 									title={recipe.title}
 									methodTime={recipe.methodTime}
@@ -92,12 +93,12 @@ const WeekPlanner = ({ recipes }) => {
 					</ul>
 				</div>
 				<div className={styles.planning__container}>
-					All (filtered) recipes start here
+					<div className={styles.planning__containerTitle}>Recepten</div>
 					<ul className={styles.recipe__list} key={recipesData.id}>
 						{recipesData.map(recipe => {
 							return (
 								<MovableRecipe
-									key={recipesData.id}
+									key={recipe.id}
 									id={recipe.id}
 									title={recipe.title}
 									methodTime={recipe.methodTime}

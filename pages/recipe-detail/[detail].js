@@ -64,7 +64,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						className={styles.submitButton}
 						onClick={() => handleDelete(id)}
 					>
-						Verwijder
+						Verwijder mijn recept
 					</button>
 				)
 				// this button is only visible for own recipes
@@ -76,7 +76,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						className={styles.submitButton}
 						onClick={() => setShowModal(true)}
 					>
-						Wijzig
+						Wijzig mijn recept
 					</button>
 				)
 				// this button is only visible for own recipes
@@ -93,6 +93,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 					recipeToEdit={recipeToEdit}
 					setRecipeToEdit={setRecipeToEdit}
 					recipeReadable={recipeReadable}
+					setShowModal={setShowModal}
 				/></Modal>
 			<div className={styles.container}>
 				<h1 className={styles.title}>{recipeReadable.title}</h1>

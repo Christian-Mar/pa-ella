@@ -51,11 +51,13 @@ const making = () => {
 									gebruikt voor authenticatie
 								</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Gebruik localStorage om data te bewaren
 								</td>
-								<td className={styles.table__cell}>niet gebruikt</td>
+								<td className={styles.table__cell}>
+									gebruikt om recepten op te slaan in de weekplanner dropzone
+								</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
@@ -146,9 +148,7 @@ const making = () => {
 								<td className={styles.table__cell}>
 									Maak een detailpagina voor het recept
 								</td>
-								<td className={styles.table__cell}>
-									gebruikt
-								</td>
+								<td className={styles.table__cell}>gebruikt</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
@@ -156,13 +156,13 @@ const making = () => {
 								</td>
 								<td className={styles.table__cell}>gebruikt met Vercel</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Maak het mogelijk om recepten te creëren, up te daten en te
 									deleten
 								</td>
 								<td className={styles.table__cell}>
-									creëren gebruikt, de rest in ontwikkeling
+									gebruikt
 								</td>
 							</tr>
 							<tr className={styles.table__used}>

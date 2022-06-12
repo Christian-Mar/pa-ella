@@ -3,10 +3,12 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../../firebase/config';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import styles from '../../styles/EditRecipe.module.css';
 
-const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
+
+const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit, setShowModal }) => {
 	const [newTitle, setNewTitle] = useState(recipeReadable.title);
 	const [newMethod, setNewMethod] = useState(recipeReadable.method);
 	const [newCategory, setNewCategory] = useState(recipeReadable.category);
@@ -16,8 +18,10 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 	const [newMethodTime, setNewMethodTime] = useState(recipeReadable.methodTime);
 	const [newAllergens, setNewAllergens] = useState(recipeReadable.allergens);
 	const [newImage, setNewImage] = useState(recipeReadable.image);
+	
+	const router = useRouter();
 
-	const handleEdit = async recipeId => {
+	const handleEdit = async (recipeId) => {
 		await updateDoc(doc(db, 'recipes', recipeId), {
 			title: newTitle,
 			category: newCategory,
@@ -26,8 +30,8 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 			methodTime: newMethodTime,
 			allergens: newAllergens,
 			image: newImage,
-			// add
 		});
+		router.push(`/recipe-detail/${recipeId}`);
 	};
 
 	const handleChangeInput = (index, e) => {
@@ -437,6 +441,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit }) => {
 				onClick={() => {
 					handleEdit(recipeId);
 					setRecipeToEdit(null);
+					setShowModal(false);
 				}}
 			>
 				Bevestig wijzigingen
