@@ -21,6 +21,28 @@
   margin: 1rem;
   font-weight: 600;
 }
+.planning__containerButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  margin: 0;
+}
+
+.planning__Button {
+    height: 50px;
+    width: 200px;
+    color: white;
+    background: black;
+    border: none;
+    border-radius: 25px;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.planning__Button:hover {
+    background: #5fc349;
+}
 
 .recipe__list {
   display: flex;

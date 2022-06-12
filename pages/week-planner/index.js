@@ -64,6 +64,11 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard(values);
 	};
 
+	const handleRemoveAll = (e) => {
+		e.preventDefault();
+		setBoard([]);
+	}
+
 	return (
 		<div>
 			<Head>
@@ -76,7 +81,7 @@ const WeekPlanner = ({ recipes }) => {
 				<h1 className={styles.title}>Weekplanner</h1>
 				<div ref={dropRef} className={styles.planning__container}>
 					<div className={styles.planning__containerTitle}>Weekplanning</div>
-					<ul className={styles.recipe__list} >
+					<ul className={styles.recipe__list}>
 						{board.map(recipe => {
 							return (
 								<MovableRecipe
@@ -91,6 +96,9 @@ const WeekPlanner = ({ recipes }) => {
 							);
 						})}
 					</ul>
+					<div className={styles.planning__containerButton}>
+						{ board.length !== 0 && <button className={styles.planning__Button} onClick={handleRemoveAll}>Maak de planning leeg</button>}
+					</div>
 				</div>
 				<div className={styles.planning__container}>
 					<div className={styles.planning__containerTitle}>Recepten</div>
