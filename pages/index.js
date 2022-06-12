@@ -39,7 +39,6 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({recipes}) {
-	//const { documents: recipesUser } = useCollection('recipes');
 	
 	const { user } = useAuthContext();
 	const recipesReadable = JSON.parse(recipes)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
@@ -24,61 +25,11 @@ export const getServerSideProps = async () => {
 };
 
 const WeekPlanner = ({ recipes }) => {
-	
 	const [board, setBoard] = useState([]);
-	//const { user } = useAuthContext();
-	
+	const { user } = useAuthContext();
+
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
-	//console.log(recipesData.image)
-	/* 
-	Make recipes draggable -> forEach + push to new array is the solution to make all recipes draggable. By only mapping over the recipes and using ref in the <li>-element only the last recipe was draggable.
-	*/
-/*
-	const MovableRecipe = ({recipesData}) => {
-		const [{ isDragging }, dragRef] = useDrag({
-			type: 'li',
-			item: { id: recipesData.id },
-			collect: monitor => ({
-				isDragging: !!monitor.isDragging(),
-			}),
-		});
-	}
-
-	MovableRecipe();
-	
-	const itemList = [];
-	*/
-	/*	const drags = {};
-	
-	recipesData.forEach(recipe => {
-		const drag = useDrag(() => ({
-			type: 'li',
-			item: { id: recipe.id },
-			collect: monitor => ({
-				isDragging: !!monitor.isDragging(),
-			}),
-		}));
-
-		const [{ isDragging }, dragRef] = drag;
-		drags[recipe.id] = drag;
-
-		itemList.push(
-			<li ref={dragRef} key={recipesData.id} className={styles.recipe__listitems}>
-				<div>
-					<h3 className={styles.recipe__title}>{recipe.title}</h3>
-					<h4 className={styles.recipe__category}>{recipe.methodTime}</h4>
-					<Image
-						src={recipe.image}
-						alt='Dish'
-						width={200}
-						height={150}
-						objectFit='cover'
-					></Image>
-				</div>
-			</li>
-		);
-	;*/
 
 	// Logic of the dropzone
 
@@ -110,21 +61,13 @@ const WeekPlanner = ({ recipes }) => {
 					<ul className={styles.recipe__list} key={recipesData.id}>
 						{board.map(recipe => {
 							return (
-								<li key={recipesData.id} className={styles.recipe__listitems}>
-									<div>
-										<h3 className={styles.recipe__title}>{recipe.title}</h3>
-										<h4 className={styles.recipe__category}>
-											{recipe.methodTime}
-										</h4>
-										<Image
-											src={recipe.image}
-											alt='Dish'
-											width={200}
-											height={150}
-											objectFit='cover'
-										></Image>
-									</div>
-								</li>
+								<MovableRecipe
+									key={recipesData.id}
+									id={recipe.id}
+									title={recipe.title}
+									methodTime={recipe.methodTime}
+									photo={recipe.image}
+								/>
 							);
 						})}
 					</ul>
@@ -149,6 +92,6 @@ const WeekPlanner = ({ recipes }) => {
 			<Footer />
 		</div>
 	);
-				}
+};
 
 export default WeekPlanner;

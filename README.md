@@ -23,7 +23,10 @@
 
 6. Profile image is loading but show up only after rerendering -> forgot to 'await' the imageUpload in handleUpload in the ProfileImage component
 
-7. Array of ingredients do not stay in the form when you go back or forward in the form. Use session storage? Or, adjust the code? !!!!!!!!!!!!!!!!! TO DO  
+7. Array of ingredients do not stay in the form when you go back or forward in the form. -> Props changed - array in parent & update function in child 
+
+8. Invalid Hook call - useDrag from react-dnd was not recognized. Possible: diferrent version of React and React-dom (updated!), but the real reason was using a hook in a forEach-loop. Solution: useDrag used in a component that is imported in the parent, where the mapping happens on the data. See: week-planner.
+
 
 
 ##Rendering
@@ -35,6 +38,7 @@ Choices between
 - ISR -> loading all recipes
 - CSR -> updating db? authentication?
 
+Here we use SSR because we want to update immediately with a new recipe. 
 
 
 
@@ -44,6 +48,3 @@ Choices between
 
 
 
-
-- Largest Contentful Paint (LCP) --- warning ---
-Zal wellicht opgelost worden door ssr
