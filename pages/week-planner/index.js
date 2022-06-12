@@ -38,9 +38,7 @@ const WeekPlanner = ({ recipes }) => {
 
 
 	useEffect(() =>{
-	
 			localStorage.setItem('dropZoneStorage', JSON.stringify(board))
-		
 	}, [board])
 
 
@@ -57,6 +55,12 @@ const WeekPlanner = ({ recipes }) => {
 	const addRecipeToBoard = id => {
 		const draggedRecipe = recipesData.filter((recipe, i) => id === recipe.id);
 		setBoard(board => [...board, draggedRecipe[0]]);
+	};
+
+	const handleRemove = index => {
+		const values = [...board];
+		values.splice(index, 1);
+		setBoard(values);
 	};
 
 	return (
@@ -80,6 +84,8 @@ const WeekPlanner = ({ recipes }) => {
 									title={recipe.title}
 									methodTime={recipe.methodTime}
 									photo={recipe.image}
+									dropped={true}
+									handleRemove={handleRemove}
 								/>
 							);
 						})}
@@ -96,6 +102,7 @@ const WeekPlanner = ({ recipes }) => {
 									title={recipe.title}
 									methodTime={recipe.methodTime}
 									photo={recipe.image}
+									dropped={false}
 								/>
 							);
 						})}

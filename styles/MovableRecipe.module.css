@@ -17,3 +17,7 @@
   font-size: 0.8rem;
 }
 
+.recipe__remove {
+  display: flex;
+  justify-content: flex-end;
+}
