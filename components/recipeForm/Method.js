@@ -13,8 +13,7 @@ const Method = ({ method, methodTime, updateForm }) => {
 				placeholder='Beschrijf eenvoudig de verschillende stappen om tot het gerecht te komen'
 				className={styles.form__textAreaField}
 			/>
-			<h3 className={styles.label}>Actieve bereidingstijd: </h3>
-			{methodTime}
+			
 			<select
 				className={styles.form__selectField}
 				onChange={onChange}

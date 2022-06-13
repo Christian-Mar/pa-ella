@@ -27,6 +27,7 @@ export const getServerSideProps = async () => {
 
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
+	const [recipeDay, setRecipeDay] = useState([]);
 	const { user } = useAuthContext();
 
 	const recipesReadable = JSON.parse(recipes);
@@ -50,6 +51,7 @@ const WeekPlanner = ({ recipes }) => {
 		drop: recipesData => addRecipeToBoard(recipesData.id),
 		collect: monitor => ({
 			isOver: !!monitor.isOver(),
+			canDrop: monitor.canDrop(),
 		}),
 	});
 
@@ -84,15 +86,37 @@ const WeekPlanner = ({ recipes }) => {
 					<ul className={styles.recipe__list}>
 						{board.map(recipe => {
 							return (
-								<MovableRecipe
-									key={uuidv4()}
-									id={recipe.id}
-									title={recipe.title}
-									methodTime={recipe.methodTime}
-									photo={recipe.image}
-									dropped={true}
-									handleRemove={handleRemove}
-								/>
+								<div>
+									<MovableRecipe
+										key={uuidv4()}
+										id={recipe.id}
+										title={recipe.title}
+										methodTime={recipe.methodTime}
+										photo={recipe.image}
+										dropped={true}
+										handleRemove={handleRemove}
+									/>
+									{/* <div>
+										<select
+											className={styles.form__selectField}
+											onChange={onChange}
+											defaultValue={'default'}
+											name='day'
+										>
+											{' '}
+											<option value={'default'} disabled>
+												Kies een dag
+											</option>
+											<option value='maandag'>maandag </option>
+											<option value='dinsdag'>dinsdag</option>
+											<option value='woensdag'>woensdag</option>
+											<option value='donderdag'>donderdag</option>
+											<option value='vrijdag'>vrijdag</option>
+											<option value='zaterdag'>zaterdag</option>
+											<option value='zondag'>zondag</option>
+										</select>
+									</div>*/}
+								</div>
 							);
 						})}
 					</ul>

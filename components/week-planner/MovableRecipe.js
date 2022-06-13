@@ -20,16 +20,18 @@ function MovableRecipe({
 		}),
 	}));
 
-	//const removeHandler = () => {}
+	const onChange = () => {}
 
 	return (
 		<li ref={dragRef} key={id} className={styles.recipe__listitems}>
 			<div>
-				<div className={styles.recipe__remove}>
+				<div>
 					{dropped && (
+            <div className={styles.recipe__remove}>
+            
 						<div onClick={handleRemove}>
 							<FaTimes />
-						</div>
+						</div></div>
 					)}
 				</div>
 				<Link href={`/recipe-detail/${id}`}>
