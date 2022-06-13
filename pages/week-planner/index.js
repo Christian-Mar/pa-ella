@@ -105,9 +105,10 @@ const WeekPlanner = ({ recipes }) => {
 						{ board.length !== 0 && <button className={styles.planning__Button} onClick={handleRemoveAll}>Maak de planning leeg</button>}
 					</div>
 				</div>
+				
 				<div className={styles.planning__container}>
 					<div className={styles.planning__containerTitle}>Recepten</div>
-					<ul className={styles.recipe__list} key={recipesData.id}>
+					<ul className={styles.recipe__list}>
 						{recipesData.map(recipe => {
 							return (
 								<MovableRecipe
