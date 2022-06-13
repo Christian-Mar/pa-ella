@@ -27,6 +27,7 @@ export const getServerSideProps = async () => {
 
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
+	const [searchTerm, setSearchTerm] = useState('');
 	const { user } = useAuthContext();
 
 	const recipesReadable = JSON.parse(recipes);
@@ -111,8 +112,13 @@ const WeekPlanner = ({ recipes }) => {
 				
 				<div className={styles.planning__container}>
 					<div className={styles.planning__containerTitle}>Recepten</div>
+					<div className={styles.searchBarContainer}><input type='text' placeholder='Zoek een recept via een trefwoord in de titel' className={styles.searchBar} onChange={e => {setSearchTerm(e.target.value)}}/></div>
 					<ul className={styles.recipe__list}>
-						{recipesData.map(recipe => {
+						{recipesData.filter((value) => {if (searchTerm === '') {
+							return value 
+						} else if (value.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+							return value 
+						}}).map(recipe => {
 							return (
 								<MovableRecipe
 									key={recipe.id}
