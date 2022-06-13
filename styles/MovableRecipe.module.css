@@ -5,16 +5,18 @@
   padding: 1rem;
   margin: 0.5rem;
   border: 1px solid;
-  max-width: 220px;
+  width: 160px;
   border-radius: 4px;
 }
 
 .recipe__title {
-  height: 40px;
+  height: 30px;
+  font-size: .8rem;
+  margin-bottom: 20px;
 }
 
 .recipe__category {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .recipe__remove {

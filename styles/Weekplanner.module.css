@@ -30,8 +30,9 @@
 }
 
 .planning__Button {
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 160px;
+    font-size: .8rem;
     color: white;
     background: black;
     border: none;

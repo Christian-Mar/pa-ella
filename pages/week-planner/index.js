@@ -27,7 +27,6 @@ export const getServerSideProps = async () => {
 
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
-	const [recipeDay, setRecipeDay] = useState([]);
 	const { user } = useAuthContext();
 
 	const recipesReadable = JSON.parse(recipes);
@@ -46,18 +45,20 @@ const WeekPlanner = ({ recipes }) => {
 
 	// Logic of the dropzone
 
-	const [{ isOver }, dropRef] = useDrop({
+	const [{ canDrop, isOver }, dropRef ] = useDrop({
 		accept: 'li',
 		drop: recipesData => addRecipeToBoard(recipesData.id),
 		collect: monitor => ({
-			isOver: !!monitor.isOver(),
+			isOver: monitor.isOver(),
 			canDrop: monitor.canDrop(),
 		}),
 	});
 
+	
+
 	const addRecipeToBoard = id => {
 		const draggedRecipe = recipesData.filter((recipe, i) => id === recipe.id);
-		setBoard(board => [...board, draggedRecipe[0]]);
+		setBoard(items => [...items, draggedRecipe[0]]);
 	};
 
 	const handleRemove = index => {
@@ -71,6 +72,7 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard([]);
 	}
 
+
 	return (
 		<div>
 			<Head>
@@ -80,12 +82,13 @@ const WeekPlanner = ({ recipes }) => {
 			</Head>
 			<div className={styles.container}>
 				<Navbar />
-				<h1 className={styles.title}>Weekplanner</h1>
+				<h1 className={styles.title}>Wat gaan we deze week eten? </h1>
 				<div ref={dropRef} className={styles.planning__container}>
-					<div className={styles.planning__containerTitle}>Weekplanning</div>
+					<div className={styles.planning__containerTitle}>Planning</div>
 					<ul className={styles.recipe__list}>
 						{board.map(recipe => {
 							return (
+								
 								
 									<MovableRecipe
 										key={uuidv4()}
@@ -96,8 +99,8 @@ const WeekPlanner = ({ recipes }) => {
 										dropped={true}
 										handleRemove={handleRemove}
 									/>
-									
 								
+									
 							);
 						})}
 					</ul>
