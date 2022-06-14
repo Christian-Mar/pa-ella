@@ -11,6 +11,7 @@ import { db } from '../../firebase/config';
 import { getDocs, collection } from 'firebase/firestore';
 import { useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
+import { FaTimes } from 'react-icons/fa';
 
 export const getServerSideProps = async () => {
 	const querySnapshot = await getDocs(collection(db, 'recipes'));
@@ -28,6 +29,8 @@ export const getServerSideProps = async () => {
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
+	const [enteredWord, setEnteredWord] = useState('')
+	const [val, setVal] = useState('');
 	const { user } = useAuthContext();
 
 	const recipesReadable = JSON.parse(recipes);
@@ -73,6 +76,18 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard([]);
 	}
 
+	const search = value => {
+		if (searchTerm === '') {
+			return value;
+		} else if (value.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+			return value;
+		}
+	};
+
+	const clearInput = () => {
+		setSearchTerm('');
+		setEnteredWord('');
+	}
 
 	return (
 		<div>
@@ -89,36 +104,49 @@ const WeekPlanner = ({ recipes }) => {
 					<ul className={styles.recipe__list}>
 						{board.map(recipe => {
 							return (
-								
-								
-									<MovableRecipe
-										key={uuidv4()}
-										id={recipe.id}
-										title={recipe.title}
-										methodTime={recipe.methodTime}
-										photo={recipe.image}
-										dropped={true}
-										handleRemove={handleRemove}
-									/>
-								
-									
+								<MovableRecipe
+									key={uuidv4()}
+									id={recipe.id}
+									title={recipe.title}
+									methodTime={recipe.methodTime}
+									photo={recipe.image}
+									dropped={true}
+									handleRemove={handleRemove}
+								/>
 							);
 						})}
 					</ul>
 					<div className={styles.planning__containerButton}>
-						{ board.length !== 0 && <button className={styles.planning__Button} onClick={handleRemoveAll}>Maak de planning leeg</button>}
+						{board.length !== 0 && (
+							<button
+								className={styles.planning__Button}
+								onClick={handleRemoveAll}
+							>
+								Maak de planning leeg
+							</button>
+						)}
 					</div>
 				</div>
-				
+
 				<div className={styles.planning__container}>
 					<div className={styles.planning__containerTitle}>Recepten</div>
-					<div className={styles.searchBarContainer}><input type='text' placeholder='Zoek een recept via een trefwoord in de titel' className={styles.searchBar} onChange={e => {setSearchTerm(e.target.value)}}/></div>
+					<div className={styles.searchBarContainer}>
+						<input
+							value={enteredWord}
+							type='text'
+							placeholder='Zoek een recept via een trefwoord in de titel'
+							className={styles.searchBar}
+							onChange={e => {
+								setSearchTerm(e.target.value);
+								setEnteredWord(e.target.value)
+							}}
+						
+						/><div>
+						{searchTerm !== '' && <FaTimes type='submit' onClick={clearInput}/>}
+						</div>
+					</div>
 					<ul className={styles.recipe__list}>
-						{recipesData.filter((value) => {if (searchTerm === '') {
-							return value 
-						} else if (value.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-							return value 
-						}}).map(recipe => {
+						{recipesData.filter(search).map(recipe => {
 							return (
 								<MovableRecipe
 									key={recipe.id}

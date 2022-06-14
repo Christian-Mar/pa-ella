@@ -75,12 +75,12 @@
 }
 
 .searchBar {
-  width: 26rem;
-  height: 2rem;
-  border-radius: 16px;
+  width: 22rem;
+  height: 1.8rem;
+  border: none;
   padding: 12px;
   display: flex;
-  justify-content:space-evenly;
+  justify-content:space-between;
   align-items: center;
 }
 
@@ -90,6 +90,12 @@
 
 
 .searchBarContainer {
+  margin: 0 auto;
   display: flex;
   justify-content: center; 
+  align-items: center;
+  width: 26rem;
+  height: 2rem;
+  border-radius: 16px;
+  border: black 1px solid;
 }
