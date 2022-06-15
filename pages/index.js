@@ -47,8 +47,19 @@ export default function Home({recipes}) {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>pa'ella</title>
-				<meta name='description' content='De recepten' />
+				<title>pa'ella, recepten voor iedereen</title>
+				<meta
+					name='description'
+					content='Recepten van en voor iedereen. "Pa el-la" is een project in het kader van de Frontend Developer opleiding bij Syntra'
+				/>
+
+				<meta property='og:title' content='"Pa el-la", recepten voor iederen' />
+				<meta
+					property='og:description'
+					content='Recepten van en voor iedereen. "Pa el-la" is een project in het kader van de Frontend Developer opleiding bij Syntra'
+				/>
+				<meta property='og:url' content='https://pa-ella.vercel.app' />
+				<meta property='og:type' content='website' />
 				<link rel='icon' href='/images/favicon.ico' />
 			</Head>
 
@@ -58,7 +69,7 @@ export default function Home({recipes}) {
 				<h1 className={styles.title}>Wat eten we vandaag?</h1>
 				<div className={styles.image__container}></div>
 				<div className={styles.list}>
-					{(user && recipesData?.find(recipe => recipe.userId === user.uid)) && (
+					{user && recipesData?.find(recipe => recipe.userId === user.uid) && (
 						<div>
 							<h4 className={styles.section__title}>Mijn recepten</h4>
 							<CarouselContainer className={styles.CarouselContainer}>
@@ -69,22 +80,24 @@ export default function Home({recipes}) {
 												<li
 													key={recipe.id}
 													className={styles.recipe__listitems}
-												><Link href={`/recipe-detail/${recipe.id}`}>
-													<div>
-														<h3 className={styles.recipe__title}>
-															{recipe.title}
-														</h3>
-														<h4 className={styles.recipe__category}>
-															{recipe.methodTime}
-														</h4>
-														<Image
-															src={recipe.image}
-															alt='Dish'
-															width={200}
-															height={150}
-															objectFit='cover'
-														></Image>
-													</div></Link>
+												>
+													<Link href={`/recipe-detail/${recipe.id}`}>
+														<div>
+															<h3 className={styles.recipe__title}>
+																{recipe.title}
+															</h3>
+															<h4 className={styles.recipe__category}>
+																{recipe.methodTime}
+															</h4>
+															<Image
+																src={recipe.image}
+																alt='Dish'
+																width={200}
+																height={150}
+																objectFit='cover'
+															></Image>
+														</div>
+													</Link>
 												</li>
 											)
 									)}
