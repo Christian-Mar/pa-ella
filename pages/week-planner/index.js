@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
 import MovableRecipe from '../../components/week-planner/MovableRecipe';
+import AllergenFilter from '../../components/week-planner/AllergenFilter';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import styles from '../../styles/Weekplanner.module.css';
 import { db } from '../../firebase/config';
@@ -29,8 +28,8 @@ export const getServerSideProps = async () => {
 const WeekPlanner = ({ recipes }) => {
 	const [board, setBoard] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
-	const [enteredWord, setEnteredWord] = useState('')
-	const [val, setVal] = useState('');
+	const [enteredWord, setEnteredWord] = useState('');
+	const [gluten, setGluten] = useState(false);
 	const { user } = useAuthContext();
 
 	const recipesReadable = JSON.parse(recipes);
@@ -88,6 +87,14 @@ const WeekPlanner = ({ recipes }) => {
 		setSearchTerm('');
 		setEnteredWord('');
 	}
+ 
+	const allergen = value => {
+		if (gluten === true && value.allergens.gluten === false) {
+			return value;
+		} else if (gluten === false) {
+			return value;
+		}
+	};
 
 	return (
 		<div>
@@ -138,26 +145,34 @@ const WeekPlanner = ({ recipes }) => {
 							className={styles.searchBar}
 							onChange={e => {
 								setSearchTerm(e.target.value);
-								setEnteredWord(e.target.value)
+								setEnteredWord(e.target.value);
 							}}
-						
-						/><div>
-						{searchTerm !== '' && <FaTimes type='submit' onClick={clearInput}/>}
+						/>
+						<div>
+							{searchTerm !== '' && (
+								<FaTimes type='submit' onClick={clearInput} />
+							)}
 						</div>
 					</div>
+					<div>
+						<AllergenFilter recipesData={recipesData} gluten={gluten} setGluten={setGluten}/>
+					</div>
 					<ul className={styles.recipe__list}>
-						{recipesData.filter(search).map(recipe => {
-							return (
-								<MovableRecipe
-									key={recipe.id}
-									id={recipe.id}
-									title={recipe.title}
-									methodTime={recipe.methodTime}
-									photo={recipe.image}
-									dropped={false}
-								/>
-							);
-						})}
+						{recipesData
+							.filter(search)
+							.filter(allergen)
+							.map(recipe => {
+								return (
+									<MovableRecipe
+										key={recipe.id}
+										id={recipe.id}
+										title={recipe.title}
+										methodTime={recipe.methodTime}
+										photo={recipe.image}
+										dropped={false}
+									/>
+								);
+							})}
 					</ul>
 				</div>
 			</div>
