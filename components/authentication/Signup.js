@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSignup } from '../../hooks/useSignup';
-
 import styles from '../../styles/SignUpIn.module.css';
-
+import { userLoginSchema } from '../../validations/UserSignup';
 
 export default function Signup() {
 	const [email, setEmail] = useState('');
@@ -13,11 +12,22 @@ export default function Signup() {
 
 	const router = useRouter();
 
-	const handleSubmit = e => {
+	const handleSubmit = async(e) => {
 		e.preventDefault();
-		signup(email, password, displayName,);
-		router.push('/');
+		let formData = {
+			email: e.target[0].value,
+			password: e.target[1].value,
+			displayName: e.target[2].value,
+		};
+		const isValid = await userLoginSchema.isValid(formData);
+		await signup(email, password, displayName);
+		if (isValid) {
+			router.push('/');
+		}
+		
 	};
+
+	
 
 	return (
 		<div className={styles.container}>

@@ -24,20 +24,7 @@ const NameInput = () => {
 	} 
 
 	const userCollectionRef = collection(db, 'users');
-/*
-	useEffect(() => {
-		onSnapshot(userCollectionRef, snapshot => {
-			setProfile(
-				snapshot.docs.map(doc => {
-					return {
-						id: doc.id,
-						name: doc.name,
-					};
-				})
-			);
-		});
-	}, []);
-*/
+
   return (
 		<div>
 			<form onSubmit={handleSubmit} className={styles.form}>

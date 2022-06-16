@@ -21,8 +21,8 @@ const ForgotPassword = () => {
 		e.preventDefault();
 		sendPasswordResetEmail(auth, email)
 			.then(() => {
-				alert('Password reset email sent');
-				setMessage('check your email');
+				alert('Er is een e-mail verzonden om uw paswoord te wijzigen');
+				setMessage('Controleer je e-mail');
 			})
 
 			.catch(error => {

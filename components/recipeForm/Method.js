@@ -13,14 +13,18 @@ const Method = ({ method, methodTime, updateForm }) => {
 				placeholder='Beschrijf eenvoudig de verschillende stappen om tot het gerecht te komen'
 				className={styles.form__textAreaField}
 			/>
-			
+
+			<h3 className={styles.label}>Bereidingstijd: </h3>
 			<select
 				className={styles.form__selectField}
 				onChange={onChange}
 				defaultValue={'default'}
 				name='methodTime'
-				
-			> <option value={'default'} disabled>Kies</option>
+			>
+				{' '}
+				<option value={'default'} disabled>
+					Kies
+				</option>
 				<option value='max 20 minuten'>minder dan 20 min </option>
 				<option value='25 minuten'>25 min</option>
 				<option value='30 minuten'>30 min</option>

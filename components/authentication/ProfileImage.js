@@ -28,7 +28,7 @@ const ProfileImage = ({ deleteUser, imageUpload }) => {
 
 	// uploading photo to firebase storage
 	const handleUpload = async () => {
-		await upload(photo, user, setLoading); // state loading meezetten in hook - loading state return in de hook -> lijn 15 ook loading
+		await upload(photo, user, setLoading); 
 		await imageUpload();
 		setPhotoURL(user.photoURL || blankProfile);
 	};

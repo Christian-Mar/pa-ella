@@ -15,6 +15,7 @@ import Method from '../../components/recipeForm/Method';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Allergens from '../../components/recipeForm/Allergens';
 
+
 const CreateRecipe = () => {
 	const [imageUrl, setImageUrl] = useState('/images/plate.png');
 	const [recipe, setRecipe] = useState({
@@ -67,6 +68,8 @@ const CreateRecipe = () => {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
+		
+	
 		try {
 			await addDoc(collection(db, 'recipes'), {
 				title: recipe.title,

@@ -13,10 +13,13 @@ export default function Login() {
 
 	const router = useRouter();
 
-	const handleSubmit = e => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		login(email, password);
-		router.push('/');
+		try {
+			await login(email, password);
+		
+		router.push('/');}
+		catch (err) {alert('Controleer e-mail en paswoord a.u.b');}
 	};
 
 	return (
@@ -54,7 +57,7 @@ export default function Login() {
 					</form>
 				</div>
 
-        <Modal title='Reset Password' show={showModal} onClose={() => {setShowModal(false)}}>
+        <Modal title='Paswoord wijzigen' show={showModal} onClose={() => {setShowModal(false)}}>
           <PasswordReset />
         </Modal>
 			</div>
