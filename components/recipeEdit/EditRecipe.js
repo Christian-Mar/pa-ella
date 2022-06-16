@@ -429,6 +429,7 @@ const EditRecipe = ({ recipeId, recipeReadable, setRecipeToEdit, setShowModal })
 						alt='Dish'
 						width={600}
 						height={400}
+						layout='fixed'
 						objectFit='cover'
 					/>
 					<div className={styles.imageButtonContainer}>
