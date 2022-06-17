@@ -69,6 +69,9 @@ export default function Home({recipes}) {
 				<h1 className={styles.title}>Wat eten we vandaag?</h1>
 				<div className={styles.image__container}></div>
 				<div className={styles.list}>
+					<p className={styles.instruction}>
+						Click op het recept voor meer details
+					</p>
 					{user && recipesData?.find(recipe => recipe.userId === user.uid) && (
 						<div>
 							<h4 className={styles.section__title}>Mijn recepten</h4>
@@ -82,7 +85,7 @@ export default function Home({recipes}) {
 													className={styles.recipe__listitems}
 												>
 													<Link href={`/recipe-detail/${recipe.id}`}>
-														<div>
+														<div className={styles.recipe__link}>
 															<h3 className={styles.recipe__title}>
 																{recipe.title}
 															</h3>

@@ -46,4 +46,12 @@
     color: red;
 }
 
+.recipe__link {
+  cursor: pointer;
+}
 
+.instruction {
+  font-size: .7rem;
+  color: rgb(138, 138, 138);
+  text-align: center;
+}

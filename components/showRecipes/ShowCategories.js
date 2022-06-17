@@ -27,7 +27,7 @@ export default function ShowCategories({ recipesData, title, category }) {
 							recipe.category === category && (
 								<li key={recipe.id} className={styles.recipe__listitems}>
 									<Link href={`/recipe-detail/${recipe.id}`}>
-										<div>
+										<div className={styles.recipe__link}>
 											<h3 className={styles.recipe__title}>{recipe.title}</h3>
 											<h4 className={styles.recipe__category}>
 												{recipe.methodTime}

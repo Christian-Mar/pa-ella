@@ -24,3 +24,6 @@
   justify-content: flex-end;
 }
 
+.recipe__link {
+  cursor: pointer;
+}

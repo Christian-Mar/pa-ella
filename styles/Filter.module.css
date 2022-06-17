@@ -1,5 +1,5 @@
 .instruction {
-  font-size: .8rem;
+  font-size: .7rem;
   color: rgb(138, 138, 138);
 }
 
@@ -28,10 +28,10 @@
 }
 
 .form__radioLabel {   
-    margin: 0 1rem;
+    margin: 0 .5rem;
     font-weight: 600;
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.1s;
 }

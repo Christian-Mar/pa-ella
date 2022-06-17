@@ -103,11 +103,13 @@ const making = () => {
 								</td>
 								<td className={styles.table__cell}>nog niet gebruikt</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Maak searching en filtering
 								</td>
-								<td className={styles.table__cell}>nog niet gebruikt</td>
+								<td className={styles.table__cell}>
+									gebruikt in (week)planner
+								</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
@@ -132,11 +134,14 @@ const making = () => {
 									gebruikt volgens de de modaliteiten van next.js
 								</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Maak een (week)planning voor verschillende recepten
 								</td>
-								<td className={styles.table__cell}>nog niet gebruikt</td>
+								<td className={styles.table__cell}>
+									{' '}
+									gebruikt met react-dnd naar globale dropzone (niet per dag)
+								</td>
 							</tr>
 							<tr>
 								<td className={styles.table__cell}>
@@ -273,10 +278,18 @@ const making = () => {
 							alt='Database recepten app'
 							width={900}
 							height={500}
-						/>{' '}
+						/>
 					</div>
-
 					<h2>6. Planning, budget en tijdsbesteding</h2>
+					Link: &nbsp;
+					<a
+						className={styles.link}
+						target='_blank'
+						href='https://mermaid.live/edit?gist=https://mermaid.ink/img/pako:eNp1VE2PmzAQ_SsjTq1EpATyUXFrl-72EqlqDqtKucziCbEKNjVDV9Vq_3vHmJCQpL6A7PfejN_M-C0qrKIoi0o0zHsDslhzRbD7a9ghPPl9eDiiG04VMj1aVyMD5Plsu539lBXOftDvTjuqyXALJfKRHKkMal1Ry9ZQDPUihsVqNk9nyTxJ4qTWJlBzanVp4KANVrq9ZiUxpPM7rC-dKomn2DREWN5G-EOVbXxy_wuzjCGRMOtr6ndHrdCQtTVTxkoYn-4wWio8eOJIONkRdw2cV4ZTSyBVATgVCv6EvWdRPDisaZQQGh6YHPRiyaCwtVa9WHRqQA0IgAtMjowv2BK07LqCO0f3cac8guOX7rM25ZBHMtbIc5O1ur7DWIFw8OAIe7qzHVMbQ4Ol_xS2bsRf30VBOJ0Kn5IKXj6KHf0VPmDHx1iK63x9nNTHf0Ty442M2LwcRJ7IkMPqJihk883YRueY3wQmkvCq-eiHAaFrKotqCl-uBvhnSUk0dTE0j7do1JyrCx8IHBW6obZ3IYOFIFcDcnGSy4lRVyNi2P2qNEur9ewQYiSeIM9Ev5oKjdw162fpRnp3tE3jiyGDISO1SMe2ho266sbLgRhGxL6Sa6yW4Tr3wnos2WbS1KcVxVFN8pRoJS_Qmz_bR2JXTfsok19FB-wq3kd78y7QrvFvj7-rdVF2wKqlOJKSW3mqiiiT_qUTKNdYyoAMqPd_QC9wuQ)%5D(https://mermaid.live/edit#pako:eNp1VE1v2zAM_SuETxvgAImdj8G3rV67S4BhORQDcmEtxhFmS55MrxiK_vdRluPESaaLE-m9R-qR1FtUWEVRFpVomPcGZLHmimD317BDePL78HBEN5wqZHq0rkYGyPPZdjv7KSuc_aDfnXZUk-EWSuQjOVIZ1Lqilq2hGOpFDIvVbJ7OknmSxEmtTaDm1OrSwEEbrHR7zUpiSOd3WF86VRJPsWmIsLyN8Icq2_jk_hdmGUMiYdbX1O-OWqEha2umjJUwPt1htFR48MSRcLIj7ho4rwynlkCqAnAqFPwJe8-ieHBY0yghNDwwOejFkkFha616sejUgBoQABeYHBlfsCVo2XUFd47u4055BMcv3WdtyiGPZKyR5yZrdX2HsQLh4MER9nRnO6Y2hgZL_yls3Yi_vouCcDoVPiUVvHwUO_orfMCOj7EU1_n6OKmP_4jkxxsZsXk5iDyRIYfVTVDI5puxjc4xvwlMJOFV89EPA0LXVBbVFL5cDfDPkpJo6mJoHm_RqDlXFz4QOCp0Q23vQgYLQa4G5OIklxOjrkbEsPtVaZZW69khxEg8QZ6JfjUVGrlr1s_SjfTuaJvGF0MGQ0ZqkY5tDRt11Y2XAzGMiH0l11gtw3XuhfVYss2kqU8riqOa5CnRSl6gN3-2j8SumvZRJj8VHbCreB_tzbtAu8a_Pf6u1kWZtCvFkVTcyktVnP4HTK6xlPkIm-__AGLGcCM'
+						rel='noopener noreferrer'
+					>
+						mermaid live editor - Gantt Chart
+					</a>
 					<div className={styles.imageContainer}>
 						<Image
 							src='/images/mermaid-diagram.jpg'
@@ -285,13 +298,6 @@ const making = () => {
 							height={400}
 						/>
 					</div>
-					<a
-						target='_blank'
-						href='https://twitter.com/'
-						rel='noopener noreferrer'
-					>
-						twitter
-					</a>
 					<div className={styles.imageContainer}>
 						<Image
 							src='/images/Budget.jpg'
@@ -526,7 +532,6 @@ const making = () => {
 						Bij deze, mijn bijzondere dank aan de volgende personen in die{' '}
 						<i>community</i>:
 					</p>
-
 					<p>
 						- <b>Brecht</b>: voor het geduld, het steeds weer open minded zoeken
 						- bij ieder klein of groot probleem - en het geven van de oplossing.

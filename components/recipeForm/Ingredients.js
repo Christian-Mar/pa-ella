@@ -44,7 +44,6 @@ const Ingredients = ({ updateForm, ingredients }) => {
 			<div>
 				{ingredientValues.map((ingredientValues, index) => (
 					<div key={index}>
-					
 						<input
 							type='text'
 							name='amount'
@@ -52,6 +51,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							value={ingredientValues.amount}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
+							maxlength='10'
 						/>
 						<input
 							type='text'
@@ -60,7 +60,8 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							value={ingredientValues.unit}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
-						/>	
+							maxlength='15'
+						/>
 						<input
 							type='text'
 							name='ingredient'
@@ -68,12 +69,22 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							value={ingredientValues.ingredient}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
+							maxlength='25'
 						/>
-						<button onClick={() => handleRemoveField(index)} className={styles.IngredientsButton}>-</button>
-						<button onClick={handleAddField} className={styles.IngredientsButton}>+</button>
+						<button
+							onClick={() => handleRemoveField(index)}
+							className={styles.IngredientsButton}
+						>
+							-
+						</button>
+						<button
+							onClick={handleAddField}
+							className={styles.IngredientsButton}
+						>
+							+
+						</button>
 					</div>
 				))}
-				
 			</div>
 		</div>
 	);
