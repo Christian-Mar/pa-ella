@@ -31,3 +31,9 @@
 .table__total {
    color: #5fc349;
 }
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+
+}

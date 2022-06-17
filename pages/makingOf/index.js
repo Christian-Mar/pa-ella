@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
 import Banner from '../../components/banner/Banner';
@@ -161,9 +162,7 @@ const making = () => {
 									Maak het mogelijk om recepten te creëren, up te daten en te
 									deleten
 								</td>
-								<td className={styles.table__cell}>
-									gebruikt
-								</td>
+								<td className={styles.table__cell}>gebruikt</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>Maak een custom hook</td>
@@ -268,8 +267,40 @@ const making = () => {
 						van anderen.
 					</p>
 					<h2>5. De databasestructuur</h2>
-					<p>Image</p>
-					<h2>6. Planning en tijdsbesteding</h2>
+					<div className={styles.imageContainer}>
+						<Image
+							src='/images/recipeDB.png'
+							alt='Database recepten app'
+							width={900}
+							height={500}
+						/>{' '}
+					</div>
+
+					<h2>6. Planning, budget en tijdsbesteding</h2>
+					<div className={styles.imageContainer}>
+						<Image
+							src='/images/mermaid-diagram.jpg'
+							alt='Database recepten app'
+							width={900}
+							height={400}
+						/>
+					</div>
+					<a
+						target='_blank'
+						href='https://twitter.com/'
+						rel='noopener noreferrer'
+					>
+						twitter
+					</a>
+					<div className={styles.imageContainer}>
+						<Image
+							src='/images/Budget.jpg'
+							alt='Database recepten app'
+							width={900}
+							height={800}
+						/>{' '}
+					</div>
+					<br></br>
 					<table>
 						<tbody>
 							<tr>

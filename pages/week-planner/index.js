@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
 import MovableRecipe from '../../components/week-planner/MovableRecipe';
-import AllergenFilter from '../../components/week-planner/AllergenFilter';
+import Filter from '../../components/week-planner/Filter';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import styles from '../../styles/Weekplanner.module.css';
 import { db } from '../../firebase/config';
@@ -11,6 +11,7 @@ import { getDocs, collection } from 'firebase/firestore';
 import { useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import { FaTimes } from 'react-icons/fa';
+
 
 export const getServerSideProps = async () => {
 	const querySnapshot = await getDocs(collection(db, 'recipes'));
@@ -30,25 +31,38 @@ const WeekPlanner = ({ recipes }) => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [enteredWord, setEnteredWord] = useState('');
 	const [gluten, setGluten] = useState(false);
+	const [ei, setEi] = useState(false);
+	const [lupine, setLupine] = useState(false);
+	const [melk, setMelk] = useState(false);
+	const [mosterd, setMosterd] = useState(false);
+	const [noten, setNoten] = useState(false);
+	const [pinda, setPinda] = useState(false);
+	const [schaaldieren, setSchaaldieren] = useState(false);
+	const [selder, setSelder] = useState(false);
+	const [sesamzaad, setSesamzaad] = useState(false);
+	const [soja, setSoja] = useState(false);
+	const [sulfiet, setSulfiet] = useState(false);
+	const [vis, setVis] = useState(false);
+	const [weekdieren, setWeekdieren] = useState(false);
+
+	
 	const { user } = useAuthContext();
 
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
 
 	useEffect(() => {
-		const droppedRecipes = JSON.parse(localStorage.getItem('dropZoneStorage'))
-		setBoard(droppedRecipes)
-	},[])
+		const droppedRecipes = JSON.parse(localStorage.getItem('dropZoneStorage'));
+		setBoard(droppedRecipes);
+	}, []);
 
-
-	useEffect(() =>{
-			localStorage.setItem('dropZoneStorage', JSON.stringify(board))
-	}, [board])
-
+	useEffect(() => {
+		localStorage.setItem('dropZoneStorage', JSON.stringify(board));
+	}, [board]);
 
 	// Logic of the dropzone
 
-	const [{ canDrop, isOver }, dropRef ] = useDrop({
+	const [{ canDrop, isOver }, dropRef] = useDrop({
 		accept: 'li',
 		drop: recipesData => addRecipeToBoard(recipesData.id),
 		collect: monitor => ({
@@ -56,8 +70,6 @@ const WeekPlanner = ({ recipes }) => {
 			canDrop: monitor.canDrop(),
 		}),
 	});
-
-	
 
 	const addRecipeToBoard = id => {
 		const draggedRecipe = recipesData.filter((recipe, i) => id === recipe.id);
@@ -70,10 +82,12 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard(values);
 	};
 
-	const handleRemoveAll = (e) => {
+	const handleRemoveAll = e => {
 		e.preventDefault();
 		setBoard([]);
-	}
+	};
+
+	// Search & filter
 
 	const search = value => {
 		if (searchTerm === '') {
@@ -86,15 +100,115 @@ const WeekPlanner = ({ recipes }) => {
 	const clearInput = () => {
 		setSearchTerm('');
 		setEnteredWord('');
-	}
- 
-	const allergen = value => {
-		if (gluten === true && value.allergens.gluten === false) {
-			return value;
-		} else if (gluten === false) {
-			return value;
-		}
 	};
+
+const glutenFilter = value => {
+	if (
+		(gluten === true && value.allergens.gluten === false) ||
+		gluten === false
+	) {
+		return value;
+	} 
+};
+
+const eiFilter = value => {
+	if (
+		(ei === true && value.allergens.ei === false) ||
+		ei === false
+	) {
+		return value;
+	} 
+};
+
+const lupineFilter = value => {
+	if (
+		(lupine === true && value.allergens.lupine === false) ||
+		lupine === false
+	) {
+		return value;
+	} 
+};
+
+const melkFilter = value => {
+	if ((melk === true && value.allergens.melk === false) || (melk === false)) {
+		return value;
+	}
+};
+
+const mosterdFilter = value => {
+	if ((mosterd === true && value.allergens.mosterd === false) || (mosterd === false)) {
+		return value;
+	} 
+};
+
+const notenFilter = value => {
+	if (
+		(noten === true && value.allergens.noten === false) ||
+		noten === false
+	) {
+		return value;
+	}
+};
+
+const pindaFilter = value => {
+	if (
+		(pinda === true && value.allergens.pinda === false) ||
+		pinda === false
+	) {
+		return value;
+	}
+};
+
+const schaaldierenFilter = value => {
+	if ((schaaldieren === true && value.allergens.schaaldieren === false) || (schaaldieren === false)) {
+		return value;
+	}
+};
+
+const selderFilter = value => {
+	if (
+		(selder === true && value.allergens.selder === false) ||
+		(selder === false)
+	) {
+		return value;
+	}
+};
+
+const sesamzaadFilter = value => {
+	if (
+		(sesamzaad === true && value.allergens.sesamzaad === false) ||
+		sesamzaad === false
+	) {
+		return value;
+	}
+};
+
+const sojaFilter = value => {
+	if (
+		(soja === true && value.allergens.soja === false) ||
+		soja === false
+	) {
+		return value;
+	}
+};
+
+const sulfietFilter = value => {
+	if ((sulfiet === true && value.allergens.sulfiet === false) || sulfiet === false) {
+		return value;
+	}
+};
+
+const visFilter = value => {
+	if ((vis === true && value.allergens.vis === false) || vis === false) {
+		return value;
+	}
+};
+
+const weekdierenFilter = value => {
+	if ((weekdieren === true && value.allergens.weekdieren === false) || weekdieren === false) {
+		return value;
+	}
+};
 
 	return (
 		<div>
@@ -155,12 +269,54 @@ const WeekPlanner = ({ recipes }) => {
 						</div>
 					</div>
 					<div>
-						<AllergenFilter recipesData={recipesData} gluten={gluten} setGluten={setGluten}/>
+						<Filter
+							gluten={gluten}
+							setGluten={setGluten}
+							ei={ei}
+							setEi={setEi}
+							lupine={lupine}
+							setLupine={setLupine}
+							melk={melk}
+							setMelk={setMelk}
+							mosterd={mosterd}
+							setMosterd={setMosterd}
+							noten={noten}
+							setNoten={setNoten}
+							pinda={pinda}
+							setPinda={setPinda}
+							schaaldieren={schaaldieren}
+							setSchaaldieren={setSchaaldieren}
+							selder={selder}
+							setSelder={setSelder}
+							sesamzaad={sesamzaad}
+							setSesamzaad={setSesamzaad}
+							soja={soja}
+							setSoja={setSoja}
+							sulfiet={sulfiet}
+							setSulfiet={setSulfiet}
+							vis={vis}
+							setVis={setVis}
+							weekdieren={weekdieren}
+							setWeekdieren={setWeekdieren}
+						/>
 					</div>
 					<ul className={styles.recipe__list}>
 						{recipesData
 							.filter(search)
-							.filter(allergen)
+							.filter(glutenFilter)
+							.filter(eiFilter)
+							.filter(lupineFilter)
+							.filter(melkFilter)
+							.filter(mosterdFilter)
+							.filter(notenFilter)
+							.filter(pindaFilter)
+							.filter(schaaldierenFilter)
+							.filter(selderFilter)
+							.filter(sesamzaadFilter)
+							.filter(sojaFilter)
+							.filter(sulfietFilter)
+							.filter(visFilter)
+							.filter(weekdierenFilter)
 							.map(recipe => {
 								return (
 									<MovableRecipe
