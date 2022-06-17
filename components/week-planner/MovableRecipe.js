@@ -5,23 +5,28 @@ import Link from 'next/link';
 import { FaTimes } from 'react-icons/fa';
 import styles from '../../styles/MovableRecipe.module.css';
 
+
 function MovableRecipe({
 	id,
+	key,
 	title,
 	methodTime,
 	photo,
 	dropped,
 	handleRemove,
+	board
 }) {
 
 
 	const [{ isDragging }, dragRef] = useDrag(() => ({
 		type: 'li',
-		item: { id: id, title: title, methodTime: methodTime, photo: photo },
+		item: { id: id, title: title, methodTime: methodTime, photo: photo, key: key},
 		collect: monitor => ({
 			isDragging: !!monitor.isDragging(),
 		}),
 	}));
+
+	const deleteProduct = () => {handleRemove(id)} 
 
 	return (
 		<li ref={dragRef} key={id} className={styles.recipe__listitems}>
@@ -29,7 +34,7 @@ function MovableRecipe({
 				<div>
 					{dropped && (
 						<div className={styles.recipe__remove}>
-							<div onClick={handleRemove}>
+							<div onClick={deleteProduct}>
 								<FaTimes />
 							</div>
 						</div>
@@ -48,7 +53,6 @@ function MovableRecipe({
 						></Image>
 					</div>
 				</Link>
-			
 			</div>
 		</li>
 	);
