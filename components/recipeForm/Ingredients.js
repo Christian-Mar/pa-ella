@@ -32,7 +32,8 @@ const Ingredients = ({ updateForm, ingredients }) => {
 		]);
 	};
 
-	const handleRemoveField = (index) => {
+	const handleRemoveField = (e, index) => {
+		e.preventDefault();
 		const values = [...ingredientValues];
 		values.splice(index, 1);
 		setIngredientValues(values);
@@ -72,7 +73,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							maxlength='25'
 						/>
 						<button
-							onClick={() => handleRemoveField(index)}
+							onClick={(e) => handleRemoveField(e, index)}
 							className={styles.IngredientsButton}
 						>
 							-

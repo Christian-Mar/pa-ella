@@ -14,7 +14,7 @@ function MovableRecipe({
 	photo,
 	dropped,
 	handleRemove,
-	board
+	index
 }) {
 
 
@@ -26,7 +26,7 @@ function MovableRecipe({
 		}),
 	}));
 
-	const deleteProduct = () => {handleRemove(id)} 
+	const deleteProduct = () => {handleRemove(id, index)} 
 
 	return (
 		<li ref={dragRef} key={id} className={styles.recipe__listitems}>

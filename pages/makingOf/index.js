@@ -242,12 +242,12 @@ const making = () => {
 						op het framework van React. Het blijft React.js. Het blijft
 						Javascript. Het is enkel een kers op de React-taart, die op haar
 						beurt al verder bouwt op de blader-deeg-bodem van Javascript. De
-						voordelen van next.js zijn dat het (serverside) prerendering
-						toelaat, zodat een pagina veel sneller in de browser komt, bijzonder
+						voordelen van Next.js zijn dat het prerendering
+						toelaat, zodat een pagina van statische websites veel sneller in de browser komt, bijzonder
 						aangenaam qua <i>user experience</i>. Dit laat bovendien toe de
 						pagina's als html op te laden met de mogelijkheid om gericht SEO
-						door te voeren en aldus gemakkelijker vindbaar te zijn voor{' '}
-						<i>search engines</i> als Google.
+						door te voeren en aldus gemakkelijker vindbaar te zijn voor
+						<i>search engines</i> als Google. Hier werd geopteerd voor <i>serverside rendering</i> omwille van de SEO-mogelijkheden. 
 					</p>
 					<h2>4. Het concept van de website</h2>
 					<p>
@@ -304,7 +304,7 @@ const making = () => {
 							alt='Database recepten app'
 							width={900}
 							height={800}
-						/>{' '}
+						/>
 					</div>
 					<br></br>
 					<table>

@@ -13,7 +13,7 @@ import { FaTimes } from 'react-icons/fa';
 
 export const getServerSideProps = async () => {
 	const querySnapshot = await getDocs(collection(db, 'recipes'));
-	let recipes = [];
+	const recipes = [];
 
 	querySnapshot.forEach(doc => {
 		recipes.push({ ...doc.data(), id: doc.id });
@@ -46,6 +46,8 @@ const WeekPlanner = ({ recipes }) => {
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
 
+	console.log(board);
+
 	useEffect(() => {
 		const droppedRecipes = JSON.parse(localStorage.getItem('dropZoneStorage'));
 		setBoard(droppedRecipes);
@@ -71,9 +73,11 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard(items => [...items, draggedRecipe[0]]);
 	};
 
-	const handleRemove = item => {
-		const removed = board.filter(recipes => recipes.id !== item);
-		setBoard(removed);
+	const handleRemove = (index) => {
+		
+		let values = [...board];
+		values.splice(index, 1);
+		setBoard(values);
 	};
 
 	const handleRemoveAll = e => {
@@ -233,9 +237,10 @@ const WeekPlanner = ({ recipes }) => {
 						)}
 					</div>
 					<ul className={styles.recipe__list}>
-						{board.map(recipe => {
+						{board.map((recipe, index) => {
 							return (
 								<MovableRecipe
+									index={index}
 									key={uuidv4()}
 									id={recipe.id}
 									title={recipe.title}
@@ -247,7 +252,6 @@ const WeekPlanner = ({ recipes }) => {
 							);
 						})}
 					</ul>
-					
 				</div>
 
 				<div className={styles.planning__container}>
