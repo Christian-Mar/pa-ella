@@ -71,6 +71,7 @@ const WeekPlanner = ({ recipes }) => {
 	};
 
 	const handleRemove = (id, index) => {
+		// without the id not working beacause of the place where 'index' is in het child. 
 		let values = [...board];
 		values.splice(index, 1);
 		setBoard(values);
@@ -81,6 +82,8 @@ const WeekPlanner = ({ recipes }) => {
 		const removed = board.filter(recipe => recipe.id !== id);
 		setBoard(removed);
 	};
+
+	//removes on the id, so not a single recipe but all the remaining same recipes.
 */
 	const handleRemoveAll = e => {
 		e.preventDefault();
