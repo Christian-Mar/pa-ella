@@ -42,11 +42,8 @@ const WeekPlanner = ({ recipes }) => {
 	const [sulfiet, setSulfiet] = useState(false);
 	const [vis, setVis] = useState(false);
 	const [weekdieren, setWeekdieren] = useState(false);
-
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
-
-	console.log(board);
 
 	useEffect(() => {
 		const droppedRecipes = JSON.parse(localStorage.getItem('dropZoneStorage'));
@@ -73,13 +70,18 @@ const WeekPlanner = ({ recipes }) => {
 		setBoard(items => [...items, draggedRecipe[0]]);
 	};
 
-	const handleRemove = (index) => {
-		
+	const handleRemove = (id, index) => {
 		let values = [...board];
 		values.splice(index, 1);
 		setBoard(values);
 	};
 
+/*
+	const handleRemove = id => {
+		const removed = board.filter(recipe => recipe.id !== id);
+		setBoard(removed);
+	};
+*/
 	const handleRemoveAll = e => {
 		e.preventDefault();
 		setBoard([]);

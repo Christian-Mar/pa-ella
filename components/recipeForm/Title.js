@@ -12,7 +12,7 @@ const Title = ({ title, updateForm }) => {
 				value={title}
 				placeholder='Carpaccio'
 				className={styles.form__inputField}
-				maxLength='30'
+				maxLength='35'
 			/>
 		</div>
 	);

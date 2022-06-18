@@ -8,7 +8,7 @@ import styles from '../../styles/MovableRecipe.module.css';
 
 function MovableRecipe({
 	id,
-	key,
+
 	title,
 	methodTime,
 	photo,
@@ -16,11 +16,9 @@ function MovableRecipe({
 	handleRemove,
 	index
 }) {
-
-
 	const [{ isDragging }, dragRef] = useDrag(() => ({
 		type: 'li',
-		item: { id: id, title: title, methodTime: methodTime, photo: photo, key: key},
+		item: { id: id, title: title, methodTime: methodTime, photo: photo, index: index},
 		collect: monitor => ({
 			isDragging: !!monitor.isDragging(),
 		}),
