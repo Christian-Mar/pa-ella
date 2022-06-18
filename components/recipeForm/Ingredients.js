@@ -52,7 +52,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							value={ingredientValues.amount}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
-							maxlength='10'
+							maxLength='10'
 						/>
 						<input
 							type='text'
@@ -61,7 +61,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							value={ingredientValues.unit}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
-							maxlength='15'
+							maxLength='15'
 						/>
 						<input
 							type='text'
@@ -70,7 +70,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 							value={ingredientValues.ingredient}
 							onChange={e => handleChangeInput(index, e)}
 							className={styles.form__inputFieldIngredients}
-							maxlength='25'
+							maxLength='25'
 						/>
 						<button
 							onClick={(e) => handleRemoveField(e, index)}
