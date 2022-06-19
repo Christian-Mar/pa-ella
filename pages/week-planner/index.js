@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from '../../components/nav/Navbar';
 import Footer from '../../components/footer/Footer';
 import MovableRecipe from '../../components/week-planner/MovableRecipe';
+import Modal from '../../components/recipeEdit/Modal';
 import Filter from '../../components/week-planner/Filter';
 import styles from '../../styles/Weekplanner.module.css';
 import { db } from '../../firebase/config';
@@ -44,6 +45,7 @@ const WeekPlanner = ({ recipes }) => {
 	const [weekdieren, setWeekdieren] = useState(false);
 	const recipesReadable = JSON.parse(recipes);
 	const recipesData = Array.from(recipesReadable);
+	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
 		const droppedRecipes = JSON.parse(localStorage.getItem('dropZoneStorage'));
@@ -71,7 +73,8 @@ const WeekPlanner = ({ recipes }) => {
 	};
 
 	const handleRemove = (id, index) => {
-		// without the id not working beacause of the place where 'index' is in het child. 
+		// without the id not working because of the place where 'index' is in the 
+		// child (order!)
 		let values = [...board];
 		values.splice(index, 1);
 		setBoard(values);
@@ -233,14 +236,42 @@ const WeekPlanner = ({ recipes }) => {
 					<div className={styles.planning__containerTitle}>Planning</div>
 					<div className={styles.planning__containerButton}>
 						{board.length !== 0 && (
-							<button
-								className={styles.planning__Button}
-								onClick={handleRemoveAll}
-							>
-								Maak de planning leeg
-							</button>
+							<div>
+								<button
+									className={styles.planning__Button}
+									onClick={handleRemoveAll}
+								>
+									Maak de planning leeg
+								</button>
+								<button
+									className={styles.planning__Button}
+									onClick={() => setShowModal(true)}
+								>
+									Boodschappenlijst
+								</button>
+							</div>
 						)}
 					</div>
+					<Modal
+						title='Boodschappenlijst'
+						show={showModal}
+						onClose={() => {
+							setShowModal(false);
+						}}
+					>
+						
+						<ul>
+							{
+								board.map(recipes => {
+									return (
+										<ul key={recipes} className={styles.shoppingList}>
+										{recipes.ingredients.map(recipe =>{return <li>{recipe.ingredient}</li>})}
+										</ul>
+									);
+								})
+							}
+						</ul>
+					</Modal>
 					<ul className={styles.recipe__list}>
 						{board.map((recipe, index) => {
 							return (

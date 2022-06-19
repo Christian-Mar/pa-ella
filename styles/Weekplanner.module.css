@@ -99,3 +99,7 @@
   border-radius: 16px;
   border: black 1px solid;
 }
+
+.shoppingList {
+  list-style: none;
+}
