@@ -37,7 +37,7 @@ function MovableRecipe({
 						</div>
 					)}
 				</div>
-				<Link href={`/recipe-detail/${id}`}>
+				<Link href={`/recipe-detail/${id}`} passHref>
 					<div className={styles.recipe__link}>
 						<h3 className={styles.recipe__title}>{title}</h3>
 						<h4 className={styles.recipe__category}>{methodTime}</h4>

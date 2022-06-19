@@ -84,7 +84,7 @@ export default function Home({recipes}) {
 													key={recipe.id}
 													className={styles.recipe__listitems}
 												>
-													<Link href={`/recipe-detail/${recipe.id}`}>
+													<Link href={`/recipe-detail/${recipe.id}`} passHref>
 														<div className={styles.recipe__link}>
 															<h3 className={styles.recipe__title}>
 																{recipe.title}
