@@ -1,30 +1,24 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSignup } from '../../hooks/useSignup';
+import { useLogin } from '../../hooks/useLogin';
 import styles from '../../styles/SignUpIn.module.css';
-import { userLoginSchema } from '../../validations/UserSignup';
+
 
 export default function Signup() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [displayName, setDisplayName] = useState('');
 	const { error, signup } = useSignup();
+	const { login } = useLogin();
 
 	const router = useRouter();
 
-	const handleSubmit = async(e) => {
+	const handleSubmit = e => {
 		e.preventDefault();
-		let formData = {
-			email: e.target[0].value,
-			password: e.target[1].value,
-			displayName: e.target[2].value,
-		};
-		const isValid = await userLoginSchema.isValid(formData);
-		await signup(email, password, displayName);
-		if (isValid) {
-			router.push('/');
-		}
-		
+		signup(email, password, displayName);
+		login(email, password);
+		router.push('/');
 	};
 
 	

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { db } from '../../firebase/config';
-import { collection, addDoc, onSnapshot } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import styles from '../../styles/NameInput.module.css';
 
 const NameInput = () => {

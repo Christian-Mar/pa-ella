@@ -14,8 +14,8 @@ const Filter = ({
 	return (
 		<>
 			<p className={styles.instruction}>
-				Click op het allergeen om de recerten met het allergeen te verwijderen in de
-				onderstaande lijst:
+				Click op het allergeen om de recepten met het allergeen uit  de
+				onderstaande lijst te halen:
 			</p>
 			<div className={styles.allergenContainer}>
 				<div className={styles.form__radioFieldContainer}>

@@ -129,13 +129,11 @@
 
 .form__radioFieldContainer {
     display: flex;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;   
 }
 
 .form__radioField:checked + .form__radioLabel {
-    color: #5fc349;
-    
+    color: #5fc349;   
 }
 
 .form__radioLabel {   
@@ -158,9 +156,7 @@
     height: 50px;
     width: 200px;
     color: white;
-    
     background: black;
-    
     border: none;
     border-radius: 25px;
     margin: 3rem 2rem 1rem;

@@ -8,7 +8,6 @@ import styles from '../../styles/MovableRecipe.module.css';
 
 function MovableRecipe({
 	id,
-
 	title,
 	methodTime,
 	photo,

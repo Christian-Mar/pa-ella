@@ -1,6 +1,5 @@
 .avatar {
   border-radius: 50%;
-  
 }
 
 .profileContainer {
@@ -64,14 +63,12 @@
 }
 
 .showComment {
-  
     width: 100%;
     height: 100%;
     font-size: .8rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 0;
-    margin: 0;
-    
+    margin: 0;    
 }
 
 .commentButton {
