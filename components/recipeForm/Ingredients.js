@@ -10,9 +10,7 @@ const Ingredients = ({ updateForm, ingredients }) => {
 
 	useEffect(() => {
 		updateForm('ingredients', ingredientValues);
-	}, [
-		ingredientValues
-	])
+	}, [ingredientValues]);
 
 	const handleChangeInput = (index, e) => {
 		const values = [...ingredientValues];

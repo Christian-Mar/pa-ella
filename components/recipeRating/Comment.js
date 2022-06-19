@@ -36,7 +36,7 @@ const Comment = ({recipeId}) => {
 				setComments(snapshot.docs);
 			}
 		);
-	}, [db, recipeId]);
+	}, [recipeId]);
 
 	async function sendComment(event) {
 		event.preventDefault();
@@ -57,11 +57,11 @@ const Comment = ({recipeId}) => {
 			collection(db, 'recipes', recipeId, 'likes'),
 			snapshot => setLikes(snapshot.docs)
 		);
-	}, [db]);
+	}, [recipeId]);
 
 	useEffect(() => {
 		user &&	setHasLiked(likes.findIndex((like) => like.id === user.uid ) !== -1);
-	}, [likes]);
+	}, [user, likes]);
 
 	async function likePost() {
 		if (hasLiked) {
