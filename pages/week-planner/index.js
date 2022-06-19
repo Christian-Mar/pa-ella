@@ -265,7 +265,7 @@ const WeekPlanner = ({ recipes }) => {
 								board.map(recipes => {
 									return (
 										<ul key={recipes} className={styles.shoppingList}>
-										{recipes.ingredients.map(recipe =>{return <li>{recipe.ingredient}</li>})}
+										{recipes.ingredients.map(recipe =>{return <li key={uuidv4()}>{recipe.ingredient}</li>})}
 										</ul>
 									);
 								})

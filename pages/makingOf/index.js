@@ -97,11 +97,11 @@ const making = () => {
 									opbouwen
 								</td>
 							</tr>
-							<tr>
+							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
 									Maak een boodschappenlijst
 								</td>
-								<td className={styles.table__cell}>nog niet gebruikt</td>
+								<td className={styles.table__cell}>Gebruikt, button opent modal in weekplanner</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
@@ -242,12 +242,13 @@ const making = () => {
 						op het framework van React. Het blijft React.js. Het blijft
 						Javascript. Het is enkel een kers op de React-taart, die op haar
 						beurt al verder bouwt op de blader-deeg-bodem van Javascript. De
-						voordelen van Next.js zijn dat het prerendering
-						toelaat, zodat een pagina van statische websites veel sneller in de browser komt, bijzonder
-						aangenaam qua <i>user experience</i>. Dit laat bovendien toe de
-						pagina's als html op te laden met de mogelijkheid om gericht SEO
-						door te voeren en aldus gemakkelijker vindbaar te zijn voor
-						<i>search engines</i> als Google. Hier werd geopteerd voor <i>serverside rendering</i> omwille van de SEO-mogelijkheden. 
+						voordelen van Next.js zijn dat het prerendering toelaat, zodat een
+						pagina van statische websites veel sneller in de browser komt,
+						bijzonder aangenaam qua <i>user experience</i>. Dit laat bovendien
+						toe de pagina's als html op te laden met de mogelijkheid om gericht
+						SEO door te voeren en aldus gemakkelijker vindbaar te zijn voor
+						<i>search engines</i> als Google. Hier werd geopteerd voor{' '}
+						<i>serverside rendering</i> omwille van de SEO-mogelijkheden.
 					</p>
 					<h2>4. Het concept van de website</h2>
 					<p>
@@ -362,14 +363,14 @@ const making = () => {
 								<td className={styles.table__cellSmall}>4 uur 00 minuten</td>
 							</tr>
 							<tr>
-								<td className={styles.table__cell}>Algemene componenten functioneel</td>
+								<td className={styles.table__cell}>
+									Algemene componenten functioneel
+								</td>
 								<td className={styles.table__cellSmall}>6 uur 00 minuten</td>
 								<td className={styles.table__cellSmall}>5 uur 15 minuten</td>
 							</tr>
 							<tr>
-								<td className={styles.table__cell}>
-									Home pagina + 404
-								</td>
+								<td className={styles.table__cell}>Home pagina + 404</td>
 								<td className={styles.table__cellSmall}>6 uur 00 minuten</td>
 								<td className={styles.table__cellSmall}>10 uur 30 minuten</td>
 							</tr>
@@ -379,7 +380,9 @@ const making = () => {
 								<td className={styles.table__cellSmall}>15 uur 00 minuten</td>
 							</tr>
 							<tr>
-								<td className={styles.table__cell}>Creëren van recepten (form + opslag)</td>
+								<td className={styles.table__cell}>
+									Creëren van recepten (form + opslag)
+								</td>
 								<td className={styles.table__cellSmall}>16 uur 00 minuten</td>
 								<td className={styles.table__cellSmall}>24 uur 45 minuten</td>
 							</tr>
@@ -396,9 +399,7 @@ const making = () => {
 								<td className={styles.table__cellSmall}>8 uur 30 minuten</td>
 							</tr>
 							<tr>
-								<td className={styles.table__cell}>
-									Weekplanner
-								</td>
+								<td className={styles.table__cell}>Weekplanner</td>
 								<td className={styles.table__cellSmall}>10 uur 00 minuten</td>
 								<td className={styles.table__cellSmall}>14 uur 00 minuten</td>
 							</tr>
@@ -423,7 +424,10 @@ const making = () => {
 								<td className={styles.table__cellSmall}>1 uur 00 minuten</td>
 							</tr>
 							<tr>
-								<td className={styles.table__cell}> Testen & troubleshooting </td>
+								<td className={styles.table__cell}>
+									{' '}
+									Testen & troubleshooting{' '}
+								</td>
 								<td className={styles.table__cellSmall}>8 uur 00 minuten</td>
 								<td className={styles.table__cellSmall}>14 uur 00 minuten</td>
 							</tr>
@@ -446,16 +450,87 @@ const making = () => {
 						</tbody>
 					</table>
 					<h2>7. Traject</h2>
-					<p>De applicatie is verre van af en kan op tal van punten nog verbeterd worden om te dienen voor de eindgebruiker. Het project werd opgevat als een oefening in het op elkaar afstemmen van verschillende functionaliteiten. Bepaalde functionaliteiten zouden verder moeten uitgebreid en herhaald worden op verschillende pagina's om tot een optimale <i>user experience</i> te komen. Zo is de filter-functie op de weekplanner zeer rudimentair qua keuzemogelijkheden en zou deze ook op de home pagina kunnen gebruikt worden. 
+					<p>
+						De applicatie is verre van af en kan op tal van punten nog verbeterd
+						worden om te dienen voor de eindgebruiker. Het project werd opgevat
+						als een oefening in het op elkaar afstemmen van verschillende
+						functionaliteiten. Bepaalde functionaliteiten zouden verder moeten
+						uitgebreid en herhaald worden op verschillende pagina's om tot een
+						optimale <i>user experience</i> te komen. Zo is de filter-functie op
+						de weekplanner zeer rudimentair qua keuzemogelijkheden en zou deze
+						ook op de home pagina kunnen gebruikt worden.
 					</p>
 					<p>
-					Wat het project vooral heeft opgeleverd, is een hogere zelfzekerheid om op één 'grotere' app te werken en componeten af te stemmen op elkaar als er fouten optreden. Waar oorspronkelijk - in het begin van de lessen - vijf lijntjes code geschreven werden, die werkten, was er bijna een reflex om niet meer aan de code te komen en bij manier van spreken witte fluwelen handschoetjes aan te trekken om nog een letter op het klavier in te drukken. Er was steeds die angst dat iets niet meer zou werken na verdere manipulatie. Die angst is overwonnen. Zowat 95% vand bugs zijn oplosbaar en voor de 5% bijzonder hardnekkige problemen is er steeds een wegomlegging. 
+						Wat het project vooral heeft opgeleverd, is een hogere zelfzekerheid
+						om op één 'grotere' app te werken en componeten af te stemmen op
+						elkaar als er fouten optreden. Waar oorspronkelijk - in het begin
+						van de lessen - vijf lijntjes code geschreven werden, die werkten,
+						was er bijna een reflex om niet meer aan de code te komen en bij
+						manier van spreken witte fluwelen handschoetjes aan te trekken om
+						nog een letter op het klavier in te drukken. Er was steeds die angst
+						dat iets niet meer zou werken na verdere manipulatie. Die angst is
+						overwonnen. Zowat 95% vand bugs zijn oplosbaar en voor de 5%
+						bijzonder hardnekkige problemen is er steeds een wegomlegging.
 					</p>
-					<p><i>Bugs</i> waren er van allerlei aard, vanaf prille begin en in zowat iedere component die gemaakt werd. Dit ging van Next.js dat niet naar wens functioneerde, heel specifiek op een M1 van Mac, over het vergeten van de server her op te starten na bepaalde wijzigingen tot het oneigenlijk gebruik van hooks, wat dan wel functioneerde in de development-mode, maar niet in build-mode. Omdat er min of meer geweten was wat er zou komen aan hoeveelheid foutmeldingen werd gekozen om al voor de eerste lijn code te deployen en alle <i>bugs</i> er stapsgewijze uit te halen tijdens de ontwikkeling van de website.</p>
-					<p>Aan bepaalde - achteraf gezien simpele oplossingen - werd soms enorm veel tijd verloren. Hoewel helemaal niet zo complex, werd bijvoorbeeld heel veel tijd geïnvesteerd in het via <i>serverside rendering</i> van Next.js de data van Firebase binnen te halen. De <i>lesson learned</i> hier is dat er vanaf een bepaald niveau van moeilijkheidsgraad vooral het redeneren en de documentatie van belang zijn. Hoe groot de community ook is, sommige problemen zitten zo in een niche of zijn zo precies dat <i>Youtube</i> en <i>stackoverflow</i> geen soelaas bieden. Verder blijven heel wat tutorials bij de essentie en bereiken ze net niet wat je nodig hebt. Ook dit is een mailpaal in de ontwikkeling. Waar het aanvankelijk bijzonder moeilijk was om het bos door de bomen te zien door de hoeveelheid informatie over bepaalde problemen, zit de uitdaging nu vooral in het vinden van het specifieke detail, om die ene zeldzame paddestoel ergens verscholen achter een boom te vinden. </p>
-					<p>Andere <i>lessons learned</i> of toch iets om mee te nemen naar de toekomst is het consequent afwerken van componenten en functionaliteiten tot ze volledig op punt staan. Vaak werd die afwerking uitgesteld uit schrik dat er zich nadien - in interactie met andere elementen - een probleem zou voordoen en dat er dan nog allerlei wijzigingen zouden moeten doorgevoerd worden, wat zonde zou zijn van het oorsrponkelijke werk. De ervaring leert dat losse eindjes afwerken achteraf, vaak meer tijd in beslag nemen dan het van de eerste keer goed te doen. Immers, achteraf is de app complexer en moet er veel gezocht worden in verschillende componenten of functionaliteit dan wanneer men het in de opbouw doet. Hoewel het belangrijk is om altijd een helicopterview te bewaren en te kunnen anticiperen binnen het geheel, is serieel denken in het opbouwproces van een website zeker geen slechte zaak. Zo is het ook veel makkelijker om een fout in de fundamenten van een huis te herstellen als de eerste baksteen nog moet gelegd worden dan wanneer het dak net geînstalleerd.</p>
-					<p>Er is ook geleerd om meer structuur in de code te krijgen. Best wel, maar het blijft toch nog steeds zoeken naar een evenwicht tussen wat doorlopend kan gecodeerd worden en wat in een afzonderlijke componenten gestoken worden. Te veel componenten hebben de allure van een boek lezen, waar je op iedere pagina meerdere voetnoten moet lezen om nog mee te zijn in het verhaal. Idem voor wat leesbaarheid van de code betreft. Mooie code kan in één lijn duizend lijnen vertellen, maar naar leesbaarheid achteraf is het toch vaak aangenaam om Jip-en-Janneke-code te lezen.</p>
-
+					<p>
+						<i>Bugs</i> waren er van allerlei aard, vanaf prille begin en in
+						zowat iedere component die gemaakt werd. Dit ging van Next.js dat
+						niet naar wens functioneerde, heel specifiek op een M1 van Mac, over
+						het vergeten van de server her op te starten na bepaalde wijzigingen
+						tot het oneigenlijk gebruik van hooks, wat dan wel functioneerde in
+						de development-mode, maar niet in build-mode. Omdat er min of meer
+						geweten was wat er zou komen aan hoeveelheid foutmeldingen werd
+						gekozen om al voor de eerste lijn code te deployen en alle{' '}
+						<i>bugs</i> er stapsgewijze uit te halen tijdens de ontwikkeling van
+						de website.
+					</p>
+					<p>
+						Aan bepaalde - achteraf gezien simpele oplossingen - werd soms enorm
+						veel tijd verloren. Hoewel helemaal niet zo complex, werd
+						bijvoorbeeld heel veel tijd geïnvesteerd in het via{' '}
+						<i>serverside rendering</i> van Next.js de data van Firebase binnen
+						te halen. De <i>lesson learned</i> hier is dat er vanaf een bepaald
+						niveau van moeilijkheidsgraad vooral het redeneren en de
+						documentatie van belang zijn. Hoe groot de community ook is, sommige
+						problemen zitten zo in een niche of zijn zo precies dat{' '}
+						<i>Youtube</i> en <i>stackoverflow</i> geen soelaas bieden. Verder
+						blijven heel wat tutorials bij de essentie en bereiken ze net niet
+						wat je nodig hebt. Ook dit is een mailpaal in de ontwikkeling. Waar
+						het aanvankelijk bijzonder moeilijk was om het bos door de bomen te
+						zien door de hoeveelheid informatie over bepaalde problemen, zit de
+						uitdaging nu vooral in het vinden van het specifieke detail, om die
+						ene zeldzame paddestoel ergens verscholen achter een boom te vinden.{' '}
+					</p>
+					<p>
+						Andere <i>lessons learned</i> of toch iets om mee te nemen naar de
+						toekomst is het consequent afwerken van componenten en
+						functionaliteiten tot ze volledig op punt staan. Vaak werd die
+						afwerking uitgesteld uit schrik dat er zich nadien - in interactie
+						met andere elementen - een probleem zou voordoen en dat er dan nog
+						allerlei wijzigingen zouden moeten doorgevoerd worden, wat zonde zou
+						zijn van het oorsrponkelijke werk. De ervaring leert dat losse
+						eindjes afwerken achteraf, vaak meer tijd in beslag nemen dan het
+						van de eerste keer goed te doen. Immers, achteraf is de app
+						complexer en moet er veel gezocht worden in verschillende
+						componenten of functionaliteit dan wanneer men het in de opbouw
+						doet. Hoewel het belangrijk is om altijd een helicopterview te
+						bewaren en te kunnen anticiperen binnen het geheel, is serieel
+						denken in het opbouwproces van een website zeker geen slechte zaak.
+						Zo is het ook veel makkelijker om een fout in de fundamenten van een
+						huis te herstellen als de eerste baksteen nog moet gelegd worden dan
+						wanneer het dak net geînstalleerd.
+					</p>
+					<p>
+						Er is ook geleerd om meer structuur in de code te krijgen. Best wel,
+						maar het blijft toch nog steeds zoeken naar een evenwicht tussen wat
+						doorlopend kan gecodeerd worden en wat in een afzonderlijke
+						componenten gestoken worden. Te veel componenten hebben de allure
+						van een boek lezen, waar je op iedere pagina meerdere voetnoten moet
+						lezen om nog mee te zijn in het verhaal. Idem voor wat leesbaarheid
+						van de code betreft. Mooie code kan in één lijn duizend lijnen
+						vertellen, maar naar leesbaarheid achteraf is het toch vaak
+						aangenaam om Jip-en-Janneke-code te lezen.
+					</p>
 					<h2>8. Dank </h2>
 					<p>
 						Veel dank - echt wel heel veel dank! - aan allen die mij geholpen
