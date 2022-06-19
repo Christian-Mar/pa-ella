@@ -141,7 +141,6 @@ const making = () => {
 									Maak een (week)planning voor verschillende recepten
 								</td>
 								<td className={styles.table__cell}>
-									{' '}
 									gebruikt met react-dnd naar globale dropzone (niet per dag)
 								</td>
 							</tr>
@@ -298,9 +297,9 @@ const making = () => {
 					</a>
 					<div className={styles.imageContainer}>
 						<Image
-							src='/images/mermaid-diagram.jpg'
+							src='/images/mermaid-diagram.svg'
 							alt='Database recepten app'
-							width={900}
+							width={1000}
 							height={400}
 						/>
 					</div>

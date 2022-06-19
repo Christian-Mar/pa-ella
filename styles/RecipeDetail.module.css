@@ -18,7 +18,12 @@
 
 .image__container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+.ingredientData__title {
+  margin-top: 0;
+ 
 }
 
 .ingredients__list {

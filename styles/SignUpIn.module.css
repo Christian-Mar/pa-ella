@@ -58,6 +58,7 @@
   background-color: black;
   color: white;
   margin: auto;
+  cursor: pointer;
 }
 
 .forgot__btn {

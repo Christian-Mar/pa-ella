@@ -109,7 +109,7 @@ const RecipeDetail = ({ id, recipeProps }) => {
 						></Image>
 					</div>
 					<div>
-						<h4>Ingrediënten</h4>
+						<h4 className={styles.ingredientData__title}>Ingrediënten</h4>
 						<div>
 
 							<ul className={styles.ingredients__list}>	
