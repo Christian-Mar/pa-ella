@@ -101,7 +101,9 @@ const making = () => {
 								<td className={styles.table__cell}>
 									Maak een boodschappenlijst
 								</td>
-								<td className={styles.table__cell}>Gebruikt, button opent modal in weekplanner</td>
+								<td className={styles.table__cell}>
+									Gebruikt, button opent modal in weekplanner
+								</td>
 							</tr>
 							<tr className={styles.table__used}>
 								<td className={styles.table__cell}>
@@ -188,7 +190,7 @@ const making = () => {
 								</td>
 								<td className={styles.table__cell}>
 									niet gebruikt, maar wel gebruik gemaakt van
-									serversiderendering (SSR) via Next.js
+									<i> serverside rendering</i> (SSR) via Next.js
 								</td>
 							</tr>
 							<tr>
@@ -244,11 +246,14 @@ const making = () => {
 						beurt al verder bouwt op de blader-deeg-bodem van Javascript. De
 						voordelen van Next.js zijn dat het prerendering toelaat, zodat een
 						pagina van statische websites veel sneller in de browser komt,
-						bijzonder aangenaam qua <i>user experience</i>. Dit laat bovendien
-						toe de pagina's als html op te laden met de mogelijkheid om gericht
-						SEO door te voeren en aldus gemakkelijker vindbaar te zijn voor
-						<i>search engines</i> als Google. Hier werd geopteerd voor{' '}
-						<i>serverside rendering</i> omwille van de SEO-mogelijkheden.
+						bijzonder aangenaam qua <i> user experience</i>. De pagina's worden
+						als volledige html-pagina's opgeladen wat het mogelijk maakt om
+						gericht SEO door te voeren en aldus gemakkelijker vindbaar te zijn
+						voor
+						<i> search engines</i> als Google. Hier werd geopteerd voor
+						<i> serverside rendering</i> omwille het regelmatig updaten van
+						recepten, die de gebruiker graag meteen in de lijst ziet
+						verschijnen.
 					</p>
 					<h2>4. Het concept van de website</h2>
 					<p>
@@ -406,7 +411,7 @@ const making = () => {
 							<tr>
 								<td className={styles.table__cell}>Boodschappenlijst </td>
 								<td className={styles.table__cellSmall}>8 uur 00 minuten</td>
-								<td className={styles.table__cellSmall}>0 uur 00 minuten</td>
+								<td className={styles.table__cellSmall}>1 uur 00 minuten</td>
 							</tr>
 							<tr>
 								<td className={styles.table__cell}> Recepten & content </td>
@@ -444,7 +449,7 @@ const making = () => {
 									<b>114 uur 00 minuten</b>
 								</td>
 								<td className={styles.table__cellSmall}>
-									<b>135 uur 00 minuten</b>
+									<b>136 uur 00 minuten</b>
 								</td>
 							</tr>
 						</tbody>
@@ -457,20 +462,20 @@ const making = () => {
 						functionaliteiten. Bepaalde functionaliteiten zouden verder moeten
 						uitgebreid en herhaald worden op verschillende pagina's om tot een
 						optimale <i>user experience</i> te komen. Zo is de filter-functie op
-						de weekplanner zeer rudimentair qua keuzemogelijkheden en zou deze
-						ook op de home pagina kunnen gebruikt worden.
+						de weekplanner zeer rudimentair qua keuzemogelijkheden, zeker nog
+						uit te breiden en zou deze ook op de home pagina kunnen gebruikt
+						worden.
 					</p>
 					<p>
-						Wat het project vooral heeft opgeleverd, is een hogere zelfzekerheid
-						om op één 'grotere' app te werken en componeten af te stemmen op
-						elkaar als er fouten optreden. Waar oorspronkelijk - in het begin
-						van de lessen - vijf lijntjes code geschreven werden, die werkten,
-						was er bijna een reflex om niet meer aan de code te komen en bij
-						manier van spreken witte fluwelen handschoetjes aan te trekken om
-						nog een letter op het klavier in te drukken. Er was steeds die angst
-						dat iets niet meer zou werken na verdere manipulatie. Die angst is
-						overwonnen. Zowat 95% vand bugs zijn oplosbaar en voor de 5%
-						bijzonder hardnekkige problemen is er steeds een wegomlegging.
+						Wat essentieel ontbreekt in de app is een standardisatie op het vlak
+						van ingrediënten via een vaste database of door een externe API aan
+						te spreken. Hetzelfde geldt voor de maateenheden. Op dit ogenblik
+						kan de gebruiker zowel 'g', 'gr' of 'gram' invullen voor dezelfde
+						eenheid, waardoor geen juiste berekeningen mogelijk zijn op het
+						geheel. Ook één 'ei' in het ene recept, opgeteld bij drie 'eieren'
+						van het andere recept zal niet onmiddellijk een vier genereren op
+						het boodschappenlijstje als er niet gestandaardiseerd wordt op
+						'ei/eieren' als vast ingrediënt.
 					</p>
 					<p>
 						<i>Bugs</i> waren er van allerlei aard, vanaf prille begin en in
@@ -478,28 +483,21 @@ const making = () => {
 						niet naar wens functioneerde, heel specifiek op een M1 van Mac, over
 						het vergeten van de server her op te starten na bepaalde wijzigingen
 						tot het oneigenlijk gebruik van hooks, wat dan wel functioneerde in
-						de development-mode, maar niet in build-mode. Omdat er min of meer
-						geweten was wat er zou komen aan hoeveelheid foutmeldingen werd
-						gekozen om al voor de eerste lijn code te deployen en alle{' '}
-						<i>bugs</i> er stapsgewijze uit te halen tijdens de ontwikkeling van
-						de website.
+						de development-mode, maar niet in build-mode.
 					</p>
 					<p>
 						Aan bepaalde - achteraf gezien simpele oplossingen - werd soms enorm
-						veel tijd verloren. Hoewel helemaal niet zo complex, werd
-						bijvoorbeeld heel veel tijd geïnvesteerd in het via{' '}
+						veel tijd gespendeerd. Hoewel helemaal niet zo complex, werd
+						bijvoorbeeld heel veel tijd geïnvesteerd in het via
 						<i>serverside rendering</i> van Next.js de data van Firebase binnen
-						te halen. De <i>lesson learned</i> hier is dat er vanaf een bepaald
-						niveau van moeilijkheidsgraad vooral het redeneren en de
-						documentatie van belang zijn. Hoe groot de community ook is, sommige
-						problemen zitten zo in een niche of zijn zo precies dat{' '}
+						te halen. De <i>lesson learned</i> hier is dat er vanaf een bepaalde
+						moeilijkheidsgraad enkel kan gesteund worden op het zelf redeneren
+						en de documentatie, waarbij het blijven Googelen geen zin heeft. Hoe
+						groot de community ook is, sommige problemen zitten zo in een niche
+						of zijn zo precies dat
 						<i>Youtube</i> en <i>stackoverflow</i> geen soelaas bieden. Verder
 						blijven heel wat tutorials bij de essentie en bereiken ze net niet
-						wat je nodig hebt. Ook dit is een mailpaal in de ontwikkeling. Waar
-						het aanvankelijk bijzonder moeilijk was om het bos door de bomen te
-						zien door de hoeveelheid informatie over bepaalde problemen, zit de
-						uitdaging nu vooral in het vinden van het specifieke detail, om die
-						ene zeldzame paddestoel ergens verscholen achter een boom te vinden.{' '}
+						wat je nodig hebt.
 					</p>
 					<p>
 						Andere <i>lessons learned</i> of toch iets om mee te nemen naar de
@@ -508,28 +506,30 @@ const making = () => {
 						afwerking uitgesteld uit schrik dat er zich nadien - in interactie
 						met andere elementen - een probleem zou voordoen en dat er dan nog
 						allerlei wijzigingen zouden moeten doorgevoerd worden, wat zonde zou
-						zijn van het oorsrponkelijke werk. De ervaring leert dat losse
-						eindjes afwerken achteraf, vaak meer tijd in beslag nemen dan het
-						van de eerste keer goed te doen. Immers, achteraf is de app
-						complexer en moet er veel gezocht worden in verschillende
-						componenten of functionaliteit dan wanneer men het in de opbouw
-						doet. Hoewel het belangrijk is om altijd een helicopterview te
-						bewaren en te kunnen anticiperen binnen het geheel, is serieel
-						denken in het opbouwproces van een website zeker geen slechte zaak.
-						Zo is het ook veel makkelijker om een fout in de fundamenten van een
-						huis te herstellen als de eerste baksteen nog moet gelegd worden dan
-						wanneer het dak net geînstalleerd.
+						zijn van het oorspronkelijke werk. De ervaring leert dat losse
+						eindjes afwerken achteraf vaak meer tijd in beslag nemen dan het van
+						de eerste keer goed te doen. Immers, achteraf is de app complexer en
+						moet er veel gezocht worden in verschillende componenten of
+						functionaliteit dan wanneer men het in de opbouw doet. Hoewel het
+						belangrijk is om altijd een helicopterview te bewaren en te kunnen
+						anticiperen binnen het geheel, is serieel denken in het opbouwproces
+						van een website zeker geen slechte zaak. Zo is het ook veel
+						makkelijker om een fout in de fundamenten van een huis te herstellen
+						als de eerste baksteen nog moet gelegd worden dan wanneer het dak
+						net geïnstalleerd is.
 					</p>
 					<p>
 						Er is ook geleerd om meer structuur in de code te krijgen. Best wel,
 						maar het blijft toch nog steeds zoeken naar een evenwicht tussen wat
 						doorlopend kan gecodeerd worden en wat in een afzonderlijke
-						componenten gestoken worden. Te veel componenten hebben de allure
-						van een boek lezen, waar je op iedere pagina meerdere voetnoten moet
-						lezen om nog mee te zijn in het verhaal. Idem voor wat leesbaarheid
-						van de code betreft. Mooie code kan in één lijn duizend lijnen
-						vertellen, maar naar leesbaarheid achteraf is het toch vaak
-						aangenaam om Jip-en-Janneke-code te lezen.
+						componenten gestoken worden. Te veel componenten gebruiken, heeft de
+						allure van een boek lezen, waar je op iedere pagina meerdere
+						voetnoten moet lezen om nog mee te zijn in het verhaal. Te lange
+						code vraagt dan weer vaak scrollen, waardbij de componenten niet
+						naast elkaar kunen gezet worden. Idem voor wat leesbaarheid van de
+						code betreft. Mooie code kan in één lijn duizend lijnen vertellen,
+						maar naar leesbaarheid achteraf is het toch vaak aangenaam om
+						Jip-en-Janneke-code te lezen.
 					</p>
 					<h2>8. Dank </h2>
 					<p>
@@ -560,13 +560,14 @@ const making = () => {
 						toekijkt van <i>boilerplate syntax</i> tot werkelijke <i>app</i>.
 					</p>
 					<p>
-						Bij deze, mijn bijzondere dank aan de volgende personen in die{' '}
-						<i>community</i>:
+						Bij deze, mijn bijzondere dank aan de volgende personen in die
+						lokale
+						<i> community</i>:
 					</p>
 					<p>
 						- <b>Brecht</b>: voor het geduld, het steeds weer open minded zoeken
 						- bij ieder klein of groot probleem - en het geven van de oplossing.
-						Uiteraard ook grote dank voor het hele traject van zero tot semi
+						Uiteraard ook grote dank voor ons hele traject van zero tot semi
 						hero. Hij heeft het allemaal gedragen! En, hij heeft ons de
 						fundamenten van het zoeken geleerd, zodat we nog veel verder kunnen
 						komen dan wat we tot nu toe gevonden hebben.
@@ -587,13 +588,10 @@ const making = () => {
 							'Programmeren is in se nog altijd zoals honderd jaar geleden. Er
 							is nog niets veranderd in de oorspronkelijke functies.'
 						</i>
-					</p>
-					<p>
-						<i>
-							Kan er mij dan iemand de code van 1922 geven voor een recipe-app?
-							Dat is vijf jaar voor de eerste uitgave van het kookboek van de
-							Boerinnenbond!
-						</i>
+						<p>
+							Dan spreken we over 1922. Dat is vijf jaar voor de eerste uitgave
+							van het kookboek van de Boerinnenbond!
+						</p>
 					</p>
 					<p>
 						- <b>Kim</b>: voor de pertinente vragen, het samen zoeken op de code
@@ -629,13 +627,13 @@ const making = () => {
 						- <b>Jesse</b>: altijd chill, met zijn styling waarin eenvoud siert
 						op het hoogste niveau en degene die ik onverwachts betrapte in mijn
 						tuin met mijn vriendin (voor het kopen van een tuintafel). Creatief
-						inspirator! Ik hou van dat <i>haute couture</i> design in een
-						minimalisme van lijnen!
+						inspirator! Ik hou van dat <i>haute couture</i> design met een
+						minimalisme aan lijnen!
 					</p>
 					<p>
 						- <b>Hans</b>: die altijd die voorsprong had op de rest en een
 						wizard in het stylen. Degene die volgens mij vrouwen kan
-						programmeren. Als hij zichtzelf bier toekent als beloning voor het
+						programmeren. Als hij zichzelf bier toekent als beloning voor het
 						oplossen van een code probleem, is het zijn vrouw die dit brengt.
 						Tussen die 'useState' <i>(setCodeProblem(false))</i> en 'Edith
 						returnt bier' moet er toch nog ergens een 'useEffect' zitten, niet?

@@ -103,3 +103,7 @@
 .shoppingList {
   list-style: none;
 }
+
+.shoppingList__check {
+  margin-right: 0.5rem;
+}

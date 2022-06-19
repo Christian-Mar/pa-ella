@@ -265,7 +265,11 @@ const WeekPlanner = ({ recipes }) => {
 								board.map(recipes => {
 									return (
 										<ul key={recipes} className={styles.shoppingList}>
-										{recipes.ingredients.map(recipe =>{return <li key={uuidv4()}>{recipe.ingredient}</li>})}
+											{recipes.ingredients
+												.map(recipe => {
+													return <li key={uuidv4()}><input type="checkbox" className={styles.shoppingList__check}/>{recipe.ingredient}</li>
+												})
+												}
 										</ul>
 									);
 								})
