@@ -491,7 +491,7 @@ const making = () => {
 						<i>serverside rendering</i> van Next.js de data van Firebase binnen
 						te halen. De <i>lesson learned</i> hier is dat er vanaf een bepaalde
 						moeilijkheidsgraad enkel kan gesteund worden op het zelf redeneren
-						en de documentatie, waarbij het blijven Googelen geen zin heeft. Hoe
+						en de documentatie, waarbij het blijven Googelen geen zin meer heeft. Hoe
 						groot de community ook is, sommige problemen zitten zo in een niche
 						of zijn zo precies dat
 						<i>Youtube</i> en <i>stackoverflow</i> geen soelaas bieden. Verder
@@ -521,7 +521,7 @@ const making = () => {
 						Er is ook geleerd om meer structuur in de code te krijgen. Best wel,
 						maar het blijft toch nog steeds zoeken naar een evenwicht tussen wat
 						doorlopend kan gecodeerd worden en wat in een afzonderlijke
-						componenten gestoken worden. Te veel componenten gebruiken, heeft de
+						componenten moet gestoken worden. Te veel componenten gebruiken, heeft de
 						allure van een boek lezen, waar je op iedere pagina meerdere
 						voetnoten moet lezen om nog mee te zijn in het verhaal. Te lange
 						code vraagt dan weer vaak scrollen, waardbij de componenten niet
