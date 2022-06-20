@@ -73,21 +73,11 @@ const WeekPlanner = ({ recipes }) => {
 	};
 
 	const handleRemove = (id, index) => {
-		// without the id not working because of the place where 'index' is in the 
-		// child (order!)
 		let values = [...board];
 		values.splice(index, 1);
 		setBoard(values);
 	};
 
-/*
-	const handleRemove = id => {
-		const removed = board.filter(recipe => recipe.id !== id);
-		setBoard(removed);
-	};
-
-	//removes on the id, so not a single recipe but all the remaining same recipes.
-*/
 	const handleRemoveAll = e => {
 		e.preventDefault();
 		setBoard([]);
@@ -232,149 +222,157 @@ const WeekPlanner = ({ recipes }) => {
 			<div className={styles.container}>
 				<Navbar />
 				<h1 className={styles.title}>Wat gaan we deze week eten? </h1>
-				<div ref={dropRef} className={styles.planning__container}>
-					<div className={styles.planning__containerTitle}>Planning</div>
-					<div className={styles.planning__containerButton}>
-						{board.length !== 0 && (
-							<div>
-								<button
-									className={styles.planning__Button}
-									onClick={handleRemoveAll}
-								>
-									Maak de planning leeg
-								</button>
-								<button
-									className={styles.planning__Button}
-									onClick={() => setShowModal(true)}
-								>
-									Boodschappenlijst
-								</button>
-							</div>
+				<div className={styles.searchBarContainer}>
+					<input
+						value={enteredWord}
+						type='text'
+						placeholder='Zoek een recept via een trefwoord in de titel'
+						className={styles.searchBar}
+						onChange={e => {
+							setSearchTerm(e.target.value);
+							setEnteredWord(e.target.value);
+						}}
+					/>
+					<div>
+						{searchTerm !== '' && (
+							<FaTimes type='submit' onClick={clearInput} />
 						)}
 					</div>
-					<Modal
-						title='Boodschappenlijst'
-						show={showModal}
-						onClose={() => {
-							setShowModal(false);
-						}}
-					>
-						
-						<ul>
-							{
-								board.map(recipes => {
-									return (
-										<ul key={recipes} className={styles.shoppingList}>
-											{recipes.ingredients
-												.map(recipe => {
-													return <li key={uuidv4()}><input type="checkbox" className={styles.shoppingList__check}/>{recipe.ingredient}</li>
-												})
-												}
-										</ul>
-									);
-								})
-							}
-						</ul>
-					</Modal>
-					<ul className={styles.recipe__list}>
-						{board.map((recipe, index) => {
-							return (
-								<MovableRecipe
-									index={index}
-									key={uuidv4()}
-									id={recipe.id}
-									title={recipe.title}
-									methodTime={recipe.methodTime}
-									photo={recipe.image}
-									dropped={true}
-									handleRemove={handleRemove}
-								/>
-							);
-						})}
-					</ul>
+				</div>
+				<div className={styles.filter__container}>
+					<Filter
+						gluten={gluten}
+						setGluten={setGluten}
+						ei={ei}
+						setEi={setEi}
+						lupine={lupine}
+						setLupine={setLupine}
+						melk={melk}
+						setMelk={setMelk}
+						mosterd={mosterd}
+						setMosterd={setMosterd}
+						noten={noten}
+						setNoten={setNoten}
+						pinda={pinda}
+						setPinda={setPinda}
+						schaaldieren={schaaldieren}
+						setSchaaldieren={setSchaaldieren}
+						selder={selder}
+						setSelder={setSelder}
+						sesamzaad={sesamzaad}
+						setSesamzaad={setSesamzaad}
+						soja={soja}
+						setSoja={setSoja}
+						sulfiet={sulfiet}
+						setSulfiet={setSulfiet}
+						vis={vis}
+						setVis={setVis}
+						weekdieren={weekdieren}
+						setWeekdieren={setWeekdieren}
+					/>
 				</div>
 
-				<div className={styles.planning__container}>
-					<div className={styles.planning__containerTitle}>Recepten</div>
-					<div className={styles.searchBarContainer}>
-						<input
-							value={enteredWord}
-							type='text'
-							placeholder='Zoek een recept via een trefwoord in de titel'
-							className={styles.searchBar}
-							onChange={e => {
-								setSearchTerm(e.target.value);
-								setEnteredWord(e.target.value);
-							}}
-						/>
-						<div>
-							{searchTerm !== '' && (
-								<FaTimes type='submit' onClick={clearInput} />
+				<div className={styles.dnd__container}>
+					<div className={styles.planning__container}>
+						<div className={styles.planning__containerTitle}>Recepten</div>
+						<p className={styles.instruction}>
+							Sleep het recept naar de planning om het te selecteren
+						</p>
+						<ul className={styles.recipe__list}>
+							{recipesData
+								.filter(search)
+								.filter(glutenFilter)
+								.filter(eiFilter)
+								.filter(lupineFilter)
+								.filter(melkFilter)
+								.filter(mosterdFilter)
+								.filter(notenFilter)
+								.filter(pindaFilter)
+								.filter(schaaldierenFilter)
+								.filter(selderFilter)
+								.filter(sesamzaadFilter)
+								.filter(sojaFilter)
+								.filter(sulfietFilter)
+								.filter(visFilter)
+								.filter(weekdierenFilter)
+								.map(recipe => {
+									return (
+										<MovableRecipe
+											key={recipe.id}
+											id={recipe.id}
+											title={recipe.title}
+											methodTime={recipe.methodTime}
+											photo={recipe.image}
+											dropped={false}
+										/>
+									);
+								})}
+						</ul>
+					</div>
+					<div ref={dropRef} className={styles.planning__container}>
+						<div className={styles.planning__containerTitle}>Planning</div>
+						<div className={styles.planning__containerButton}>
+							{board.length !== 0 && (
+								<div>
+									<button
+										className={styles.planning__Button}
+										onClick={handleRemoveAll}
+									>
+										Maak de planning leeg
+									</button>
+									<button
+										className={styles.planning__Button}
+										onClick={() => setShowModal(true)}
+									>
+										Boodschappenlijst
+									</button>
+								</div>
 							)}
 						</div>
-					</div>
-					<div>
-						<Filter
-							gluten={gluten}
-							setGluten={setGluten}
-							ei={ei}
-							setEi={setEi}
-							lupine={lupine}
-							setLupine={setLupine}
-							melk={melk}
-							setMelk={setMelk}
-							mosterd={mosterd}
-							setMosterd={setMosterd}
-							noten={noten}
-							setNoten={setNoten}
-							pinda={pinda}
-							setPinda={setPinda}
-							schaaldieren={schaaldieren}
-							setSchaaldieren={setSchaaldieren}
-							selder={selder}
-							setSelder={setSelder}
-							sesamzaad={sesamzaad}
-							setSesamzaad={setSesamzaad}
-							soja={soja}
-							setSoja={setSoja}
-							sulfiet={sulfiet}
-							setSulfiet={setSulfiet}
-							vis={vis}
-							setVis={setVis}
-							weekdieren={weekdieren}
-							setWeekdieren={setWeekdieren}
-						/>
-					</div>
-					<ul className={styles.recipe__list}>
-						{recipesData
-							.filter(search)
-							.filter(glutenFilter)
-							.filter(eiFilter)
-							.filter(lupineFilter)
-							.filter(melkFilter)
-							.filter(mosterdFilter)
-							.filter(notenFilter)
-							.filter(pindaFilter)
-							.filter(schaaldierenFilter)
-							.filter(selderFilter)
-							.filter(sesamzaadFilter)
-							.filter(sojaFilter)
-							.filter(sulfietFilter)
-							.filter(visFilter)
-							.filter(weekdierenFilter)
-							.map(recipe => {
+						<Modal
+							title='Boodschappenlijst'
+							show={showModal}
+							onClose={() => {
+								setShowModal(false);
+							}}
+						>
+							<ul>
+								{board.map(recipes => {
+									return (
+										<ul key={recipes} className={styles.shoppingList}>
+											{recipes.ingredients.map(recipe => {
+												return (
+													<li key={uuidv4()}>
+														<input
+															type='checkbox'
+															className={styles.shoppingList__check}
+														/>
+														{recipe.ingredient}
+													</li>
+												);
+											})}
+										</ul>
+									);
+								})}
+							</ul>
+						</Modal>
+						<ul className={styles.recipe__list}>
+							{board.map((recipe, index) => {
 								return (
 									<MovableRecipe
-										key={recipe.id}
+										index={index}
+										key={uuidv4()}
 										id={recipe.id}
 										title={recipe.title}
 										methodTime={recipe.methodTime}
 										photo={recipe.image}
-										dropped={false}
+										dropped={true}
+										handleRemove={handleRemove}
 									/>
 								);
 							})}
-					</ul>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<Footer />

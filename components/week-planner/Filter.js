@@ -1,20 +1,41 @@
 import styles from '../../styles/Filter.module.css';
 
 const Filter = ({
+	ontbijt,
+	setOntbijt,
 	gluten,
 	setGluten,
 	ei,
 	setEi,
 	lupine,
 	setLupine,
-  melk,
-  setMelk, mosterd,
-  setMosterd, noten, setNoten, pinda, setPinda, schaaldieren, setSchaaldieren, selder, setSelder, sesamzaad, setSesamzaad, soja, setSoja, sulfiet, setSulfiet, vis, setVis, weekdieren, setWeekdieren
+	melk,
+	setMelk,
+	mosterd,
+	setMosterd,
+	noten,
+	setNoten,
+	pinda,
+	setPinda,
+	schaaldieren,
+	setSchaaldieren,
+	selder,
+	setSelder,
+	sesamzaad,
+	setSesamzaad,
+	soja,
+	setSoja,
+	sulfiet,
+	setSulfiet,
+	vis,
+	setVis,
+	weekdieren,
+	setWeekdieren,
 }) => {
 	return (
-		<>
+		<div div className={styles.container}>
 			<p className={styles.instruction}>
-				Click op het allergeen om de recepten met het allergeen uit  de
+				Click op het allergeen om de recepten met het allergeen uit de
 				onderstaande lijst te halen:
 			</p>
 			<div className={styles.allergenContainer}>
@@ -215,7 +236,7 @@ const Filter = ({
 					</label>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

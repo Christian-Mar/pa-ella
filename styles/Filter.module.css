@@ -1,6 +1,14 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .instruction {
 	font-size: 0.7rem;
 	color: rgb(138, 138, 138);
+	margin: 0,2;
 }
 
 .allergenContainer {
@@ -9,6 +17,7 @@
 	flex-wrap: wrap;
 	width: 70vw;
 	margin-left: 2rem;
+	margin-top: 0em;
 }
 
 .form__radioField {
@@ -18,6 +27,7 @@
 .form__radioFieldContainer {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .form__radioField:checked + .form__radioLabel {
